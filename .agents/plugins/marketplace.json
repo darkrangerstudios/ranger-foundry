@@ -1,0 +1,20 @@
+{
+  "name": "ranger-foundry",
+  "interface": {
+    "displayName": "Ranger Foundry"
+  },
+  "plugins": [
+    {
+      "name": "ranger-foundry",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ranger-foundry"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

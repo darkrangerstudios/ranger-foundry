@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ranger Prototype"
+  short_description: "Build a small, testable proof of the idea"
+  default_prompt: "Use $ranger-prototype to define and build the smallest testable prototype for this idea."
+policy:
+  allow_implicit_invocation: true
