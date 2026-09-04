@@ -20,6 +20,7 @@ REPOSITORY_URL = "https://github.com/darkrangerstudios/ranger-foundry"
 
 EXPECTED_SKILLS = (
     "ranger-agent-instructions",
+    "ranger-assembly-line",
     "ranger-cause-analysis",
     "ranger-handoff",
     "ranger-kestrel-review",
@@ -29,12 +30,12 @@ EXPECTED_SKILLS = (
     "ranger-slice-plan",
 )
 
-EXPECTED_IMPLICIT_POLICY = {
-    skill_name: skill_name != "ranger-kestrel-review" for skill_name in EXPECTED_SKILLS
-}
+EXPECTED_IMPLICIT_POLICY = {skill_name: True for skill_name in EXPECTED_SKILLS}
 EXPLICIT_ONLY_SKILLS = {
     skill_name for skill_name, allowed in EXPECTED_IMPLICIT_POLICY.items() if not allowed
 }
+ASSEMBLY_LINE_SKILL = "ranger-assembly-line"
+ASSEMBLY_LINE_SPECIALISTS = set(EXPECTED_SKILLS) - {ASSEMBLY_LINE_SKILL}
 
 ROOT_FILES = {
     Path(".agents/plugins/marketplace.json"),
@@ -47,6 +48,7 @@ ROOT_FILES = {
     Path("SECURITY.md"),
     Path("docs/commissioning.md"),
     Path("docs/dispatch-policy.md"),
+    Path("docs/platform-adapters.md"),
     Path("docs/skill-review.md"),
     Path("evals/routing-cases.json"),
     Path("plugins/ranger-foundry/.codex-plugin/plugin.json"),
@@ -180,9 +182,12 @@ FORBIDDEN_ACTIONS = {
     "deploy-or-publish",
     "edit-files",
     "implement-fix",
+    "persist-sensitive-data",
     "rotate-credentials",
     "run-destructive-step",
+    "self-attest-independent-review",
     "send-message",
+    "update-external-tracker",
 }
 
 
@@ -424,9 +429,19 @@ def check_routing_cases(errors: list[str]) -> None:
     if suite is None:
         return
 
-    if set(suite) != {"schema_version", "cases"}:
-        add_error(errors, "routing evaluation keys must be exactly: cases, schema_version")
-    require_equal(suite.get("schema_version"), 1, "routing schema version", errors)
+    expected_suite_keys = {"schema_version", "evaluation_mode", "cases"}
+    if set(suite) != expected_suite_keys:
+        add_error(
+            errors,
+            "routing corpus keys must be exactly: cases, evaluation_mode, schema_version",
+        )
+    require_equal(suite.get("schema_version"), 2, "routing schema version", errors)
+    require_equal(
+        suite.get("evaluation_mode"),
+        "declarative-expectations-only",
+        "routing evaluation mode",
+        errors,
+    )
 
     cases = suite.get("cases")
     if not isinstance(cases, list) or not cases:
@@ -450,6 +465,7 @@ def check_routing_cases(errors: list[str]) -> None:
         "indirect": set(),
         "authority-boundary": set(),
     }
+    assembly_collision_coverage: set[str] = set()
 
     for index, case in enumerate(cases):
         label = f"routing case {index + 1}"
@@ -530,6 +546,13 @@ def check_routing_cases(errors: list[str]) -> None:
 
         if kind == "collision" and not excluded_skills:
             add_error(errors, f"{label} collision case must name a competing skill")
+        elif (
+            kind == "collision"
+            and isinstance(expected_skill, str)
+            and expected_skill in ASSEMBLY_LINE_SPECIALISTS
+            and ASSEMBLY_LINE_SKILL in excluded_skills
+        ):
+            assembly_collision_coverage.add(expected_skill)
 
         if kind == "authority-boundary":
             if not forbidden_actions:
@@ -557,7 +580,10 @@ def check_routing_cases(errors: list[str]) -> None:
     if seen_kinds != CASE_KINDS:
         missing = ", ".join(sorted(CASE_KINDS - seen_kinds))
         extra = ", ".join(sorted(seen_kinds - CASE_KINDS))
-        add_error(errors, f"routing suite kind coverage mismatch; missing={missing!r}, extra={extra!r}")
+        add_error(
+            errors,
+            f"routing corpus kind coverage mismatch; missing={missing!r}, extra={extra!r}",
+        )
 
     expected_coverage = {
         "direct": valid_skills,
@@ -567,7 +593,16 @@ def check_routing_cases(errors: list[str]) -> None:
     for kind, covered_skills in coverage.items():
         if covered_skills != expected_coverage[kind]:
             missing = ", ".join(sorted(expected_coverage[kind] - covered_skills))
-            add_error(errors, f"routing suite {kind} coverage is missing: {missing}")
+            add_error(errors, f"routing corpus {kind} coverage is missing: {missing}")
+
+    if assembly_collision_coverage != ASSEMBLY_LINE_SPECIALISTS:
+        missing = ", ".join(
+            sorted(ASSEMBLY_LINE_SPECIALISTS - assembly_collision_coverage)
+        )
+        add_error(
+            errors,
+            "routing corpus Assembly Line collision coverage is missing: " + missing,
+        )
 
 
 def unquote(value: str) -> str:
@@ -815,6 +850,10 @@ def main() -> int:
         return 1
 
     print(f"Validation passed for {PLUGIN_NAME}: {len(EXPECTED_SKILLS)} skills checked.")
+    print(
+        "Declarative routing expectations passed schema, consistency, and coverage "
+        "checks; no agent or model behavior was executed."
+    )
     return 0
 
 

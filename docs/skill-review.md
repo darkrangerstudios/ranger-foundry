@@ -35,6 +35,12 @@ Test at least one positive, negative, and collision case:
 
 For multi-pass work, keep the passes independent until each has produced its own evidence and verdict.
 
+The routing corpus is a design and coverage checklist, not a behavioral harness.
+Before release, exercise changed trigger and authority cases in a fresh task on
+each supported target surface, and record the selected skill, loaded instructions
+when observable, attempted actions, and mismatches. A validator that only parses
+declared expectations cannot prove routing behavior.
+
 ## 5. Public-safety review
 
 - No credentials, private data, personal identifiers, internal paths, environment identifiers, or unpublished system details are present.
@@ -64,10 +70,10 @@ workspace. The review classified the available material as follows:
 | Infrastructure and operations runbooks | Kept private because useful operational detail would also expose system topology. |
 | Scraper operations | Kept private because the workflow includes live service coordinates and credential-adjacent configuration. |
 | Research browser automation | Kept internal until brittle UI assumptions and authority rules are replaced with a portable contract. |
-| Full lifecycle orchestration | Excluded from this release where ownership or third-party license boundaries were not clean enough for MIT distribution. |
+| Full lifecycle orchestration | Excluded from the first release; version 0.2 adds the original, environment-neutral Ranger Assembly Line after authority and collision review. |
 | Employer templates and assets | Excluded completely. |
 | Platform- or vendor-installed skills | Excluded; installation does not imply redistribution rights. |
 
-Only the eight skills named in the repository validator are part of the public
+Only the nine skills named in the repository validator are part of the public
 Ranger Foundry core. Private overlays may continue to use other reviewed material,
 but they are not covered by this repository's MIT license.

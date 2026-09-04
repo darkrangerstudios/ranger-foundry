@@ -2,6 +2,30 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.2.0 - 2026-09-04
+
+### Added
+
+- Ranger Assembly Line, a portable lifecycle spine that routes nontrivial work to
+  the narrowest specialist while preserving one job card and explicit authority
+  gates.
+- Native-discovery and copy-and-adapt guidance for Claude Code, GitHub Copilot,
+  Visual Studio Code, Cursor, and Grok Build.
+- Human-friendly skill descriptions and a more distinctive landing page.
+
+### Changed
+
+- Commissioning now states explicitly that installing Assembly Line does not
+  supersede an established workflow; cutover requires recorded trial evidence.
+- Dispatch policy now distinguishes an uncommissioned local workflow from a
+  repository that has formally adopted Assembly Line as its spine.
+- Kestrel Review and Plan Assurance now trace authorization predicates back to
+  every writer of the state they trust and require direct-write forgery attempts.
+- High-risk review now requires a separate agent context or human, job-card
+  retention is minimized, and specialist verdicts block promotion until resolved.
+- Commissioning now distinguishes static routing-corpus validation from observed
+  behavioral routing evidence on each target platform.
+
 ## 0.1.0 - 2026-09-04
 
 ### Added

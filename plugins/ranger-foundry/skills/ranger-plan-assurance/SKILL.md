@@ -51,7 +51,11 @@ reconciling them.
 6. **Failure behavior:** Consider invalid input, empty state, retries, concurrency,
    partial failure, stale data, timeouts, and interrupted execution where relevant.
 7. **Security and privacy:** Check identity, authorization, data boundaries,
-   untrusted input, secret handling, logging, and supply-chain assumptions.
+   untrusted input, secret handling, logging, and supply-chain assumptions. For
+   every proposed authorization predicate, name the state it trusts and verify
+   every path that can create, update, repoint, or replay that state. Require a
+   negative test showing that direct lower-level writes cannot bypass the intended
+   constrained workflow.
 8. **Blast radius:** Identify affected users, data, integrations, cost, and runtime.
    Require staged proof when a full rollout is not safely reversible.
 9. **Operations:** Confirm observability, ownership, stop conditions, rollback,

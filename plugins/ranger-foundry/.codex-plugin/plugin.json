@@ -1,7 +1,7 @@
 {
   "name": "ranger-foundry",
-  "version": "0.1.0",
-  "description": "Focused skills for reliable diagnosis, planning, review, prototyping, and knowledge transfer.",
+  "version": "0.2.0",
+  "description": "A portable software workflow spine with focused skills for diagnosis, planning, review, prototyping, and handoff.",
   "author": {
     "name": "Dark Ranger Studios",
     "url": "https://github.com/darkrangerstudios/ranger-foundry"
@@ -17,17 +17,17 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Ranger Foundry",
-    "shortDescription": "Reliable skills for software work.",
-    "longDescription": "Ranger Foundry provides focused, composable skills for diagnosis, planning, review, prototyping, and clear project communication.",
+    "shortDescription": "Put complex software work through a verifiable forge.",
+    "longDescription": "Ranger Foundry pairs a portable end-to-end Assembly Line with focused skills for diagnosis, planning, review, prototyping, and durable handoff.",
     "developerName": "Dark Ranger Studios",
     "category": "Productivity",
     "capabilities": [
       "Interactive"
     ],
     "defaultPrompt": [
+      "Carry this software task through the Ranger Assembly Line.",
       "Diagnose this failure without changing the code.",
-      "Turn this goal into the smallest testable vertical slice.",
-      "Review this plan against its standards and requirements."
+      "Stress-test this plan before implementation begins."
     ]
   }
 }

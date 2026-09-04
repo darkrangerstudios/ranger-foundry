@@ -20,6 +20,7 @@ outcome and treat the other as a supporting method.
 
 | Requested outcome | Primary skill | Boundary |
 | --- | --- | --- |
+| Carry a nontrivial change from intake through verified handoff | `ranger-assembly-line` | Coordinates specialist stations but does not create implementation, release, or production authority. |
 | Explain the proven cause of a failure | `ranger-cause-analysis` | Diagnosis does not authorize a code change. |
 | Create or improve agent instructions | `ranger-agent-instructions` | Existing authority and loader relationships remain intact unless the user asks to change them. |
 | Plan the smallest executable path | `ranger-slice-plan` | Produces a plan, not an implementation. |
@@ -31,7 +32,22 @@ outcome and treat the other as a supporting method.
 
 ## Broad workflows
 
-If a local workflow orchestrator owns analysis through delivery, it remains primary. Ranger Foundry skills can support individual phases without creating a second task ledger or competing lifecycle.
+If no local workflow orchestrator owns analysis through delivery, Ranger Assembly
+Line can provide the lifecycle spine for a nontrivial change. It uses the existing
+task ledger and routes each phase to the narrowest applicable specialist.
+
+If a local workflow orchestrator already exists, it remains primary until Assembly
+Line completes the repository's commissioning gate. Ranger Foundry skills can
+support individual phases during that comparison without creating a second task
+ledger or competing lifecycle. A recorded cutover decision, not installation,
+determines which workflow is primary.
+
+A user request to run Assembly Line authorizes the agent to apply the read-only or
+already-authorized methods of its specialist stations. It does not authorize a
+specialist's external or mutating actions. A station that requires a separate
+review context must be dispatched to another agent session or human; the Assembly
+Line operator cannot satisfy that independence gate by re-reading the review skill
+inside its own context.
 
 Likewise, a repository-local design, security, release, or infrastructure skill overrides generic advice in its domain. The public skill should narrow itself to the remaining work and state the delegation clearly.
 

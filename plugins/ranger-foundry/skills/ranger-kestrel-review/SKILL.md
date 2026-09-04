@@ -1,6 +1,6 @@
 ---
 name: ranger-kestrel-review
-description: Run an aggressive, evidence-first review of a plan, change set, codebase, workflow, or security boundary. Use when the user explicitly requests adversarial review, bug hunting, risk assessment, or a merge-readiness verdict.
+description: Run an aggressive, evidence-first review of a plan, change set, codebase, workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for routine implementation or a self-review presented as independent.
 ---
 
 # Ranger Kestrel Review
@@ -15,6 +15,17 @@ Apply repository-local domain, security, privacy, and release rules as the concr
 review invariants. This skill supplies the adversarial method, not replacement policy.
 
 Review authority does not include authority to edit, commit, push, deploy, migrate, send messages, access secrets, or change external state. Run only proportionate read-only checks unless the user separately asks for a fix. If asked to fix, patch narrowly, preserve unrelated work, and obtain explicit approval for destructive, production, billing, credential, or user-visible actions.
+
+A natural-language request for the review outcomes named in the description, an
+explicit `$ranger-kestrel-review` invocation, or an Assembly Line delegation is a
+valid invocation. Delegation supplies review scope, not implementation or release
+authority.
+
+When the result is intended to satisfy an independent-review gate, confirm that
+the reviewer is a separate agent, fresh session or context, or human who did not
+author the change or participate in its implementation reasoning. A same-context
+self-review may still find defects, but label it `not independent`; never use it to
+satisfy an independent gate.
 
 ## Evidence Discipline
 
@@ -46,6 +57,26 @@ Attack incorrect behavior, boundary states, error handling, races, partial write
 
 Map assets, entry points, trust boundaries, and attacker capabilities. Check authentication separately from authorization; tenant or object ownership; injection into SQL, shell, paths, HTML, prompts, and tools; secret exposure; unsafe CI or dependency changes; untrusted artifacts; excessive token or workflow permissions; and missing human gates for sensitive actions.
 
+For every authorization decision, trace both sides of the trust relationship:
+
+- Identify the exact row, claim, membership, role, token, ownership link, or status
+  the decision trusts.
+- Enumerate every path that can create, update, repoint, replay, or delete that
+  trusted state, including direct table access, broad column grants, alternate
+  APIs, background jobs, imports, and privileged helpers.
+- Compare the intended constrained path with lower-level access. A secure join,
+  approval, or ownership RPC is not a control if the caller can write the trusted
+  row directly.
+- Attempt a forgery: create or mutate only state the attacker controls, then ask
+  whether the authorization predicate accepts it. Test stale, former-member,
+  cross-tenant, reassignment, and revoked-state cases where applicable.
+- Verify that checks cover caller binding and denial behavior, not only the
+  presence, name, grants, or wiring of an authorization helper.
+
+Do not accept “the identifier is hard to guess” as the authorization boundary.
+Reduce severity only when a separate verified control prevents the write or the
+resulting access.
+
 ## Severity
 
 - **P0 Critical:** active exploit, authorization bypass, raw secret exposure, data loss, or production outage.
@@ -55,6 +86,18 @@ Map assets, entry points, trust boundaries, and attacker capabilities. Check aut
 
 Every finding needs a precise evidence reference, impact, reproduction or abuse path when practical, a concrete recommendation, confidence, and relevant assumptions. Do not inflate theoretical concerns without a reachable failure path.
 
+## Verdicts
+
+- **PASS** — no actionable finding survived review.
+- **PASS WITH FINDINGS** — no blocking finding remains, but each residual finding
+  needs an explicit disposition or owner.
+- **REQUEST CHANGES** — at least one finding must be corrected or accepted through
+  the applicable authority before readiness. When this review is a promotion gate,
+  correction and re-review are required before promotion.
+
 ## Output
 
-Lead with findings ordered by severity. Then give open questions, verification performed and omitted, residual risk, and one verdict: `PASS`, `PASS WITH FINDINGS`, or `REQUEST CHANGES`. If no actionable findings survive review, say so plainly and name the remaining evidence gaps.
+Lead with findings ordered by severity. Then give review-independence status, open
+questions, verification performed and omitted, residual risk, and one verdict from
+the definitions above. If no actionable findings survive review, say so plainly
+and name the remaining evidence gaps.
