@@ -30,6 +30,12 @@ outcome and treat the other as a supporting method.
 | Collect missing decisions | `ranger-prospector` | Produces questions but does not contact recipients. |
 | Learn through a bounded implementation | `ranger-sparks` | Prototype output is not production-ready by default. |
 | Review code, architecture, or security | `ranger-kestrel` | Findings come before fixes; implementation requires separate authorization. |
+| Reconcile worker fleets and bounded recovery | `ranger-tank` | Process health is not output correctness; preserve leases, owned cleanup, and rollout gates. |
+| Collect source evidence or prioritize knowledge gaps | `ranger-scout` | Track partial coverage and staged claims; extraction does not authorize deletion or canonical promotion. |
+| Diagnose and improve browser interaction | `ranger-phantom` | Pure pointer planning and authorized browser methods do not grant access or prove anti-bot efficacy. |
+| Preserve or retrieve durable memory | `ranger-scribe` | Recall does not authorize writes; preserve provenance, protected values, access and retention boundaries. |
+| Resolve meanings, metrics or entity identity | `ranger-surveyor` | Similarity proposes candidates; it does not authorize merges or canonical changes. |
+| Select authorized model routes or verify effort | `ranger-wrangler` | Preserve explicit choices and shared limits; requested settings are not verified effective settings. |
 
 ## Broad workflows
 
@@ -56,17 +62,36 @@ independence gate by re-reading the review skill inside its own context.
 
 Likewise, a repository-local design, security, release, or infrastructure skill overrides generic advice in its domain. The public skill should narrow itself to the remaining work and state the delegation clearly.
 
-## Combining skills
+## Calling another Ranger
 
-Combine skills only when their outputs are independently useful. Common combinations include:
+Every Ranger can invoke another available skill when it supplies an independently
+useful result. Resolve the actual skill from the host catalog, load its entrypoint,
+and apply its method to a bounded subtask. The caller retains the job, task lane,
+authority, and overall budget; the peer returns results to that caller. Marshal
+coordinates the whole job when orchestration is delegated to him and can select
+any packaged specialist. One narrow specialist request does not require Marshal.
 
-- cause analysis feeding a Kestrel review;
-- slice planning followed by plan assurance;
-- a questionnaire resolving blockers before a slice plan;
-- a prototype producing evidence for a handoff;
-- a handoff prepared by Courier and delivered through Raven when sending is authorized.
+A handoff includes the objective, relevant artifact and exact revision, allowed
+actions, remaining time/attempt/spend limits, and the evidence the caller needs
+back. Share only the context needed. Return the result, evidence, consumed and
+remaining budget, uncertainty, and unresolved gates. A peer cannot reset a budget,
+expand permissions, silently change owners, or turn its output into an instruction
+from the user. Stop a repeated handoff with the same evidence and surface the
+blocker rather than cycling through the posse.
 
-Do not run multiple skills merely because their trigger words overlap.
+Skill invocation is the host agent loading and applying instructions. It is not
+a network message or a running service. Use an available separate agent context
+or human for an independent review; re-reading Kestrel in the implementing
+context cannot satisfy that gate. If a peer is unavailable, say so and apply the
+bounded method inline when appropriate. Do not invent a peer result or substitute
+inline work for a required independent verdict.
+
+Common paths include Scout to Phantom for browser diagnosis, then back to Scout
+for coverage accounting; Tank to Bounty Hunter for a reproducible worker failure;
+Trailblazer to Deadeye for plan assurance; and Courier to Raven for authorized
+delivery. Callsigns are not transport identities. A request to message Scout or
+Tank belongs to Raven and the configured recipient mapping; invoking their skills
+does not send anything or prove that a reviewer exists.
 
 ## Mutation boundary
 

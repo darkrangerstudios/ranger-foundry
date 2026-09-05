@@ -1,7 +1,7 @@
 {
   "name": "ranger-foundry",
-  "version": "0.3.0",
-  "description": "Ten skills for AI coding agents: Marshal runs the line, specialists challenge the work, and Raven keeps the crew coordinated.",
+  "version": "0.4.0-rc.2",
+  "description": "Sixteen skills for AI agents: Marshal coordinates the posse, specialists call peers, and every handoff preserves scope and evidence.",
   "author": {
     "name": "Dark Ranger Studios",
     "url": "https://github.com/darkrangerstudios/ranger-foundry"
@@ -17,15 +17,15 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Ranger Foundry",
-    "shortDescription": "Build cool things. Check your work. Keep the crew in sync.",
-    "longDescription": "Ranger Foundry brings ten named skills to your agents: Marshal coordinates delivery, focused specialists handle the work, and Raven manages authorized swarm communication.",
+    "shortDescription": "Build cool things. Check your work. Call in the posse.",
+    "longDescription": "Marshal coordinates sixteen composable Ranger skills across delivery, review, swarm communication, worker operations, web extraction, browser interaction, durable recall, semantic grounding, and model budgets.",
     "developerName": "Dark Ranger Studios",
     "category": "Productivity",
     "capabilities": [
       "Interactive"
     ],
     "defaultPrompt": [
-      "Carry this software task through the Ranger Assembly Line.",
+      "Use Marshal to coordinate the right Rangers and finish this software task.",
       "Diagnose this failure without changing the code.",
       "Stress-test this plan before implementation begins."
     ]

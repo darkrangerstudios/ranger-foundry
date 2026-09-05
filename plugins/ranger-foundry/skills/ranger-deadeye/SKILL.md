@@ -98,3 +98,31 @@ Return the verdict first, followed by:
 
 Do not rewrite the entire plan unless requested. Provide precise amendments that
 the plan author can apply and verify.
+
+## Call another Ranger
+
+This skill works on its own. When another specialty materially helps, resolve
+the actual available skill through the host's catalog and load and apply its
+`SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
+skill does not start an agent. `ranger-bounty-hunter` can resolve causal
+assumptions, `ranger-scout` can verify source constraints, and
+`ranger-trailblazer` can amend an authorized plan. Return amendments for review
+instead of treating an author's revision as an independent verdict. These are
+examples, not an exclusive list; any available relevant specialist may help.
+
+Pass the task, exact artifact or evidence, bounded scope, existing authority,
+remaining time/request/cost and delegation limits, and the expected return. Set
+finite limits before delegating if none exist; children share the remaining
+budget instead of resetting it. Keep one existing parent job owner and return
+results to that owner; calling Marshal does not create a competing workflow or
+ledger. Do not route the same unresolved question around a cycle without new
+evidence. Return the outcome, evidence, changes, limitations, budget consumed
+and remaining, and next action; check that they match the requested scope and
+artifact before relying on them.
+
+If the peer is unavailable, do what this skill can substantiate inline and
+report the missing capability; never invent an invocation, result, or verdict.
+A skill call changes neither transport identity nor permissions, task scope, or
+release eligibility. If an independent gate applies, dispatch an actual
+separate reviewer context or human; a same-context skill switch cannot satisfy
+it.

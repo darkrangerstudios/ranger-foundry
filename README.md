@@ -10,9 +10,10 @@ actually tried using it.
 
 Ranger Foundry is a toolbelt for that part of the job.
 
-Ten skills for AI coding agents: **Marshal**, the foreman who keeps a bigger job moving, and
-nine specialists for figuring things out, planning the work, building a small
-experiment, finding trouble, and handing things over without losing the plot.
+Sixteen skills for AI coding agents: **Marshal**, the foreman who keeps a bigger job moving, and
+fifteen specialists for figuring things out, planning the work, collecting data,
+running workers, preserving memory, settling meaning, managing agent budgets,
+finding trouble, and handing things over without losing the plot.
 
 The idea is pretty simple: understand the job, build it in pieces you can check,
 have someone challenge the work, and leave enough evidence that the next person
@@ -43,6 +44,12 @@ in the skill menu.
 | **Sparks** · Prototype · `ranger-sparks` | Try the smallest useful version and see whether the idea holds up. |
 | **Raven** · Swarm Coordination · `ranger-raven` | Keep agents informed, route direct review requests, and recover unfinished work without crossing task lanes. |
 | **Kestrel** · Review · `ranger-kestrel` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
+| **Tank** · Fleet Operations · `ranger-tank` | Reconcile worker output, recover partial batches, and prove a bounded canary before resuming the fleet. |
+| **Scout** · Evidence Collection · `ranger-scout` | Map sources, extract data with coverage and provenance, and identify knowledge gaps that need fresh research. |
+| **Phantom** · Browser Interaction · `ranger-phantom` | Make browser actions precise with Bézier paths, reliable input, and evidence-backed anti-bot diagnostics for authorized collection. |
+| **Scribe** · Durable Recall · `ranger-scribe` | Keep useful memory small, traceable, and faithful to its sources. |
+| **Surveyor** · Meaning and Grounding · `ranger-surveyor` | Settle definitions, aliases, and entity matches before they change an answer or a join. |
+| **Wrangler** · Models, Effort and Budgets · `ranger-wrangler` | Match work to approved model routes and effort settings while keeping the whole job within budget. |
 
 ## Put it to work
 
@@ -57,9 +64,20 @@ Or, once you're ready to build:
 > rules, test the failure we started with, and leave a handoff. No deployment.
 
 The agent reads the relevant skill instructions and applies them. There isn't a
-hidden crew of services running behind the scenes. Assembly Line keeps the job
+hidden set of services running behind the scenes. Marshal keeps the job
 together; your repository's design, implementation, database, and release rules
 still govern the work.
+
+Every Ranger can call another available skill when its method helps the job.
+The agent loads that skill, passes a bounded assignment, and returns the result
+to the caller. Marshal can reach the entire posse and owns the overall job;
+he calls the specialists the work needs, rather than running every skill on every
+request. A Scout extraction can call Phantom for a flaky interaction and return
+coverage evidence to Marshal, who can then assign Kestrel an independent review.
+
+Skill calls preserve the existing task, remaining budget, and permissions. They
+do not send a message or create a separate agent by themselves. A reviewer must
+actually run in a separate context when the review gate requires independence.
 
 Small, reversible jobs get a short path. Work across several files gets a plan
 and regression checks. Auth, secrets, data migrations, production changes, and
@@ -68,7 +86,9 @@ reviewer in a separate agent context or a human.
 
 Raven uses your existing authorized communication channel. It does not install a
 message service. Callsigns, transport addresses, and task lanes stay separate;
-broadcast receipts are not review acceptance.
+broadcast receipts are not review acceptance. Calling `ranger-scout` or
+`ranger-tank` applies a method; messaging a person or machine with the same name
+uses your configured address and assigned lane.
 
 ### Who gets the keys?
 
@@ -104,10 +124,14 @@ context isn't. Repository rules and private overlays take precedence; see
 
 ## Install
 
+This checkout is the **unreleased 0.4.0-rc.2 candidate**. The current published
+release is v0.3.0. The commands below apply once the matching candidate tag has
+been reviewed and published; do not treat this branch as a released install.
+
 Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.3.0
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0-rc.2
 codex plugin add ranger-foundry@ranger-foundry
 ```
 
@@ -137,9 +161,12 @@ python3 -I scripts/validate.py
 
 No dependencies to install. The validator checks the plugin structure, exact
 skill list, metadata, declared routing cases, and public-content boundaries.
-It rejects unexpected files, executable content, and symbolic links; the one
-reviewed banner is allowed only at its exact path and byte hash. Its original
-generation provenance is retained; see the [artwork review](docs/artwork.md).
+It rejects unexpected files, executable permissions, and symbolic links. The
+reviewed banner, Phantom’s pure motion module and browser reference, Scribe’s
+record format, and Wrangler’s effort procedure are allowed only at their exact
+paths and byte hashes. A source screen supplements
+the module pin; it is not a JavaScript sandbox. Documentation links also use an
+explicit allowlist. Banner provenance is retained in the [artwork review](docs/artwork.md).
 
 It doesn't run an agent. Real-world behavior still has to be tested on the
 platform where you plan to use it.
@@ -157,7 +184,12 @@ evals/routing-cases.json
 scripts/validate.py
 ```
 
-Each skill has a `SKILL.md` and an `agents/openai.yaml` file.
+Each skill has a `SKILL.md` and an `agents/openai.yaml` file. Phantom also ships
+a pure motion planner and a browser reference. The planner performs no browser
+actions and is not loaded automatically by the plugin; use it only through the
+chosen host’s supported browser workflow. Scribe and Wrangler also include
+focused references, loaded only when their record-format or effort procedures
+are needed.
 
 ## Got a better way?
 

@@ -1,6 +1,6 @@
 ---
 name: ranger-marshal
-description: "Marshal is the Foundry foreman. Orchestrate a nontrivial software change from intake through verified handoff by routing each phase to the narrowest Ranger Foundry specialist. Use for end-to-end build or fix requests when no other established workflow owns delivery, or when local instructions explicitly delegate coordination; not for a single diagnosis, plan, review, questionnaire, prototype, instruction edit, handoff, or coordination request."
+description: "Marshal coordinates the posse through a nontrivial build or fix, selecting specialist skills from intake to verified handoff. Use for end-to-end delivery when the established workflow permits it; send single-specialty requests directly to their Ranger."
 ---
 
 # Marshal — Ranger Assembly Line
@@ -85,6 +85,7 @@ references, and evidence summaries needed to resume or verify the work:
 - knowns, assumptions, decisions, and open blockers;
 - files, interfaces, data categories, and affected users in scope;
 - completed changes and evidence from each check;
+- selected specialists, caller/owner relationships, and remaining shared budgets;
 - findings, residual risks, release state, and exact next action.
 
 Before a commit, record the exact candidate or diff, local branch destination,
@@ -100,12 +101,35 @@ duplicate a repository's active work system, issue tracker, or release record.
 
 ## Route to Specialist Stations
 
-When a named skill is available, load and apply it for the station it owns. The
-agent performs the routing; a skill name is not a runtime function call. If a
-specialist is unavailable, follow the same boundary inline and state the fallback.
-A natural-language request that explicitly asks for adversarial review, or an
-Assembly Line delegation to the Kestrel station, is sufficient to invoke Kestrel;
-do not require the user to type a `$` skill name.
+Marshal is the posse's foreman and coordinates all fifteen packaged specialists.
+Choose only the stations the job needs; do not invoke the whole roster for every
+request. Preserve an established repository workflow's ownership and any local
+commissioning or cutover gate. Marshal can coordinate a delegated slice without
+taking over that workflow or its ledger.
+
+Resolve actual available skills through the host's catalog, then load and apply
+the selected `SKILL.md` before using its method or relying on its result. Use the
+host's supported agent mechanism when a separate context is useful or required;
+a skill name is not a runtime function call and does not start an agent. A
+natural-language delegation to Kestrel is sufficient to invoke its review method;
+the user need not type a `$` skill name. An independent gate still requires an
+actual separate reviewer context or human, with identity and artifact recorded.
+
+Pass each station the job and owner, exact artifact or evidence, bounded scope,
+existing authority, remaining time/request/cost and delegation limits, and its
+expected return. Set finite limits before delegating if none exist. Children
+share remaining budgets; they do not reset them or route the same unresolved
+question around a cycle without new evidence. Specialists may call other
+available relevant skills, including domain skills outside this table, while
+returning through their caller to the one existing parent job owner. Marshal
+reconciles each return's outcome, evidence, changes, limitations, budget consumed
+and remaining, and next action. Check scope and artifact before relying on a
+return; Marshal owns the next station choice.
+
+If a specialist is unavailable, perform only what can be substantiated inline
+and state the missing capability. Never invent an invocation, result, or verdict;
+stop at a required gate whose evidence cannot be supplied. Calling another skill
+changes neither transport identity nor permissions, scope, or release eligibility.
 
 | Need | Station | Return to the line with |
 | --- | --- | --- |
@@ -116,7 +140,13 @@ do not require the user to type a `$` skill name.
 | An existing plan needs adversarial preflight | `ranger-deadeye` | Findings, required corrections, and readiness verdict |
 | Repository agent policy must change | `ranger-warden` | One clear authority chain and validation evidence |
 | A change needs findings-first review | `ranger-kestrel` | P0-P3 findings, evidence, and readiness verdict |
+| Sources, extraction coverage, or knowledge gaps need investigation | `ranger-scout` | Source contract, coverage or research queue, evidence, and resume point |
+| Worker or scraper operations need containment or recovery | `ranger-tank` | Runtime identity, bounded recovery, durable counts, and operational state |
+| Browser interaction or an access challenge needs diagnosis | `ranger-phantom` | Tested interaction, classified access outcome, and remaining budget |
 | Agents need authorized messages, reviews assigned, or receipt recovery | `ranger-raven` | Delivery evidence, open verdicts, owner, and next action |
+| Durable recall, checkpointing or compaction is needed | `ranger-scribe` | Source-grounded recall or an authorized revision with protected values intact |
+| Definitions, metrics or entity matches are ambiguous | `ranger-surveyor` | Grounded meaning, explicit conflicts and justified comparability |
+| Model routes, effort or shared limits need a decision | `ranger-wrangler` | Authorized route, verified or explicitly unverified settings, and remaining budget |
 | Work must pause or change owners | `ranger-courier` | Resumable state and exact next action |
 
 Repository-local implementation, design, database, infrastructure, and release
@@ -141,8 +171,10 @@ pretending to be a framework-specific implementation guide.
    tools and skills. Preserve unrelated work. Checkpoint the job card after each
    independently useful result.
 5. **Inspect** — Run focused checks first, then relevant regression, security,
-   compatibility, and policy checks. Route nontrivial or high-risk changes to
-   Kestrel Review. A high-risk review must use the separate reviewer or context
+   compatibility, and policy checks. Complete author iteration, outcome proof,
+   documentation and versioning before requesting the final independent review.
+   Do not queue review of an artifact the author still expects to change. Route
+   the final nontrivial or high-risk candidate to Kestrel Review. A high-risk review must use the separate reviewer or context
    required above; a same-context self-review is useful evidence but not the
    independent gate. `REQUEST CHANGES` blocks promotion until correction and
    re-review. `PASS WITH FINDINGS` advances only when no P0 or P1 remains and each
@@ -164,6 +196,13 @@ pretending to be a framework-specific implementation guide.
 8. **Handoff** — Return the outcome, evidence, findings, residual risk, release
    state, and next action. Route to Ranger Handoff when work is paused, ownership
    changes, or the state must survive context loss.
+
+Use one independent reviewer context per verdict, with the actual reciprocal
+peer and any additional risk reviewer required by the repository. Additional
+persona reviewers are reserved for user data, authentication, authorization,
+money or deletion. Package the final signed SHA when required, tree, file hashes,
+author evidence and parity limits together. A correction that changes the SHA
+receives a delta review; a prior verdict never silently transfers to new bytes.
 
 ## Stop Conditions
 

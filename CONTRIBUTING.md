@@ -22,7 +22,15 @@ Every skill must:
 - defer to repository-local instructions and more specific overlays;
 - remain useful across languages, frameworks, and delivery platforms.
 
-Keep detailed reference material out of the initial bundle. Add supporting files only after the repository policy and validator are deliberately expanded.
+Every skill must support bounded calls to available peers while retaining one job
+owner, the caller’s scope and remaining budget, and applicable independent review.
+Marshal’s routing table must cover every packaged specialist. Verify actual peer
+loading and returned results separately from declarative routing checks.
+
+Supporting files require explicit package policy and validator changes. Phantom’s
+reference and pure motion module have exact path and byte pins. Changes to either
+require renewed review and updated pins; arbitrary runtime dependencies remain
+excluded. Keep new public links within the reviewed documentation allowlist.
 
 ## Validation
 

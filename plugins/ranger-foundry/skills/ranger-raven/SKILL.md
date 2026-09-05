@@ -127,3 +127,31 @@ Report the task and owner, message/operation IDs, verified delivery and receipt
 state, open verdicts, unresolved uncertainty, and exact next action. Distinguish
 drafted, sent, read, completed, and accepted. Keep a quiet poll quiet when nothing
 actionable has changed; do not turn routine receipts into user notifications.
+
+## Call another Ranger
+
+This skill works on its own. When another specialty materially helps, resolve
+the actual available skill through the host's catalog and load and apply its
+`SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
+skill does not start an agent. `ranger-courier` can prepare a handoff,
+`ranger-kestrel` can perform an assigned review, and `ranger-marshal` can
+resolve job sequencing. Confirm an actual reviewer is running before waiting
+for its verdict; a recipient address is not proof of dispatch. These are
+examples, not an exclusive list; any available relevant specialist may help.
+
+Pass the task, exact artifact or evidence, bounded scope, existing authority,
+remaining time/request/cost and delegation limits, and the expected return. Set
+finite limits before delegating if none exist; children share the remaining
+budget instead of resetting it. Keep one existing parent job owner and return
+results to that owner; calling Marshal does not create a competing workflow or
+ledger. Do not route the same unresolved question around a cycle without new
+evidence. Return the outcome, evidence, changes, limitations, budget consumed
+and remaining, and next action; check that they match the requested scope and
+artifact before relying on them.
+
+If the peer is unavailable, do what this skill can substantiate inline and
+report the missing capability; never invent an invocation, result, or verdict.
+A skill call changes neither transport identity nor permissions, task scope, or
+release eligibility. If an independent gate applies, dispatch an actual
+separate reviewer context or human; a same-context skill switch cannot satisfy
+it.

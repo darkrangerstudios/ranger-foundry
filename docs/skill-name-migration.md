@@ -1,5 +1,9 @@
 # Skill names in v0.3.0
 
+This document maps the v0.3.0 rename. When installing a later version, also verify
+the complete roster packaged in that version; the ten names below are the naming
+migration baseline, not a ceiling on later releases.
+
 The Ranger's name is now its invocation ID and menu label. All names begin with
 `ranger-` so the posse groups together in the skill menu. This release changes the
 v0.2.x command names; it does not change the specialists' authority or methods.

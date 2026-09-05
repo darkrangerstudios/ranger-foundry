@@ -1,0 +1,7 @@
+interface:
+  display_name: "ranger-wrangler"
+  short_description: "Select authorized model routes, effort and budgets"
+  default_prompt: "Use $ranger-wrangler to select and verify the authorized model route or selected-model effort for this bounded task."
+policy:
+  allow_implicit_invocation: true
+

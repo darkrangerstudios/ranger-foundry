@@ -47,7 +47,17 @@ Test at least one positive, negative, and collision case:
   default/serving-ref, wrong-remote, implicit-ref, stale-tip, force-push, source
   push versus version save, and version save versus deploy cases.
 
-For multi-pass work, keep the passes independent until each has produced its own evidence and verdict.
+For peer composition, observe an actual skill load, bounded handoff, returned
+result, shared budget accounting, and the retained caller/owner. Exercise a
+sibling call as well as Marshal orchestration, an unavailable peer, and a
+required independent reviewer. A named route alone is not evidence of a call.
+
+Complete author iteration and relevant outcome checks before requesting one
+independent review of the final candidate for the lane. Do not request reviews
+of intermediate artifacts the author expects to change again. Use one reviewer
+context per verdict; additional persona reviewers are reserved for user data,
+authentication, authorization, money or deletion. Preserve the actual reciprocal
+peer and any required owner or risk review under repository rules.
 
 The routing corpus is a design and coverage checklist, not a behavioral harness.
 Before release, exercise changed trigger and authority cases in a fresh task on
@@ -58,9 +68,14 @@ declared expectations cannot prove routing behavior.
 ## 5. Public-safety review
 
 - No credentials, private data, personal identifiers, internal paths, environment identifiers, or unpublished system details are present.
-- Links point only to the Ranger Foundry repository.
+- Links point only to the Ranger Foundry repository or exact documentation URLs
+  explicitly reviewed and allowlisted in the validator.
 - The contribution is original and can be distributed under the repository license.
-- Files stay within the repository allowlist and contain no symbolic links or executable payloads.
+- Files stay within the exact repository allowlist, with no symbolic links or
+  executable permission bits. Optional helper code is admitted only through
+  explicit policy expansion, exact path and byte pins, independent source review,
+  and meaningful runtime checks. Verify its documented side effects and limits;
+  a source-token screen is not a sandbox. Unreviewed code remains rejected.
 
 ## 6. Release decision
 
@@ -70,7 +85,11 @@ A reviewer records one of three outcomes:
 - **Revise:** the idea is sound but a specific ambiguity or failing case remains.
 - **Reject:** the capability is unsafe, redundant, environment-specific, or too broad for the public core.
 
-Prepare the changelog and semantic version before requesting final acceptance.
+Prepare the changelog, semantic version and author evidence before requesting
+final acceptance. Include the final signed SHA when required by the repository,
+tree, per-file hashes, reviewer context and return path, evidence and explicit
+parity limits in one packet. A finding that changes the SHA gets one delta review;
+it does not silently inherit the old verdict.
 After acceptance, run `python3 -I scripts/validate.py` on a clean export of that exact
 accepted release commit, then release the same commit. Any content change needs
 fresh acceptance. The validator intentionally rejects local cache files too;

@@ -2,6 +2,44 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.4.0-rc.2 - Unreleased
+
+### Added
+
+- Scribe for layered durable recall and faithful compaction; Surveyor for metric
+  definitions, entity identity and grounded retrieval; Wrangler for approved
+  model routes, selected-model effort and shared budgets.
+- Exact reference pins and required authority cases for memory writes, secret
+  exclusion, stale revisions, semantic merges and verified execution settings.
+
+### Changed
+
+- Marshal routes all fifteen specialists in the sixteen-Ranger posse; each Ranger
+  can call an available peer while preserving the caller, authority and budget.
+- Review follows author evidence on the final candidate, with one independent
+  context per verdict and delta review for corrections. Existing reciprocal,
+  risk, signing, release, installation and commissioning gates remain in force.
+
+## 0.4.0-rc.1 - Unreleased
+
+### Added
+
+- Tank for worker operations and bounded recovery; Scout for web extraction and
+  knowledge-gap research intake; Phantom for authorized browser interaction and
+  anti-bot diagnostics, with a pure Bézier motion planner and browser reference.
+- Pinned script/reference resources and documentation URLs, with fail-closed
+  package and authority regression checks.
+- Routing cases for web Rangers, transport-name collisions, partial output,
+  process ownership, budget propagation, and peer review independence.
+
+### Changed
+
+- Every Ranger can invoke available peers and return evidence to its caller.
+  Marshal coordinates the full thirteen-skill posse, selecting useful specialists
+  while preserving one job owner and the remaining task budget.
+- Clarified that skill calls, transport recipients, and active reviewer contexts
+  are distinct. Existing workflow commissioning and release gates stay intact.
+
 ## 0.3.0 - 2026-09-05
 
 ### Added
