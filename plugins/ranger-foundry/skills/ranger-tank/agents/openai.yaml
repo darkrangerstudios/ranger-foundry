@@ -1,6 +1,0 @@
-interface:
-  display_name: "ranger-tank"
-  short_description: "Recover workers and keep scraper fleets reliable"
-  default_prompt: "Use $ranger-tank to diagnose this fleet and carry out a bounded recovery within the approved operating scope."
-policy:
-  allow_implicit_invocation: true

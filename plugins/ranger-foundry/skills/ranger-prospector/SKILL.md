@@ -1,6 +1,6 @@
 ---
 name: ranger-prospector
-description: "Prospector handles questionnaire. Turn an ambiguous work request into a decision-ready brief through focused clarification. Use when requirements, priorities, constraints, or success criteria block progress; not to author a survey, form, interview script, or questionnaire deliverable."
+description: "Prospector handles questionnaire. Turn an ambiguous work request into a decision-ready brief through focused clarification. Use when requirements, priorities, constraints, or success criteria block progress; not to author a survey, form, interview script, or questionnaire deliverable; not for Gus's premise challenge."
 ---
 
 # Prospector — Ranger Questionnaire
@@ -46,7 +46,7 @@ When clarification is complete, summarize:
 This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
-skill does not start an agent. `ranger-scout` can check available source
+skill does not start an agent. `ranger-big-iron` can check available source
 evidence, `ranger-sparks` can test a bounded uncertainty, and
 `ranger-trailblazer` can turn a settled brief into a plan when requested.
 Prefer obtainable evidence over another user question. These are examples, not
@@ -56,7 +56,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -68,3 +68,7 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- `ranger-gus`: Prospector clarifies what the user wants; Gus challenges whether it is worth doing and returns to Call.

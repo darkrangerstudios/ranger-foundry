@@ -18,4 +18,3 @@ Sources for the recipes: [Codex app-server](https://learn.chatgpt.com/docs/app-s
 [GitHub Copilot app sessions](https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions),
 [Copilot cloud model selection](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/changing-the-ai-model),
 and [Microsoft Copilot conversation modes](https://support.microsoft.com/en-us/microsoft-copilot/conversation-modes-in-microsoft-copilot).
-

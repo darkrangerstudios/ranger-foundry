@@ -1,6 +1,6 @@
 ---
 name: ranger-kestrel
-description: "Kestrel handles review. Run an aggressive, evidence-first review of a plan, change set, codebase, workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for routine implementation or a self-review presented as independent."
+description: "Kestrel handles review. Run an aggressive, evidence-first review of a built artifact, change set, codebase, implemented workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for Deadeye's unexecuted plans, Gus's premise checks or Rooster's incident diagnosis."
 ---
 
 # Kestrel — Ranger Review
@@ -54,64 +54,7 @@ satisfy an independent gate.
 
 ## Review Lanes
 
-Select only the lanes supported by the request and evidence.
-
-### Plan
-
-Attack unclear outcomes, hidden assumptions, missing dependencies, unsafe sequencing, irreversible steps, weak rollback, absent observability, ownership gaps, and acceptance criteria that cannot be tested.
-
-### Code
-
-Attack incorrect behavior, boundary states, error handling, races, partial writes, stale state, compatibility, architecture drift, performance or cost amplification, accessibility, and tests that do not prove the claimed behavior.
-
-### Security
-
-Map assets, entry points, trust boundaries, and attacker capabilities. Check authentication separately from authorization; tenant or object ownership; injection into SQL, shell, paths, HTML, prompts, and tools; secret exposure; unsafe CI or dependency changes; untrusted artifacts; excessive token or workflow permissions; and missing human gates for sensitive actions.
-
-For every authorization decision, trace both sides of the trust relationship:
-
-- Identify the exact row, claim, membership, role, token, ownership link, or status
-  the decision trusts.
-- Enumerate every path that can create, update, repoint, replay, or delete that
-  trusted state, including direct table access, broad column grants, alternate
-  APIs, background jobs, imports, and privileged helpers.
-- Compare the intended constrained path with lower-level access. A secure join,
-  approval, or ownership RPC is not a control if the caller can write the trusted
-  row directly.
-- Attempt a forgery: create or mutate only state the attacker controls, then ask
-  whether the authorization predicate accepts it. Test stale, former-member,
-  cross-tenant, reassignment, and revoked-state cases where applicable.
-- Verify that checks cover caller binding and denial behavior, not only the
-  presence, name, grants, or wiring of an authorization helper.
-
-Do not accept “the identifier is hard to guess” as the authorization boundary.
-Reduce severity only when a separate verified control prevents the write or the
-resulting access.
-
-### Source control and release state
-
-Reconstruct each relevant transition rather than treating "ship" as one action:
-local candidate, commit, non-protected review ref, accepted revision, protected or
-serving source ref, save or promotion, and deployment or publication. Use only the
-steps that exist in the host repository, but never collapse distinct gates.
-
-- For every attempted or completed transition, verify separate authorization for
-  the exact operation and eligibility of the exact artifact for the exact
-  destination under local review, acceptance, branch, and release rules.
-- Inspect actual refs, versions, receipts, or platform state when safely available.
-  A stated branch nickname, prior approval, or successful command is not proof of
-  the remote, full ref, resulting tip, or serving state.
-- Flag an unreviewed, rejected, or superseded artifact entering a default,
-  protected, serving, release, or deployment-adjacent destination even if the
-  operation was authorized. Broad payload or history authorization does not waive
-  eligibility. Acceptance of an ancestor does not transfer to a descendant,
-  merge, rebase, cherry-pick, rebuilt artifact, or other revision.
-- Challenge implicit upstreams, short refs, wrong remotes, stale tracking refs,
-  unknown serving classification, unexpected force requirements, and receipts
-  that omit the server-observed resulting tip.
-- Treat source transfer, save or promotion, and deployment or publication as
-  separate actions. Evidence that one occurred or was authorized proves nothing
-  about the next.
+Before this phase, read and apply [review lanes](references/review-lanes.md); its authority, evidence and stopping rules are required.
 
 ## Severity
 
@@ -145,8 +88,8 @@ findings survive review, say so plainly and name the remaining evidence gaps.
 This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
-skill does not start an agent. `ranger-bounty-hunter` can investigate a
-failure, `ranger-scout` can verify source behavior, and `ranger-tank` can
+skill does not start an agent. `ranger-rooster` can investigate a
+failure, `ranger-big-iron` can verify source behavior, and `ranger-big-iron` can
 inspect operational evidence. Keep any delegated finding independently grounded
 and disclose the contributing contexts. These are examples, not an exclusive
 list; any available relevant specialist may help.
@@ -155,7 +98,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -167,3 +110,9 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- `ranger-deadeye`: Kestrel reviews a built artifact; Deadeye challenges an unexecuted plan.
+- `ranger-gus`: Kestrel checks correctness; Gus checks whether the work is worth doing.
+- `ranger-rooster`: Rooster explains an observed failure; Kestrel reviews a change before it ships.

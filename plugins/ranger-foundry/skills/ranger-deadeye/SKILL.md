@@ -1,6 +1,6 @@
 ---
 name: ranger-deadeye
-description: "Deadeye handles plan assurance. Adversarially evaluate an existing implementation or migration plan for missing evidence, unsafe sequencing, authority gaps, and unverifiable outcomes. Use when a plan already exists, not to draft the initial plan or review finished code."
+description: "Deadeye handles plan assurance. Adversarially evaluate an existing implementation or migration plan for missing evidence, unsafe sequencing, authority gaps, and unverifiable outcomes. Use when a plan already exists, not to draft the initial plan or review finished code; not for Kestrel's built artifacts or Trailblazer's plan authoring."
 ---
 
 # Deadeye — Ranger Plan Assurance
@@ -37,49 +37,7 @@ code, or execute remediation. Review alone is read-only.
 
 ## Assurance Passes
 
-Run the first two passes independently. Do not let the plan's own claims redefine
-the standards used to judge it, and do not let a standards concern erase a stated
-requirement. Record evidence and a provisional verdict for each pass before
-reconciling them.
-
-1. **Standards and contracts:** Identify the governing repository instructions,
-   architecture decisions, schemas, interfaces, policies, and external standards.
-   Does the plan comply, and does it verify the current versions it assumes?
-2. **Stated specification:** Evaluate the requested outcomes, non-goals, constraints,
-   and acceptance criteria on their own terms. Does every outcome map to observable
-   evidence, without silently dropping or rewriting a requirement?
-3. **Traceability:** Does every stated outcome map to an acceptance criterion and a
-   verification method? Are non-goals explicit?
-4. **Current-state evidence:** Does the plan verify the actual schema, interface,
-   dependency, environment, or artifact it assumes?
-5. **Sequencing:** Can any step break current callers, strand partial state, or make
-   rollback impossible before the next step completes?
-6. **Failure behavior:** Consider invalid input, empty state, retries, concurrency,
-   partial failure, stale data, timeouts, and interrupted execution where relevant.
-7. **Security and privacy:** Check identity, authorization, data boundaries,
-   untrusted input, secret handling, logging, and supply-chain assumptions. For
-   every proposed authorization predicate, name the state it trusts and verify
-   every path that can create, update, repoint, or replay that state. Require a
-   negative test showing that direct lower-level writes cannot bypass the intended
-   constrained workflow.
-8. **Blast radius:** Identify affected users, data, integrations, cost, and runtime.
-   Require staged proof when a full rollout is not safely reversible.
-9. **Operations:** Confirm observability, ownership, stop conditions, rollback,
-   recovery, and evidence required before promotion. For each commit, push, merge,
-   promotion, save, release, or deployment, require the exact artifact and exact
-   destination; Git destinations name the remote and full ref. Keep source
-   transfer separate from save, release, publication, and deployment.
-10. **Authority and eligibility:** For every external or mutating transition, mark
-   separate gates for authorization of the exact operation and eligibility of the
-   exact artifact for the exact destination under local review, acceptance,
-   branch, and release rules. A complete plan must not infer either gate from the
-   other. Unreviewed or rejected work cannot enter a default, protected, serving,
-   release, or deployment-adjacent destination merely because the operation was
-   approved. Acceptance of one revision cannot be reused for a descendant, merge,
-   rebase, cherry-pick, or rebuilt artifact.
-
-For each suspected issue, attempt to disprove it using the plan and available
-evidence. Remove findings that do not survive that check.
+Before this phase, read and apply [assurance passes](references/assurance-passes.md); its authority, evidence and stopping rules are required.
 
 ## Verdicts
 
@@ -110,8 +68,8 @@ the plan author can apply and verify.
 This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
-skill does not start an agent. `ranger-bounty-hunter` can resolve causal
-assumptions, `ranger-scout` can verify source constraints, and
+skill does not start an agent. `ranger-rooster` can resolve causal
+assumptions, `ranger-big-iron` can verify source constraints, and
 `ranger-trailblazer` can amend an authorized plan. Return amendments for review
 instead of treating an author's revision as an independent verdict. These are
 examples, not an exclusive list; any available relevant specialist may help.
@@ -120,7 +78,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -132,3 +90,8 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- `ranger-kestrel`: Kestrel reviews a built artifact; Deadeye challenges an unexecuted plan.
+- `ranger-trailblazer`: Trailblazer writes a plan; Deadeye reviews a plan it did not author in a separate context.

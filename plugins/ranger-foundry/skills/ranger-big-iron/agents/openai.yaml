@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-big-iron"
+  short_description: "Collect web evidence and recover workers"
+  default_prompt: "Use $ranger-big-iron to verify this source and recover only the authorized extraction work."
+policy:
+  allow_implicit_invocation: true

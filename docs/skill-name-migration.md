@@ -1,3 +1,39 @@
+# Skill-name migration
+
+## Unreleased v0.4 successor
+
+Apply this migration only after the exact successor is accepted, published and
+separately authorized for installation. The candidate changes no installed skill.
+Folder, frontmatter name and default prompt use the same `ranger-` callsign;
+display names use that same callsign. Replace saved invocations and routing links
+together. Remove old installed entries only through the host's supported upgrade
+path after verifying the replacement, and keep a rollback pin to the prior release.
+Aliases below document migration; they are not additional callable skills.
+
+| Old ID | Replacement | Scope |
+| --- | --- | --- |
+| `ranger-marshal` | `ranger-call` | Delivery foreman |
+| `ranger-warden` | `ranger-roy-bean` | Agent instructions |
+| `ranger-bounty-hunter` | `ranger-rooster` | Cause analysis |
+| `ranger-courier` | `ranger-clara` | Handoff mode |
+| `ranger-scribe` | `ranger-clara` | Durable memory mode; unreleased draft |
+| `ranger-surveyor` | `ranger-clara` | Meaning and identity mode; unreleased draft |
+| `ranger-scout` | `ranger-big-iron` | Reconnaissance mode; unreleased draft |
+| `ranger-tank` | `ranger-big-iron` | Fleet recovery mode; unreleased draft |
+| `ranger-phantom` | `ranger-big-iron` | Browser mode and unchanged pure motion planner; unreleased draft |
+| `ranger-outrider`, `ranger-deets` | `ranger-big-iron` | Proposed reconnaissance aliases; never released |
+| `ranger-drover`, `ranger-trampas` | `ranger-big-iron` | Proposed fleet aliases; never released |
+
+Kestrel, Raven, Deadeye, Sparks, Trailblazer, Prospector and Wrangler retain their
+IDs. Gus is new. Call invokes Gus inline at consequential decisions; a Gus result
+is never an independent-review verdict. Do not retain duplicate menu entries for
+absorbed modes. Transport recipients such as Scout are not renamed by this guide.
+
+## Prior v0.3 migration (historical)
+
+For an older role-based command below, first resolve its v0.3 replacement, then
+apply the v0.4 mapping above. Preserve prior tags when rolling back.
+
 # Skill names in v0.3.0
 
 This document maps the v0.3.0 rename. When installing a later version, also verify

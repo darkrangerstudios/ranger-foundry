@@ -1,6 +1,6 @@
 ---
 name: ranger-wrangler
-description: "Wrangler selects approved model/provider routes and shared budgets for agent work, or verifies reasoning effort on an already selected model. Use for delegated routing and effort decisions; ordinary task execution and model benchmarking stay with their owners."
+description: "Wrangler selects approved model/provider routes and shared budgets for agent work, or verifies reasoning effort on an already selected model; not for Gus's decision on whether work is worthwhile."
 ---
 
 # Wrangler — Models, Effort and Budgets
@@ -44,37 +44,7 @@ Preserve the limits and review gates of any broader authorized plan.
 
 ## Establish a route's basis
 
-Inspect the approved local route map, when available, for the exact model,
-provider/endpoint, host/runtime version, workflow revision and task class. Check
-current installed capabilities and available routes; names, old documentation or
-past availability do not establish that a route is usable now. A changed model,
-host, provider or workflow does not inherit qualification from an older mapping.
-
-Record one selection basis:
-
-| Basis | Permitted outcome |
-| --- | --- |
-| Applicable approved automatic map | Select within its scope, supported controls, data permissions and remaining limits |
-| Explicit authorized user selection | Use the supported selection within existing authority; label it **direct selection**, not calibrated |
-| No applicable map or authorized direct choice | Return **proposal only** with the missing evidence or decision; do not activate a guessed route |
-
-Assess task consequences, uncertainty, needed tools/context and acceptance before
-applying the map. A short security change can require more assurance than a large
-routine edit. Callsigns and message length are not quality evidence. A route map
-is an approved operational input, not proof of a comparative model benchmark.
-
-Verify that the destination is approved for the actual data category and task.
-Do not forward private payloads to an unapproved provider, endpoint or account,
-including as a fallback or reviewer. Minimize delegated context and redact
-secrets. A provider connection or credential's existence is not transfer
-authority. If approval is missing, keep the payload in its current approved
-boundary and return a proposal or the specific routing blocker.
-
-Use current, applicable pricing evidence only if the task requires a cost
-estimate; include its date, units and assumptions. Otherwise report measured
-usage where available and cost as unknown. Do not assume current prices, model
-availability, free capacity, performance or savings. This skill neither runs
-benchmarks nor makes them a prerequisite for using an already approved route.
+Before this phase, read and apply [establish a route's basis](references/establish-a-route-s-basis.md); its authority, evidence and stopping rules are required.
 
 ## Dispatch only a verifiable, bounded run
 
@@ -126,15 +96,15 @@ Required tests and independent review remain required at every model and effort.
 
 Resolve a peer through the actual available skill catalog, then load and apply
 its `SKILL.md` before relying on its method. Use the supported agent mechanism
-for a delegated context; naming a skill does not start a worker. `ranger-bounty-hunter`
+for a delegated context; naming a skill does not start a worker. `ranger-rooster`
 can investigate an unexplained failure, `ranger-kestrel` can perform required review,
-and `ranger-marshal` can coordinate a wider job. Any other available relevant specialist
+and `ranger-call` can coordinate a wider job. Any other available relevant specialist
 may help within the same limits. If unavailable, do what can be substantiated
 inline and report the missing capability; never invent a call, result or verdict.
 
 Pass the task and owner, exact artifact/evidence, bounded scope, existing
 authority, selected route and its verification state, remaining budgets and
-delegation limits, and expected return. Keep the original job owner; Marshal
+delegation limits, and expected return. Keep the original job owner; Call
 coordinates the job without opening a competing workflow or resetting limits.
 Do not cycle the same unresolved question among peers without new evidence.
 For a required independent gate, use an actual separate available reviewer
@@ -148,3 +118,7 @@ worker/reviewer identity, consumed and remaining limits where observable.
 Check a peer's return against scope and artifact before relying on it. Write
 only to an existing authorized task record or return the receipt to the caller;
 do not create another ledger or send messages without existing authority.
+
+## Boundaries
+
+- `ranger-gus`: Wrangler chooses how much to spend within existing authority; Gus asks whether to spend at all.

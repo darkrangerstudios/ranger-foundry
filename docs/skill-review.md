@@ -49,7 +49,7 @@ Test at least one positive, negative, and collision case:
 
 For peer composition, observe an actual skill load, bounded handoff, returned
 result, shared budget accounting, and the retained caller/owner. Exercise a
-sibling call as well as Marshal orchestration, an unavailable peer, and a
+sibling call as well as Call orchestration, an unavailable peer, and a
 required independent reviewer. A named route alone is not evidence of a call.
 
 Complete author iteration and relevant outcome checks before requesting one

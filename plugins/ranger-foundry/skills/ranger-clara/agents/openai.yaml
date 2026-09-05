@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-clara"
+  short_description: "Preserve memory, meaning and resumable state"
+  default_prompt: "Use $ranger-clara to preserve the verified state and its meaning in a scoped handoff."
+policy:
+  allow_implicit_invocation: true

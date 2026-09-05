@@ -1,6 +1,6 @@
 ---
 name: ranger-sparks
-description: "Sparks handles prototype. Build or plan the smallest testable prototype that answers a concrete product or technical question. Use for proofs of concept, feasibility checks, and early interaction experiments."
+description: "Sparks handles prototype. Build or plan the smallest testable prototype that answers a concrete product or technical question; not for production delivery or independent acceptance."
 ---
 
 # Sparks — Ranger Prototype
@@ -43,8 +43,8 @@ Report the hypothesis, implemented slice, evidence, known shortcuts, security an
 This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
-skill does not start an agent. `ranger-scout` can identify representative
-source samples, `ranger-phantom` can test browser interaction, and
+skill does not start an agent. `ranger-big-iron` can identify representative
+source samples, `ranger-big-iron` can test browser interaction, and
 `ranger-kestrel` can review a consequential prototype boundary. These are
 examples, not an exclusive list; any available relevant specialist may help.
 
@@ -52,7 +52,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -64,3 +64,7 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- Use `ranger-call` for end-to-end delivery and `ranger-kestrel` for independent acceptance; this skill owns only its stated specialty.

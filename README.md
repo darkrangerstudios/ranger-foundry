@@ -10,8 +10,8 @@ actually tried using it.
 
 Ranger Foundry is a toolbelt for that part of the job.
 
-Sixteen skills for AI coding agents: **Marshal**, the foreman who keeps a bigger job moving, and
-fifteen specialists for figuring things out, planning the work, collecting data,
+Thirteen skills for AI coding agents: **Call**, the foreman who keeps a bigger job moving, and
+twelve specialists for figuring things out, planning the work, collecting data,
 running workers, preserving memory, settling meaning, managing agent budgets,
 finding trouble, and handing things over without losing the plot.
 
@@ -28,28 +28,31 @@ doesn't have to take your word for it.
 ## Meet the posse
 
 You can call a specialist directly. You don't need a whole production line to
-fix a loose screw. Each Ranger uses its callsign as its skill name: `ranger-marshal`,
-`ranger-bounty-hunter`, and so on. The shared `ranger-` prefix keeps the posse together
+fix a loose screw. Each Ranger uses its callsign as its skill name: `ranger-call`,
+`ranger-rooster`, and so on. The shared `ranger-` prefix keeps the posse together
 in the skill menu.
 
 | Skill | What you call it in for |
 | --- | --- |
-| **Marshal** · Assembly Line · `ranger-marshal` | Keep a bigger job moving from the initial ask through review, testing, and handoff. Bring in the right specialist along the way. |
-| **Bounty Hunter** · Cause Analysis · `ranger-bounty-hunter` | Find what actually broke. Follow the evidence back to the cause before changing things. |
-| **Warden** · Agent Instructions · `ranger-warden` | Sort out the rule files when your agents are getting mixed signals. |
+| **Call** · Assembly Line · `ranger-call` | Keep a bigger job moving from the initial ask through review, testing, and handoff. Bring in the right specialist along the way. |
+| **Rooster** · Cause Analysis · `ranger-rooster` | Find what actually broke. Follow the evidence back to the cause before changing things. |
+| **Roy Bean** · Agent Instructions · `ranger-roy-bean` | Sort out the rule files when your agents are getting mixed signals. |
 | **Trailblazer** · Slice Plan · `ranger-trailblazer` | Break a big idea into useful pieces you can build and verify one at a time. |
 | **Deadeye** · Plan Assurance · `ranger-deadeye` | Poke holes in the plan while changing it is still cheap. |
-| **Courier** · Handoff · `ranger-courier` | Leave the next person the actual state of the work: what's done, what's stuck, and where to pick up. |
+| **Clara** · Memory, Meaning and Handoff · `ranger-clara` | Keep durable records faithful, settle definitions and identity, and leave a resumable handoff. |
 | **Prospector** · Questionnaire · `ranger-prospector` | Ask the questions that change what gets built. Stop when there's enough to work with. |
 | **Sparks** · Prototype · `ranger-sparks` | Try the smallest useful version and see whether the idea holds up. |
 | **Raven** · Swarm Coordination · `ranger-raven` | Keep agents informed, route direct review requests, and recover unfinished work without crossing task lanes. |
 | **Kestrel** · Review · `ranger-kestrel` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
-| **Tank** · Fleet Operations · `ranger-tank` | Reconcile worker output, recover partial batches, and prove a bounded canary before resuming the fleet. |
-| **Scout** · Evidence Collection · `ranger-scout` | Map sources, extract data with coverage and provenance, and identify knowledge gaps that need fresh research. |
-| **Phantom** · Browser Interaction · `ranger-phantom` | Make browser actions precise with Bézier paths, reliable input, and evidence-backed anti-bot diagnostics for authorized collection. |
-| **Scribe** · Durable Recall · `ranger-scribe` | Keep useful memory small, traceable, and faithful to its sources. |
-| **Surveyor** · Meaning and Grounding · `ranger-surveyor` | Settle definitions, aliases, and entity matches before they change an answer or a join. |
+| **Big Iron** · Web Collection and Recovery · `ranger-big-iron` | Map sources, prove extraction coverage, diagnose browser actions and recover collection workers. Load only the mode needed. |
 | **Wrangler** · Models, Effort and Budgets · `ranger-wrangler` | Match work to approved model routes and effort settings while keeping the whole job within budget. |
+
+| **Gus** · Premise Check · `ranger-gus` | Before consequential decisions, ask whether the work is worth doing. Runs briefly in Call's context; never an independent review. |
+
+The seams matter: Call drives delivery; Gus checks the premise. Kestrel reviews
+built work; Deadeye reviews a plan another context wrote. Clara keeps the record;
+Raven delivers it. Every neighboring specialty has an explicit boundary and a
+pinned routing case; see [dispatch policy](docs/dispatch-policy.md#boundaries).
 
 ## Match the effort to the job
 
@@ -69,25 +72,25 @@ instruction-level routing, not proof of runtime integration on every product.
 
 Give the agent a real job and a clear boundary. For example:
 
-> Use $ranger-bounty-hunter to find out why saved settings disappear after a
+> Use $ranger-rooster to find out why saved settings disappear after a
 > restart. Show me the cause and how you proved it. Don't change the code yet.
 
 Or, once you're ready to build:
 
-> Use $ranger-marshal to implement the approved fix. Follow this repo's
+> Use $ranger-call to implement the approved fix. Follow this repo's
 > rules, test the failure we started with, and leave a handoff. No deployment.
 
 The agent reads the relevant skill instructions and applies them. There isn't a
-hidden set of services running behind the scenes. Marshal keeps the job
+hidden set of services running behind the scenes. Call keeps the job
 together; your repository's design, implementation, database, and release rules
 still govern the work.
 
 Every Ranger can call another available skill when its method helps the job.
 The agent loads that skill, passes a bounded assignment, and returns the result
-to the caller. Marshal can reach the entire posse and owns the overall job;
+to the caller. Call can reach the entire posse and owns the overall job;
 he calls the specialists the work needs, rather than running every skill on every
-request. A Scout extraction can call Phantom for a flaky interaction and return
-coverage evidence to Marshal, who can then assign Kestrel an independent review.
+request. Big Iron can move from source mapping to browser diagnosis and return
+coverage evidence to Call, who can then assign Kestrel an independent review.
 
 Skill calls preserve the existing task, remaining budget, and permissions. They
 do not send a message or create a separate agent by themselves. A reviewer must
@@ -100,9 +103,8 @@ reviewer in a separate agent context or a human.
 
 Raven uses your existing authorized communication channel. It does not install a
 message service. Callsigns, transport addresses, and task lanes stay separate;
-broadcast receipts are not review acceptance. Calling `ranger-scout` or
-`ranger-tank` applies a method; messaging a person or machine with the same name
-uses your configured address and assigned lane.
+broadcast receipts are not review acceptance. Calling Big Iron applies a method;
+messaging Scout or another configured owner uses the actual address and assigned lane.
 
 ### Who gets the keys?
 
@@ -138,21 +140,15 @@ context isn't. Repository rules and private overlays take precedence; see
 
 ## Install
 
-This checkout is the **unreleased 0.4.0-rc.3 candidate**. The current published
-release is v0.3.0. The commands below apply once the matching candidate tag has
-been reviewed and published; do not treat this branch as a released install.
+This checkout is the **unreleased 0.4.0-rc.4 candidate**. Installation is held.
+The candidate has no advertised installation tag or command. Use the published
+release's own instructions until an exact artifact is accepted and its matching
+tag exists. Do not install this branch or replace a native mirror as a review step.
 
-Add the marketplace, then the plugin:
-
-```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0-rc.3
-codex plugin add ranger-foundry@ranger-foundry
-```
-
-Pin a reviewed tag or exact commit. Start a fresh Codex task after installation
-so it loads the new skills. Upgrading from v0.2.x? Follow the
-[skill-name migration](docs/skill-name-migration.md) to replace the old role-based
-commands and avoid duplicate menu entries.
+Before an approved upgrade, follow the [skill-name migration](docs/skill-name-migration.md)
+for renamed and consolidated callsigns, including Courier's move into Clara.
+The installation ref must match the accepted manifest version; verifying that tag,
+its exact SHA, and release authority remains a release gate.
 
 ### Make it earn its place
 
@@ -176,7 +172,7 @@ python3 -I scripts/validate.py
 No dependencies to install. The validator checks the plugin structure, exact
 skill list, metadata, declared routing cases, and public-content boundaries.
 It rejects unexpected files, executable permissions, and symbolic links. The
-reviewed banner, Phantom’s pure motion module and browser reference, Scribe’s
+reviewed banner, Big Iron’s pure motion module and mode references, Clara’s
 record format, and Wrangler’s effort procedure are allowed only at their exact
 paths and byte hashes. A source screen supplements
 the module pin; it is not a JavaScript sandbox. Documentation links also use an
@@ -198,12 +194,13 @@ evals/routing-cases.json
 scripts/validate.py
 ```
 
-Each skill has a `SKILL.md` and an `agents/openai.yaml` file. Phantom also ships
+Each skill has a `SKILL.md` and an `agents/openai.yaml` file. Big Iron also ships
 a pure motion planner and a browser reference. The planner performs no browser
 actions and is not loaded automatically by the plugin; use it only through the
-chosen host’s supported browser workflow. Scribe and Wrangler also include
-focused references, loaded only when their record-format or effort procedures
-are needed.
+chosen host’s supported browser workflow. Clara and Wrangler also include
+focused references. Detailed review, coordination and delivery procedures also
+load only when needed. Every entrypoint stays within 8,192 UTF-8 bytes, with
+required local reference resolution and exact pins for the supporting files.
 
 ## Got a better way?
 

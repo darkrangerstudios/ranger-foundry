@@ -24,7 +24,7 @@ Every skill must:
 
 Every skill must support bounded calls to available peers while retaining one job
 owner, the caller’s scope and remaining budget, and applicable independent review.
-Marshal’s routing table must cover every packaged specialist. Verify actual peer
+Call’s routing table must cover every packaged specialist. Verify actual peer
 loading and returned results separately from declarative routing checks.
 
 Supporting files require explicit package policy and validator changes. Phantom’s

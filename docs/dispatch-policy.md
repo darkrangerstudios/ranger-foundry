@@ -20,22 +20,20 @@ outcome and treat the other as a supporting method.
 
 | Requested outcome | Primary skill | Boundary |
 | --- | --- | --- |
-| Carry a nontrivial change from intake through verified handoff | `ranger-marshal` | Coordinates specialist stations but does not create implementation, release, or production authority. |
-| Explain the proven cause of a failure | `ranger-bounty-hunter` | Diagnosis does not authorize a code change. |
-| Create or improve agent instructions | `ranger-warden` | Existing authority and loader relationships remain intact unless the user asks to change them. |
+| Carry a nontrivial change from intake through verified handoff | `ranger-call` | Coordinates specialist stations but does not create implementation, release, or production authority. |
+| Explain the proven cause of a failure | `ranger-rooster` | Diagnosis does not authorize a code change. |
+| Create or improve agent instructions | `ranger-roy-bean` | Existing authority and loader relationships remain intact unless the user asks to change them. |
 | Plan the smallest executable path | `ranger-trailblazer` | Produces a plan, not an implementation. |
 | Assess a plan before implementation | `ranger-deadeye` | Reviews standards and stated requirements independently; it is not code review. |
 | Coordinate authorized agent messages and recover unfinished requests | `ranger-raven` | Uses the existing transport and ledger; does not create messaging, tracker, identity, or release authority. |
-| Transfer work state | `ranger-courier` | Produces a handoff but does not send or publish it. |
+| Preserve memory, ground meaning or transfer task state | `ranger-clara` | Records and handoffs preserve evidence; storing does not authorize sending, planning or deletion. |
 | Collect missing decisions | `ranger-prospector` | Produces questions but does not contact recipients. |
 | Learn through a bounded implementation | `ranger-sparks` | Prototype output is not production-ready by default. |
 | Review code, architecture, or security | `ranger-kestrel` | Findings come before fixes; implementation requires separate authorization. |
-| Reconcile worker fleets and bounded recovery | `ranger-tank` | Process health is not output correctness; preserve leases, owned cleanup, and rollout gates. |
-| Collect source evidence or prioritize knowledge gaps | `ranger-scout` | Track partial coverage and staged claims; extraction does not authorize deletion or canonical promotion. |
-| Diagnose and improve browser interaction | `ranger-phantom` | Pure pointer planning and authorized browser methods do not grant access or prove anti-bot efficacy. |
-| Preserve or retrieve durable memory | `ranger-scribe` | Recall does not authorize writes; preserve provenance, protected values, access and retention boundaries. |
-| Resolve meanings, metrics or entity identity | `ranger-surveyor` | Similarity proposes candidates; it does not authorize merges or canonical changes. |
+| Collect web evidence and restore extraction workers | `ranger-big-iron` | Select source, browser or recovery mode; preserve coverage, access, ownership and rollout gates. |
 | Select authorized model routes or verify effort | `ranger-wrangler` | Preserve explicit choices and shared limits; requested settings are not verified effective settings. |
+
+| Check whether a consequential action is worth doing | `ranger-gus` | Inline premise checklist for Call, never work execution or an independent verdict. |
 
 ## Broad workflows
 
@@ -67,9 +65,9 @@ Likewise, a repository-local design, security, release, or infrastructure skill 
 Every Ranger can invoke another available skill when it supplies an independently
 useful result. Resolve the actual skill from the host catalog, load its entrypoint,
 and apply its method to a bounded subtask. The caller retains the job, task lane,
-authority, and overall budget; the peer returns results to that caller. Marshal
+authority, and overall budget; the peer returns results to that caller. Call
 coordinates the whole job when orchestration is delegated to him and can select
-any packaged specialist. One narrow specialist request does not require Marshal.
+any packaged specialist. One narrow specialist request does not require Call.
 
 A handoff includes the objective, relevant artifact and exact revision, allowed
 actions, remaining time/attempt/spend limits, and the evidence the caller needs
@@ -86,12 +84,11 @@ context cannot satisfy that gate. If a peer is unavailable, say so and apply the
 bounded method inline when appropriate. Do not invent a peer result or substitute
 inline work for a required independent verdict.
 
-Common paths include Scout to Phantom for browser diagnosis, then back to Scout
-for coverage accounting; Tank to Bounty Hunter for a reproducible worker failure;
-Trailblazer to Deadeye for plan assurance; and Courier to Raven for authorized
-delivery. Callsigns are not transport identities. A request to message Scout or
-Tank belongs to Raven and the configured recipient mapping; invoking their skills
-does not send anything or prove that a reviewer exists.
+Common paths include Big Iron to Rooster for deeper causal analysis; Trailblazer
+to Deadeye in a separate context for plan assurance; and Clara to Raven for an
+authorized delivery. Callsigns are not transport identities. A request to message
+Scout or Tank belongs to Raven and the configured mapping, not to a skill alias.
+
 
 ## Mutation boundary
 
@@ -114,3 +111,23 @@ transfer task ownership or spawn an agent. Wrangler supplies one common decision
 procedure and host-specific switching guidance; actual controls and telemetry
 determine whether the agent can apply or only recommend a change. Preserve
 explicit user choices, review gates and cumulative budgets across every switch.
+
+## Boundaries
+
+- **Call / Gus:** Call drives the job to completion; Gus asks whether it should be done. Call invokes Gus; Gus never runs the work.
+- **Kestrel / Deadeye:** Kestrel reviews a built artifact; Deadeye challenges an unexecuted plan.
+- **Kestrel / Gus:** Kestrel checks correctness; Gus checks whether the work is worth doing.
+- **Deadeye / Trailblazer:** Trailblazer writes a plan; Deadeye reviews a plan it did not author in a separate context.
+- **Prospector / Gus:** Prospector clarifies what the user wants; Gus challenges whether it is worth doing and returns to Call.
+- **Rooster / Big Iron:** Rooster diagnoses the cause; Big Iron restores extraction service. Authorized containment precedes deep diagnosis in an incident.
+- **Rooster / Kestrel:** Rooster explains an observed failure; Kestrel reviews a change before it ships.
+- **Clara / Trailblazer:** Clara records what is true; Trailblazer plans what happens next. A record is not a plan.
+- **Clara / Raven:** Clara stores the record; Raven delivers the message. Storing is not sending.
+- **Wrangler / Gus:** Wrangler chooses how much to spend within existing authority; Gus asks whether to spend at all.
+- **Roy Bean / Call:** Roy Bean writes agent rules; Call follows them to deliver the job.
+
+Call invokes Gus only before fan-out, irreversible transitions, opening a lane,
+or a conflict with a recent user constraint. Gus uses the existing context and
+returns a decision, never a review verdict. It cannot satisfy independence or
+waive required review to save tokens. All skills can call a relevant available
+peer; Call's roster is reachability, not a requirement to run every specialist.

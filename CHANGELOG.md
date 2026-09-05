@@ -2,6 +2,25 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.4.0-rc.4 - Unreleased
+
+### Changed
+
+- Consolidated sixteen Rangers into thirteen. Big Iron combines reconnaissance,
+  browser interaction and extraction-worker recovery; Clara combines durable
+  memory, semantic grounding and Courier's handoffs, with references loaded on demand.
+- Renamed Marshal to Call, Warden to Roy Bean and Bounty Hunter to Rooster. A single
+  migration guide covers published names and all unreleased draft aliases.
+- Labelled eleven neighboring boundaries in discovery descriptions and skill bodies,
+  with required routing cases. Call reaches all twelve specialists without a fleet.
+- Kept authority scenarios, shared effort preflight and the pure motion planner;
+  resource hashes and entrypoint size limits fail closed. Installation remains held.
+
+### Added
+
+- Gus applies a brief premise checklist in Call's context at consequential decisions.
+  Its output is a decision, never a verdict or a replacement for independent review.
+
 ## 0.4.0-rc.3 - Unreleased
 
 ### Added

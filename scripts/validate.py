@@ -21,30 +21,25 @@ PLUGIN_NAME = "ranger-foundry"
 PLUGIN_DIR = ROOT / "plugins" / PLUGIN_NAME
 REPOSITORY_URL = "https://github.com/darkrangerstudios/ranger-foundry"
 
-EXPECTED_SKILLS = (
-    "ranger-warden",
-    "ranger-marshal",
-    "ranger-bounty-hunter",
-    "ranger-courier",
-    "ranger-kestrel",
-    "ranger-deadeye",
-    "ranger-sparks",
-    "ranger-prospector",
-    "ranger-trailblazer",
-    "ranger-raven",
-    "ranger-tank",
-    "ranger-scout",
-    "ranger-phantom",
-    "ranger-scribe",
-    "ranger-surveyor",
-    "ranger-wrangler",
-)
+EXPECTED_SKILLS = ('ranger-big-iron',
+ 'ranger-call',
+ 'ranger-clara',
+ 'ranger-deadeye',
+ 'ranger-gus',
+ 'ranger-kestrel',
+ 'ranger-prospector',
+ 'ranger-raven',
+ 'ranger-rooster',
+ 'ranger-roy-bean',
+ 'ranger-sparks',
+ 'ranger-trailblazer',
+ 'ranger-wrangler')
 
 EXPECTED_IMPLICIT_POLICY = {skill_name: True for skill_name in EXPECTED_SKILLS}
 EXPLICIT_ONLY_SKILLS = {
     skill_name for skill_name, allowed in EXPECTED_IMPLICIT_POLICY.items() if not allowed
 }
-ASSEMBLY_LINE_SKILL = "ranger-marshal"
+ASSEMBLY_LINE_SKILL = "ranger-call"
 ASSEMBLY_LINE_SPECIALISTS = set(EXPECTED_SKILLS) - {ASSEMBLY_LINE_SKILL}
 
 ROOT_FILES = {
@@ -81,19 +76,26 @@ REVIEWED_ASSETS = {
 # These are reviewed source bytes, not a general scripts/reference-directory
 # allowance. Any change requires a new review and explicit pin update.
 REVIEWED_SKILL_SOURCES = {
-    Path("plugins/ranger-foundry/skills/ranger-wrangler/references/fit-check.md"):
-        "005ae9d06d5b23c367506314067d57352a5d5faebbd83868c861eb91be8394d9",
-    Path("plugins/ranger-foundry/skills/ranger-wrangler/references/host-controls.md"):
-        "fdfab70de25e4450828c5c5dbb6462e39ff128f7c2dc689fec566a78f6a8ae1f",
-
-    Path("plugins/ranger-foundry/skills/ranger-scribe/references/record-format.md"):
-        "7455cdee37387c7f2254cd47ca5b4a21efb8ea2f5dc7388ffad2ecdd55fa5e19",
-    Path("plugins/ranger-foundry/skills/ranger-wrangler/references/effort-control.md"):
-        "624f3b6915a7946c869039b97f953c52ac0b7ff82e2fdeca20c326b5b1f73e2b",
-    Path("plugins/ranger-foundry/skills/ranger-phantom/scripts/motion.mjs"):
-        "2c3d481757e8eeeba319bc5022669a9fc6aac70aed951428edfade60f2c46e7a",
-    Path("plugins/ranger-foundry/skills/ranger-phantom/references/browser-patterns.md"):
-        "018d44de8a9fa39d391586ee2ffea8042e0659a482821786a6b6144b51bdad41",
+    Path('plugins/ranger-foundry/skills/ranger-big-iron/references/browser-patterns.md'): '1b715cad244193827c44307a12671c11d1a725da1eaf41ed8f74111eb9d1c79b',
+    Path('plugins/ranger-foundry/skills/ranger-big-iron/references/fleet-recovery.md'): '595d8ae381ec663561ae92843a56b002ffe217cd1cbff1d26e6123b904ddae7f',
+    Path('plugins/ranger-foundry/skills/ranger-big-iron/references/reconnaissance.md'): '02c3c8d121257b84bccc07b23bd1a699a791afca4ddf745b5581cfd3480d0a64',
+    Path('plugins/ranger-foundry/skills/ranger-big-iron/scripts/motion.mjs'): '2c3d481757e8eeeba319bc5022669a9fc6aac70aed951428edfade60f2c46e7a',
+    Path('plugins/ranger-foundry/skills/ranger-call/references/choose-the-line.md'): '360ee6582e54227c94bed326ad04e8c8759afc49752f3e8104a728ba359e44c0',
+    Path('plugins/ranger-foundry/skills/ranger-call/references/job-card.md'): 'b11279df83b2cb930fa0406fc539ee924191e785f6bc2f2ce4be0f10eb14a8e3',
+    Path('plugins/ranger-foundry/skills/ranger-call/references/output-contract.md'): '47a32f60db544de8fc51bd69487674d4b3a8c3afc2047de666533089210bfc31',
+    Path('plugins/ranger-foundry/skills/ranger-call/references/stations-and-gates.md'): '8262ede66277b8346d2c3d91b2a4c650d5de505216fa0d87f8d9a4a822db51ed',
+    Path('plugins/ranger-foundry/skills/ranger-call/references/stop-conditions.md'): '4efa9ec837a1cb634adba1476e428b5168de43136fcc11e8de9ad817a6c2be26',
+    Path('plugins/ranger-foundry/skills/ranger-clara/references/handoff.md'): '5c8ee82a9e1004f9969aee19ade453aab21ab3c4efa2a88d2200c1bc4d7e535a',
+    Path('plugins/ranger-foundry/skills/ranger-clara/references/meaning.md'): '33e91cd0f8d372cc70f1edbf58c1791e88c964340d0d16631c3e7dd64c332512',
+    Path('plugins/ranger-foundry/skills/ranger-clara/references/memory.md'): '77b89b16479a6228356d5f5e061530a454a57fd8644bec89fd32adfe47063a5f',
+    Path('plugins/ranger-foundry/skills/ranger-clara/references/record-format.md'): '7455cdee37387c7f2254cd47ca5b4a21efb8ea2f5dc7388ffad2ecdd55fa5e19',
+    Path('plugins/ranger-foundry/skills/ranger-deadeye/references/assurance-passes.md'): '04386be152af943986a09824bd2aa6dfffb19e1735c26565db8931fe408bf093',
+    Path('plugins/ranger-foundry/skills/ranger-kestrel/references/review-lanes.md'): 'de82af5d35c0a027235fcb6fc7ea9398b2c792218e9f50ed21507eb3c0b437bc',
+    Path('plugins/ranger-foundry/skills/ranger-raven/references/deliver-and-reconcile.md'): '4202c08e64dc3af80199af6b9a2d54e33cb1a82c701476c6c18a4aaed0cb3982',
+    Path('plugins/ranger-foundry/skills/ranger-wrangler/references/effort-control.md'): '624f3b6915a7946c869039b97f953c52ac0b7ff82e2fdeca20c326b5b1f73e2b',
+    Path('plugins/ranger-foundry/skills/ranger-wrangler/references/establish-a-route-s-basis.md'): '191787f3f9b62e1969381fc5e6cacf131b19cfe11a79e583e6cc14b9f0f82c02',
+    Path('plugins/ranger-foundry/skills/ranger-wrangler/references/fit-check.md'): '005ae9d06d5b23c367506314067d57352a5d5faebbd83868c861eb91be8394d9',
+    Path('plugins/ranger-foundry/skills/ranger-wrangler/references/host-controls.md'): 'dad32aa93052aa11c48a300bf45c8782d3c0ed4fa3cdc5aefefa8c63e1377277',
 }
 REVIEWED_DOCUMENTATION_URLS = {
     'https://learn.chatgpt.com/docs/app-server',
@@ -233,6 +235,7 @@ CASE_KINDS = {
 }
 
 FORBIDDEN_ACTIONS = {
+    "count-premise-as-verdict", "spawn-premise-worker", "waive-required-review",
     'fabricate-runtime-control',
     'override-explicit-effort',
     'redeem-unrequested-credit',
@@ -301,31 +304,31 @@ REQUIRED_TRANSITION_ACTIONS = {
 # must still be collected separately from these declarative contracts.
 REQUIRED_TRANSITION_CASES = {
     'authority-boundary-assembly-authorized-ineligible-push': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-local-commit-only': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['push-review-ref', 'update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-review-ref-only': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-accepted-ancestor': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-source-only': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-save-without-deploy': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['deploy-or-promote']),
     ),
     'authority-boundary-assembly-unknown-destination': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['push-review-ref', 'update-serving-ref']),
     ),
     'authority-boundary-kestrel-authorized-ineligible-push': (
@@ -333,15 +336,15 @@ REQUIRED_TRANSITION_CASES = {
         frozenset(['commit-or-push', 'update-serving-ref', 'save-hosted-version', 'deploy-or-promote', 'edit-files', 'deploy-or-publish']),
     ),
     'authority-boundary-assembly-wrong-remote': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-stale-tip': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-force-push': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
 }
@@ -365,45 +368,49 @@ REQUIRED_COORDINATION_CASES = {
 # pinned so deleting a scenario cannot hide behind aggregate routing coverage.
 # These declarations still require independent behavioral evaluation.
 REQUIRED_POSSE_CASES = {
+    'authority-boundary-gus-no-verdict': ('ranger-gus', frozenset(['self-attest-independent-review', 'count-premise-as-verdict', 'waive-required-review'])),
+    'authority-boundary-gus-no-worker': ('ranger-gus', frozenset(['spawn-premise-worker', 'exceed-budget'])),
+    'authority-boundary-gus-hold-not-authority': ('ranger-gus', frozenset(['count-premise-as-verdict', 'implement-fix', 'deploy-or-publish'])),
+
     'authority-boundary-effort-hidden': ('ranger-wrangler', frozenset(['claim-effective-setting-without-evidence'])),
     'authority-boundary-effort-no-control': ('ranger-wrangler', frozenset(['claim-effective-setting-without-evidence', 'fabricate-runtime-control'])),
     'authority-boundary-effort-lower-pin': ('ranger-wrangler', frozenset(['override-explicit-effort'])),
     'authority-boundary-effort-higher-auth': ('ranger-wrangler', frozenset(['select-unauthorized-effort', 'widen-access', 'replace-pinned-model'])),
-    'authority-boundary-effort-resume-write': ('ranger-marshal', frozenset(['replay-uncertain-action', 'reset-peer-budget'])),
-    'authority-boundary-effort-no-repeat': ('ranger-scout', frozenset(['spawn-preflight-worker', 'repeat-unchanged-effort-prompt'])),
+    'authority-boundary-effort-resume-write': ('ranger-call', frozenset(['replay-uncertain-action', 'reset-peer-budget'])),
+    'authority-boundary-effort-no-repeat': ('ranger-big-iron', frozenset(['spawn-preflight-worker', 'repeat-unchanged-effort-prompt'])),
     'authority-boundary-effort-product-boundary': ('ranger-wrangler', frozenset(['fabricate-runtime-control', 'claim-effective-setting-without-evidence'])),
     'authority-boundary-effort-budget-reset': ('ranger-wrangler', frozenset(['redeem-unrequested-credit', 'reset-peer-budget'])),
 
     'authority-boundary-scribe-recall-write': (
-        'ranger-scribe',
+        'ranger-clara',
         frozenset(['write-memory-without-authority']),
     ),
     'authority-boundary-scribe-stored-directive': (
-        'ranger-scribe',
+        'ranger-clara',
         frozenset(['deploy-or-publish', 'write-memory-without-authority']),
     ),
     'authority-boundary-scribe-secret-layers': (
-        'ranger-scribe',
+        'ranger-clara',
         frozenset(['persist-sensitive-data']),
     ),
     'authority-boundary-scribe-stale-revision': (
-        'ranger-scribe',
+        'ranger-clara',
         frozenset(['overwrite-stale-revision', 'partial-memory-write']),
     ),
     'authority-boundary-scribe-lossless-claim': (
-        'ranger-scribe',
+        'ranger-clara',
         frozenset(['claim-lossless-without-proof']),
     ),
     'authority-boundary-surveyor-embedding-merge': (
-        'ranger-surveyor',
+        'ranger-clara',
         frozenset(['merge-unverified-entity', 'edit-files']),
     ),
     'authority-boundary-surveyor-denominator': (
-        'ranger-surveyor',
+        'ranger-clara',
         frozenset(['claim-unproven-comparability']),
     ),
     'authority-boundary-surveyor-retrieval-access': (
-        'ranger-surveyor',
+        'ranger-clara',
         frozenset(['widen-access']),
     ),
     'authority-boundary-wrangler-effective-setting': (
@@ -423,55 +430,55 @@ REQUIRED_POSSE_CASES = {
         frozenset(['replace-pinned-model']),
     ),
     'authority-boundary-marshal-final-review': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['review-intermediate-artifact']),
     ),
     'authority-boundary-scout-address': (
-        'ranger-scout',
+        'ranger-big-iron',
         frozenset(['send-message', 'invent-routing-identity']),
     ),
     'authority-boundary-tank-address': (
-        'ranger-tank',
+        'ranger-big-iron',
         frozenset(['send-message', 'self-attest-independent-review']),
     ),
     'authority-boundary-scout-partial': (
-        'ranger-scout',
+        'ranger-big-iron',
         frozenset(['delete-from-partial', 'claim-complete-coverage']),
     ),
     'authority-boundary-scout-robots': (
-        'ranger-scout',
+        'ranger-big-iron',
         frozenset(['collect-disallowed-source']),
     ),
     'authority-boundary-scout-ai-proposal': (
-        'ranger-scout',
+        'ranger-big-iron',
         frozenset(['promote-unverified-claim']),
     ),
     'authority-boundary-tank-owned-process': (
-        'ranger-tank',
+        'ranger-big-iron',
         frozenset(['kill-unowned-process']),
     ),
     'authority-boundary-tank-heartbeat': (
-        'ranger-tank',
+        'ranger-big-iron',
         frozenset(['claim-verified-recovery']),
     ),
     'authority-boundary-phantom-denial': (
-        'ranger-phantom',
+        'ranger-big-iron',
         frozenset(['widen-access', 'purchase-service']),
     ),
     'authority-boundary-phantom-rate-budget': (
-        'ranger-phantom',
+        'ranger-big-iron',
         frozenset(['ignore-retry-after', 'exceed-budget']),
     ),
     'authority-boundary-peer-budget': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['reset-peer-budget', 'exceed-budget']),
     ),
     'authority-boundary-peer-review-independence': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['self-attest-independent-review', 'update-serving-ref']),
     ),
     'authority-boundary-peer-message-boundary': (
-        'ranger-courier',
+        'ranger-clara',
         frozenset(['send-message', 'update-external-tracker']),
     ),
     'authority-boundary-peer-unavailable': (
@@ -479,10 +486,187 @@ REQUIRED_POSSE_CASES = {
         frozenset(['fabricate-peer-result', 'self-attest-independent-review']),
     ),
     'authority-boundary-peer-cycle': (
-        'ranger-marshal',
+        'ranger-call',
         frozenset(['reroute-without-progress', 'reset-peer-budget']),
     ),
 }
+
+
+REQUIRED_AUTHORITY_CASE_HASHES = {'authority-boundary-agent-instructions': 'b764c520558693e4e4633ce5eca95a4d4bf08741c7b800eb9e32b414357e7221',
+ 'authority-boundary-assembly-accepted-ancestor': 'ff504cf704e1a3cb909e5d7300c798a2faf631d6464d31f47c618dda1ba0efcd',
+ 'authority-boundary-assembly-authorized-ineligible-push': '8db9494737357d69ab44563796ecbd1f7cd6e401354ed99541542ccf7124017b',
+ 'authority-boundary-assembly-blocking-verdict': '8d719acca7656c31e2a1836987fe19e74e870c79776380842605a9270ccca290',
+ 'authority-boundary-assembly-force-push': 'ae43fcd717e7292780deb65d81343845643287846340fa7ef010d9009cf24a45',
+ 'authority-boundary-assembly-independent-review': 'ebb262d0667f6417b6da30123a6d4764a53ab493b23d5b1b459c49e7e8a6e451',
+ 'authority-boundary-assembly-line': '22ff3a7d3c887214d490596f8e4aaf4ba72e1697e461c99cc9d2259c90dc3c7f',
+ 'authority-boundary-assembly-local-commit-only': '6e16d9429dcc74f39030ddb687df3050567e8e163e2611c9b3443a12ce52d9cb',
+ 'authority-boundary-assembly-review-ref-only': '3cff6547a157f57a9483cae81ae0d09fae9b310ad8443aaa9821d4010794b74b',
+ 'authority-boundary-assembly-save-without-deploy': 'aa5675581ebaa4ed943c95511a4c42ad5cbfa5d18b4a944eb4ae10c367053dc3',
+ 'authority-boundary-assembly-source-only': '7b2cac97b57ba240b982001d755baa699b7c673414a4e71eca5133c4ecf225cd',
+ 'authority-boundary-assembly-stale-tip': 'bfad124fb1086441fb3fdfddd4ee38c8111e0311bb659ef7692837108ec26df4',
+ 'authority-boundary-assembly-unknown-destination': 'feedc7fc3b464c92a3cf4d0deebf4a772c13b22ca545751dc949795e5f50a5c8',
+ 'authority-boundary-assembly-wrong-remote': 'b31216abc3023a1f3c6ea2db5dea44c231eaf1c8d6d7c26fa24638d3e4676c6b',
+ 'authority-boundary-cause-analysis': '9ffb9dae1382b4855d44a6c23ded1a73663b1b0f9aa37dbd417607d10855548c',
+ 'authority-boundary-effort-budget-reset': '9afdbdd76f609f950062f08c742f016e617207bf48f380a29612ea8d7feb9a51',
+ 'authority-boundary-effort-hidden': '6ec69c85475b095e8e3f64def98f23f6e9dfaca2121e3fba7c9733e1e8cf0ef4',
+ 'authority-boundary-effort-higher-auth': 'd9a269ef6ae2eb7a312e91197c0ac7be5f2db38f6de606d80dbade6c892b0779',
+ 'authority-boundary-effort-lower-pin': '387ef2f1500bc8b84a95043e5aea6ceaee75b0dde9f88d1101f5f12b6ef379f9',
+ 'authority-boundary-effort-no-control': '53d98ab1c48d85fef3379231d9097fdda0df21241a8291d3ed81beec83d5f8bb',
+ 'authority-boundary-effort-no-repeat': '6174ed070c2f122060d4ec5a44a58ada4c0acccf35da3b4bd1fa63b4b64f1871',
+ 'authority-boundary-effort-product-boundary': 'f26b093fb8e2b42db571e016e478a24847299148c7460937f49487bd36d98dfd',
+ 'authority-boundary-effort-resume-write': 'd7444e3add7942141efc71c2531e82a38d1faa9bcd10fd18cc9721671ed58225',
+ 'authority-boundary-gus-hold-not-authority': '9d3e94bd8106d9fdff21a0b1c523b3b58026883872c3cafd515906fa62b5fdcc',
+ 'authority-boundary-gus-no-verdict': '4ee652e65e5bd4ceb05d2b7080385481b19d28d4fcc4226107e1f721ca7fa899',
+ 'authority-boundary-gus-no-worker': '395a61960341592245aa01a9dd76d2f6ca192abc829e14aef68d78a16b0a6da3',
+ 'authority-boundary-handoff': 'f0c6b3e378b6b8cd1dba7383e82f0214d926e96c060b2c97fd32d29f5ef0aa0d',
+ 'authority-boundary-kestrel-authorized-ineligible-push': '07d0d2f108fe17094fc44fe7e12fac042b0fd5f0b7c9a7bde123aadae1d627fa',
+ 'authority-boundary-kestrel-review': 'd21673e6391aa52974ee244ec7b1ceee15e7ff843c655b68eec8799e190070fd',
+ 'authority-boundary-marshal-final-review': 'f699935e2995e1d6e2ef41d057c71e541270ad7c666e8055ac428dc12cc839ed',
+ 'authority-boundary-peer-budget': '848c5614462567481ecbcaf0b3047fb7ada6ffa2471f16227c9377dad60ffda8',
+ 'authority-boundary-peer-cycle': 'c3faa2c29e0242d3cd01a607318f372c36931927e0a91bcf36f1e421d1a7eade',
+ 'authority-boundary-peer-message-boundary': 'e125f40eb239ed562ebbe964d673186cc598c5e3167ed4cfa32b8e843291fc4f',
+ 'authority-boundary-peer-review-independence': '9bef0e18a617f498bc7ad1bdf2610762b5c91e3505e6d221ea7b9dd5eda7dbc0',
+ 'authority-boundary-peer-unavailable': 'd475a24579138a9cab1cabd91d0ae324f25665082e35f2b030a2afc4469ebf18',
+ 'authority-boundary-phantom-denial': '540fcab0ae27e5cea731ff532c2f8288b69fac8238de900a3945c1a8b69db035',
+ 'authority-boundary-phantom-rate-budget': '08a5041d5f60a2ee946156dc3cf0934b5b13014d901cc98635ddf4463d23916a',
+ 'authority-boundary-plan-assurance': 'c8ad5604d7fabe81d36505b583cbed8064e653559177424d95969f1dbfedef21',
+ 'authority-boundary-prototype': '1bbfcf40176180030bff629b85962c9adf4d56012e107e59b88855701d5de6a9',
+ 'authority-boundary-questionnaire': '1c50ae0df3aeaccdbee852e66ac048cbe66f8cc886e184fad0c73ba764b00a59',
+ 'authority-boundary-raven-callsign': 'fd933d367ec0d812abc45e546730890eabbe8e2ebd6d0a0f50c9ed2c1e65c166',
+ 'authority-boundary-raven-draft': '9207437fd30104f7cdb83784991ec327d8c17e411c6c848a221c1feffd7995da',
+ 'authority-boundary-raven-expired': '374df8b6b725dfe6f410186a21b6534c7f9af8300b8f2b023461f10437575512',
+ 'authority-boundary-raven-identity': '56011d2561bc28b8c138942d150a9500d31749c784798842dae944c7b856e81f',
+ 'authority-boundary-raven-lane': '3001e3454c5f42b862c868e8a112b38b780be7751cb7388268aaa5f85f6c44b7',
+ 'authority-boundary-raven-ledger': '9bc02dede5389ad7ede8709f1654c756695597c55d86622a8b319682d68ea488',
+ 'authority-boundary-raven-receipt': '775a40145912401857286c7964b93a6fe05fa3671561d145516afa104cf81ba1',
+ 'authority-boundary-raven-stale-verdict': 'bcfdca82fea580c4c973b5593b5a950f0b8785d3b7b18ae5eb34e37a7d811539',
+ 'authority-boundary-raven-uncertain': '8033cab0ed39aa3a290adadfa9041123e41ff926ec6a69a4226f07ae7e31f8c7',
+ 'authority-boundary-scout-address': '6027a769c62d601b82e44cf2e2119bc89045019bbb8a55f7bacfecb7bc17dd1d',
+ 'authority-boundary-scout-ai-proposal': '9df3345172932ef35bb2cf4c3e31d2c7178ff97f661d935966db4b070623d07c',
+ 'authority-boundary-scout-partial': 'cd4e0111bccceaf06ace26260f1588fce44873a5fdff1480e5ff9508a94c587a',
+ 'authority-boundary-scout-robots': 'feeb43310bc65b7df2b825ef94cd8517b6eec268dbeb4fb83ff63966d9330678',
+ 'authority-boundary-scribe-lossless-claim': '2e6c6d5792e464c6c80731bb861ea04f721883e4c6de9d1f238dbf33e5fcb239',
+ 'authority-boundary-scribe-recall-write': '727d0b6107e2011e5288753a7f3d73c607fdb4f22e3edf5af9bc7a7cd9c7daf6',
+ 'authority-boundary-scribe-secret-layers': '66e3af5cdf0b472b9e983d557989a4d6f506e7292bd4903c6d59d60e0ee596a8',
+ 'authority-boundary-scribe-stale-revision': 'd1cdf23ce7b9c4b851562b49cc606ef0d4abe70cf385d21081b05c1cba6cc4a9',
+ 'authority-boundary-scribe-stored-directive': 'f91867038a2a3a29bd0ac474dbc2ca5ef78f1735430e97bca404a41d98f62f43',
+ 'authority-boundary-slice-plan': 'c47358a2513ded710fb37fc2cace64dc137422e9a25c3e1c8838af2248f52b5d',
+ 'authority-boundary-surveyor-denominator': 'e0cf4cb3e051644ae294a7b8b55a51e32ed6d9ed987912dd69a7ce3c2629b467',
+ 'authority-boundary-surveyor-embedding-merge': '5bb35f0fbe1947eff3c88fcbdcabd67e2af8282466cdc426c747448a4f178732',
+ 'authority-boundary-surveyor-retrieval-access': '9a56f37f71794133dc459de3c4e7c931a91786ddea8c5784a426bbb13bc548fd',
+ 'authority-boundary-tank-address': '53d98af246f6ee9b165ca9b2208b0fd87cc7d76a4280683bf8de2d32f0570b6a',
+ 'authority-boundary-tank-heartbeat': 'a97e3e372f21d2be7fdd876be493c3d6ad3f4eabe7eaffccdb6aaebe6e1e3f13',
+ 'authority-boundary-tank-owned-process': '6642a3213ba90aa1d5bbb2e7ff9adb94b02413d2dc2f7f965c721bbf855da675',
+ 'authority-boundary-wrangler-budget-resume': '1b0dbd64fde4fd5122f439b1e0c110d2fed94ba610a0a131045c3da4bb85b6e9',
+ 'authority-boundary-wrangler-effective-setting': '6b9d96aa10ec35a19cae35ca6972fda6199428847cbe73368c0e5979f8752d02',
+ 'authority-boundary-wrangler-fixed-model': '51de9a23dff000750ae240f4b72ffb8146220e90991d2875dba471ab5cbd1f5a',
+ 'authority-boundary-wrangler-max-ultra': 'afeab5a74e50900917bad9847480b765efdab6cb355b0e3e6b4a6f24cde01329'}
+
+REQUIRED_BOUNDARIES = {'big-iron': ['ranger-rooster'],
+ 'call': ['ranger-gus', 'ranger-roy-bean'],
+ 'clara': ['ranger-trailblazer', 'ranger-raven'],
+ 'deadeye': ['ranger-kestrel', 'ranger-trailblazer'],
+ 'gus': ['ranger-call', 'ranger-kestrel', 'ranger-prospector', 'ranger-wrangler'],
+ 'kestrel': ['ranger-deadeye', 'ranger-gus', 'ranger-rooster'],
+ 'prospector': ['ranger-gus'],
+ 'raven': ['ranger-clara'],
+ 'rooster': ['ranger-big-iron', 'ranger-kestrel'],
+ 'roy-bean': ['ranger-call'],
+ 'sparks': [],
+ 'trailblazer': ['ranger-deadeye', 'ranger-clara'],
+ 'wrangler': ['ranger-gus']}
+REQUIRED_BOUNDARY_CASES = {'collision-boundary-call-gus': {'excluded_skills': ['ranger-call'],
+                                 'expected_skill': 'ranger-gus',
+                                 'forbidden_actions': [],
+                                 'id': 'collision-boundary-call-gus',
+                                 'kind': 'collision',
+                                 'prompt': 'Call is already coordinating delivery. Before opening '
+                                           'another lane, apply only the short worth-doing check '
+                                           'in this context and return the decision to Call.'},
+ 'collision-boundary-clara-raven': {'excluded_skills': ['ranger-raven'],
+                                    'expected_skill': 'ranger-clara',
+                                    'forbidden_actions': [],
+                                    'id': 'collision-boundary-clara-raven',
+                                    'kind': 'collision',
+                                    'prompt': 'Prepare the source-grounded durable record for its '
+                                              'existing audience; no message delivery is requested '
+                                              'or authorized.'},
+ 'collision-boundary-clara-trailblazer': {'excluded_skills': ['ranger-trailblazer'],
+                                          'expected_skill': 'ranger-clara',
+                                          'forbidden_actions': [],
+                                          'id': 'collision-boundary-clara-trailblazer',
+                                          'kind': 'collision',
+                                          'prompt': 'Preserve the verified current state and '
+                                                    'uncertainty in a handoff; do not create a '
+                                                    'plan for new implementation.'},
+ 'collision-boundary-deadeye-trailblazer': {'excluded_skills': ['ranger-trailblazer'],
+                                            'expected_skill': 'ranger-deadeye',
+                                            'forbidden_actions': [],
+                                            'id': 'collision-boundary-deadeye-trailblazer',
+                                            'kind': 'collision',
+                                            'prompt': 'Independently challenge this finished plan '
+                                                      'in a context that did not author it. Do not '
+                                                      'write the implementation plan yourself.'},
+ 'collision-boundary-kestrel-deadeye': {'excluded_skills': ['ranger-deadeye'],
+                                        'expected_skill': 'ranger-kestrel',
+                                        'forbidden_actions': [],
+                                        'id': 'collision-boundary-kestrel-deadeye',
+                                        'kind': 'collision',
+                                        'prompt': 'Review the implemented parser diff for '
+                                                  'correctness against its tests; the planning '
+                                                  'stage is complete and no new plan is '
+                                                  'requested.'},
+ 'collision-boundary-kestrel-gus': {'excluded_skills': ['ranger-gus'],
+                                    'expected_skill': 'ranger-kestrel',
+                                    'forbidden_actions': [],
+                                    'id': 'collision-boundary-kestrel-gus',
+                                    'kind': 'collision',
+                                    'prompt': 'Check the built artifact for defects against its '
+                                              'requirements; the user has already chosen to build '
+                                              'it and is not asking to revisit its premise.'},
+ 'collision-boundary-prospector-gus': {'excluded_skills': ['ranger-gus'],
+                                       'expected_skill': 'ranger-prospector',
+                                       'forbidden_actions': [],
+                                       'id': 'collision-boundary-prospector-gus',
+                                       'kind': 'collision',
+                                       'prompt': 'Clarify which outcome and acceptance criteria '
+                                                 'the user actually wants; do not substitute a '
+                                                 'judgment about whether their project is '
+                                                 'worthwhile.'},
+ 'collision-boundary-rooster-big-iron': {'excluded_skills': ['ranger-rooster'],
+                                         'expected_skill': 'ranger-big-iron',
+                                         'forbidden_actions': [],
+                                         'id': 'collision-boundary-rooster-big-iron',
+                                         'kind': 'collision',
+                                         'prompt': 'The extraction worker is retrying out of '
+                                                   'control. Within existing containment '
+                                                   'authority, pause its owned job and reconcile '
+                                                   'progress before deep causal investigation.'},
+ 'collision-boundary-rooster-kestrel': {'excluded_skills': ['ranger-kestrel'],
+                                        'expected_skill': 'ranger-rooster',
+                                        'forbidden_actions': [],
+                                        'id': 'collision-boundary-rooster-kestrel',
+                                        'kind': 'collision',
+                                        'prompt': 'Explain the earliest verified cause of the '
+                                                  'observed failure. There is no proposed code '
+                                                  'change to review yet.'},
+ 'collision-boundary-roy-bean-call': {'excluded_skills': ['ranger-call'],
+                                      'expected_skill': 'ranger-roy-bean',
+                                      'forbidden_actions': [],
+                                      'id': 'collision-boundary-roy-bean-call',
+                                      'kind': 'collision',
+                                      'prompt': 'Consolidate the repository agent rules while '
+                                                'preserving their authority order; do not '
+                                                'orchestrate a product implementation.'},
+ 'collision-boundary-wrangler-gus': {'excluded_skills': ['ranger-gus'],
+                                     'expected_skill': 'ranger-wrangler',
+                                     'forbidden_actions': [],
+                                     'id': 'collision-boundary-wrangler-gus',
+                                     'kind': 'collision',
+                                     'prompt': 'The job is approved and proportionate. Choose a '
+                                               'supported effort setting within the existing '
+                                               'budget without reopening whether the job should '
+                                               'exist.'}}
 
 
 def add_error(errors: list[str], message: str) -> None:
@@ -681,7 +865,12 @@ def check_plugin_manifest(errors: list[str]) -> None:
                 r"codex plugin marketplace add darkrangerstudios/ranger-foundry --ref ([^\s`]+)",
                 readme,
             )
-            require_equal(install_refs, [f"v{version}"], "README installation ref", errors)
+            if "-" in version:
+                require_equal(install_refs, [], "unreleased README installation refs", errors)
+                if f"unreleased {version} candidate" not in readme or "Installation is held." not in readme:
+                    add_error(errors, "unreleased README must match manifest and hold installation")
+            else:
+                require_equal(install_refs, [f"v{version}"], "README installation ref", errors)
 
     description = manifest.get("description")
     if not isinstance(description, str) or not 20 <= len(description) <= 160:
@@ -782,6 +971,16 @@ def check_routing_cases(errors: list[str]) -> None:
         add_error(errors, "routing cases must be a non-empty list")
         return
 
+    by_id = {c.get("id"): c for c in cases if isinstance(c, dict)}
+    for case_id, required in REQUIRED_BOUNDARY_CASES.items():
+        if by_id.get(case_id) != required:
+            add_error(errors, f"boundary routing case changed or missing: {case_id}")
+
+    for case_id, digest in REQUIRED_AUTHORITY_CASE_HASHES.items():
+        encoded = json.dumps(by_id.get(case_id), sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+        if hashlib.sha256(encoded).hexdigest() != digest:
+            add_error(errors, f"authority routing case changed or missing: {case_id}")
+
     expected_case_keys = {
         "id",
         "kind",
@@ -799,6 +998,7 @@ def check_routing_cases(errors: list[str]) -> None:
         "indirect": set(),
         "authority-boundary": set(),
     }
+    negative_coverage: set[str] = set()
     assembly_collision_coverage: set[str] = set()
     forbidden_action_coverage: set[str] = set()
 
@@ -889,6 +1089,7 @@ def check_routing_cases(errors: list[str]) -> None:
                 add_error(errors, f"{case_id} is missing required posse restrictions")
 
         if kind == "negative":
+            negative_coverage.update(excluded_skills)
             if expected_skill is not None:
                 add_error(errors, f"{label} negative case must expect null")
             if not excluded_skills:
@@ -934,6 +1135,9 @@ def check_routing_cases(errors: list[str]) -> None:
 
         if kind in coverage and isinstance(expected_skill, str) and expected_skill in valid_skills:
             coverage[kind].add(expected_skill)
+
+    if negative_coverage != valid_skills:
+        add_error(errors, "routing corpus negative coverage is missing: " + ", ".join(sorted(valid_skills - negative_coverage)))
 
     if seen_kinds != CASE_KINDS:
         missing = ", ".join(sorted(CASE_KINDS - seen_kinds))
@@ -1142,7 +1346,17 @@ def check_skills(errors: list[str]) -> None:
                         )
                     descriptions[description] = skill_name
 
+                if len(text.encode("utf-8")) > 8192:
+                    add_error(errors, f"{skill_name} exceeds the 8192-byte entrypoint limit")
+                if parsed is not None and "; not for " not in parsed[1]:
+                    add_error(errors, f"{skill_name} description needs a closing not-for boundary")
                 body = text.split("---", 2)[-1].strip()
+                boundaries = body.partition("## Boundaries\n")[2]
+                if not boundaries:
+                    add_error(errors, f"{skill_name} needs explicit Boundaries")
+                for neighbor in REQUIRED_BOUNDARIES.get(skill_name.removeprefix("ranger-"), []):
+                    if f"`{neighbor}`" not in boundaries:
+                        add_error(errors, f"{skill_name} missing boundary for {neighbor}")
                 if len(body) < 200:
                     add_error(errors, f"{skill_name} instructions are too short to define a useful contract")
                 if len(text.splitlines()) > 500:
@@ -1166,10 +1380,10 @@ def check_skills(errors: list[str]) -> None:
                 if skill_name == ASSEMBLY_LINE_SKILL:
                     routes = set(re.findall(r"^\|[^|\n]+\|\s*`(ranger-[a-z0-9-]+)`\s*\|", body, re.MULTILINE))
                     if routes != ASSEMBLY_LINE_SPECIALISTS:
-                        add_error(errors, "Marshal dispatch table must route every specialist exactly by skill ID")
+                        add_error(errors, "Call dispatch table must route every specialist exactly by skill ID")
                 if skill_name == ASSEMBLY_LINE_SKILL and peers != ASSEMBLY_LINE_SPECIALISTS:
                     missing = ", ".join(sorted(ASSEMBLY_LINE_SPECIALISTS - peers))
-                    add_error(errors, f"Marshal roster is missing Ranger peers: {missing}")
+                    add_error(errors, f"Call roster is missing Ranger peers: {missing}")
 
         yaml_path = skills_root / skill_name / "agents" / "openai.yaml"
         if yaml_path.is_file():
@@ -1188,6 +1402,7 @@ def check_skills(errors: list[str]) -> None:
                 short_description = interface.get("short_description", "")
                 default_prompt = interface.get("default_prompt", "")
 
+                require_equal(display_name, skill_name, f"{skill_name} display name", errors)
                 if not 3 <= len(display_name) <= 64:
                     add_error(errors, f"{skill_name} display_name must contain 3 to 64 characters")
                 if display_name in display_names:
@@ -1217,6 +1432,22 @@ def check_skills(errors: list[str]) -> None:
                         errors,
                         f"{skill_name} allow_implicit_invocation must be {expected_policy}",
                     )
+
+
+def check_local_links(paths: list[Path], errors: list[str]) -> None:
+    for path in paths:
+        if path.suffix != ".md":
+            continue
+        text = read_text(path, errors)
+        if text is None:
+            continue
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+            if target.startswith(("https://", "http://", "#")):
+                continue
+            location = target.split("#", 1)[0]
+            resolved = (path.parent / location).resolve()
+            if not resolved.is_relative_to(ROOT.resolve()) or not resolved.is_file():
+                add_error(errors, f"missing or escaping local reference in {relative(path)}: {target}")
 
 
 def check_python_policy(errors: list[str]) -> None:
@@ -1263,6 +1494,7 @@ def main() -> int:
     check_marketplace(errors)
     check_routing_cases(errors)
     check_skills(errors)
+    check_local_links(paths, errors)
     check_python_policy(errors)
 
     unique_errors = sorted(set(errors))

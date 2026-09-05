@@ -1,6 +1,0 @@
-interface:
-  display_name: "ranger-scribe"
-  short_description: "Durable recall with exact evidence and provenance"
-  default_prompt: "Use $ranger-scribe to retrieve or prepare a scoped durable memory record with source evidence, freshness, and exact protected values."
-policy:
-  allow_implicit_invocation: true

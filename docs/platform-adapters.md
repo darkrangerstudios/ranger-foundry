@@ -245,7 +245,7 @@ Start a fresh task on each supported surface. First use the host's diagnostics,
 skill list, or `grok inspect` to confirm every packaged skill name are registered. Then
 run and record these synthetic dry cases:
 
-1. **Direct specialist:** invoke `ranger-bounty-hunter` through the host's native
+1. **Direct specialist:** invoke `ranger-rooster` through the host's native
    skill command and confirm its output contract is used without edits.
 2. **Indirect specialist:** ask only for the earliest verified cause of a repeatable
    parser failure; expect Cause Analysis, not Assembly Line or Kestrel.

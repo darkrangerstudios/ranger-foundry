@@ -1,6 +1,0 @@
-interface:
-  display_name: "ranger-scout"
-  short_description: "Map web sources and investigate knowledge gaps"
-  default_prompt: "Use $ranger-scout to map this website's permitted data sources and extract the requested records with provenance and coverage evidence."
-policy:
-  allow_implicit_invocation: true

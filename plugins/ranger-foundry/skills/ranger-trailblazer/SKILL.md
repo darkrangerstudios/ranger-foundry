@@ -1,6 +1,6 @@
 ---
 name: ranger-trailblazer
-description: "Trailblazer handles slice plan. Turn an approved objective into dependency-aware, independently verifiable vertical slices with acceptance and rollback criteria. Use for implementation planning, not diagnosis, code review, or executing the plan."
+description: "Trailblazer handles slice plan. Turn an approved objective into dependency-aware, independently verifiable vertical slices with acceptance and rollback criteria; not for Deadeye's independent assurance or Clara's records."
 ---
 
 # Trailblazer — Ranger Slice Plan
@@ -86,7 +86,7 @@ This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
 skill does not start an agent. `ranger-prospector` can resolve a material
-choice, `ranger-scout` can verify source assumptions, and `ranger-deadeye` can
+choice, `ranger-big-iron` can verify source assumptions, and `ranger-deadeye` can
 evaluate the resulting plan. Plan assurance does not authorize execution. These
 are examples, not an exclusive list; any available relevant specialist may
 help.
@@ -95,7 +95,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -107,3 +107,8 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- `ranger-deadeye`: Trailblazer writes a plan; Deadeye reviews a plan it did not author in a separate context.
+- `ranger-clara`: Clara records what is true; Trailblazer plans what happens next. A record is not a plan.

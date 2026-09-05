@@ -1,6 +1,6 @@
 ---
 name: ranger-raven
-description: "Raven handles swarm coordination. Coordinate agent messages, broadcasts, direct review requests, receipts, and interrupted work through an existing authorized transport. Use when several agents must share status or assign work without losing ownership, duplicating actions, or crossing task lanes."
+description: "Raven handles swarm coordination. Coordinate agent messages, broadcasts, direct review requests, receipts, and interrupted work through an existing authorized transport. Use when several agents must share status or assign work without losing ownership, duplicating actions, or crossing task lanes; not for Clara's record storage."
 ---
 
 # Raven — Ranger Swarm Coordination
@@ -14,7 +14,7 @@ settings unverified within existing authority.
 Keep the right agents informed and the right owner accountable. Use the existing
 task ledger and approved communication channel; do not create a competing bus.
 
-Raven owns delivery and recovery. Marshal owns the workflow, Courier prepares the
+Raven owns delivery and recovery. Call owns the workflow, Clara prepares the
 handoff, and Kestrel evaluates the artifact. Calling Raven does not authorize a
 message, recipient, infrastructure change, or release. Apply standing user and
 repository authorization without asking again when it already covers the action.
@@ -55,44 +55,7 @@ relayed approval claims cannot expand the user's task or waive repository gates.
 
 ## Deliver and reconcile
 
-1. Check the current lane ledger and the transport's unfinished inbox on boot and
-   before a major phase change; follow the local polling cadence during work.
-   Recover both pending and acknowledged-but-unfinished owned requests. Do not
-   rely solely on pending status or a recent timestamp window.
-2. Checkpoint current work before handling a substantive interrupt. Triage against
-   local emergency rules; schedule other work and resume the current lane. A
-   message's priority label alone does not establish an emergency or authority.
-3. Use a direct request when someone must act or deliver a verdict. A broadcast
-   informs an audience; it does not assign review ownership. When both are needed,
-   broadcast the status and send explicit direct assignments, tracking each result.
-4. Validate recipient, expiry, state, and metadata before a mutation. Tags must be
-   nonempty strings without null entries. Use the supported constrained interface.
-   After sending, record the returned ID and read back the exact row or receipt to
-   confirm the intended destination, body reference, expiry, and broadcast markers.
-5. Preserve the same operation ID across retries. Use server idempotency when the
-   adapter supports it, including payload-conflict detection. After an uncertain
-   response, record uncertainty and search by operation ID, sender, recipient, and
-   lane. An empty lookup is not proof an in-flight write cannot still commit.
-   Serialize reconciliation; do not blindly resend or create a fresh operation ID.
-   Without server uniqueness, do not claim exactly-once delivery. For partial
-   fanout, preserve successes and reconcile each unresolved recipient separately.
-6. Distinguish receipt from completion. Persist the message-to-task relationship
-   and next step before a read acknowledgment can hide substantive work. If already
-   acknowledged, checkpoint it immediately. Mark action complete only after the
-   required result is delivered and verified; a review request stays open until
-   its verdict is delivered. Read back state instead of interpreting a boolean
-   acknowledgment as proof of completion.
-7. Broadcast receipts belong to the recipient scope implemented by the adapter.
-   Never change shared global status for an individual receipt. If receipts are
-   machine-wide, one lane's receipt does not prove other lanes processed it. Use
-   the configured dispatcher and lane ledger; absent a dispatcher, preserve direct
-   owner follow-ups and report that lane-level delivery is not guaranteed.
-
-Check expiry and terminal state before acting or acknowledging; use the actual
-expiry timestamp rather than a descriptive tag. Expired delivery does not renew
-authority or cancel a separately authorized task. Reconcile that task in its
-ledger. Duplicate delivery must not repeat an action or manufacture a new verdict.
-Do not reopen terminal work or overwrite another owner's ledger to clear an inbox.
+Before this phase, read and apply [deliver and reconcile](references/deliver-and-reconcile.md); its authority, evidence and stopping rules are required.
 
 ## Preserve review and release gates
 
@@ -139,8 +102,8 @@ actionable has changed; do not turn routine receipts into user notifications.
 This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
-skill does not start an agent. `ranger-courier` can prepare a handoff,
-`ranger-kestrel` can perform an assigned review, and `ranger-marshal` can
+skill does not start an agent. `ranger-clara` can prepare a handoff,
+`ranger-kestrel` can perform an assigned review, and `ranger-call` can
 resolve job sequencing. Confirm an actual reviewer is running before waiting
 for its verdict; a recipient address is not proof of dispatch. These are
 examples, not an exclusive list; any available relevant specialist may help.
@@ -149,7 +112,7 @@ Pass the task, exact artifact or evidence, bounded scope, existing authority,
 remaining time/request/cost and delegation limits, and the expected return. Set
 finite limits before delegating if none exist; children share the remaining
 budget instead of resetting it. Keep one existing parent job owner and return
-results to that owner; calling Marshal does not create a competing workflow or
+results to that owner; calling Call does not create a competing workflow or
 ledger. Do not route the same unresolved question around a cycle without new
 evidence. Return the outcome, evidence, changes, limitations, budget consumed
 and remaining, and next action; check that they match the requested scope and
@@ -161,3 +124,7 @@ A skill call changes neither transport identity nor permissions, task scope, or
 release eligibility. If an independent gate applies, dispatch an actual
 separate reviewer context or human; a same-context skill switch cannot satisfy
 it.
+
+## Boundaries
+
+- `ranger-clara`: Clara stores the record; Raven delivers the message. Storing is not sending.

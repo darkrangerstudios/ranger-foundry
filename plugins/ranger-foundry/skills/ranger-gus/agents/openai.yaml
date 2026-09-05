@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-gus"
+  short_description: "Check whether the proposed work is worthwhile"
+  default_prompt: "Use $ranger-gus to apply a brief premise check in this context before Call dispatches work."
+policy:
+  allow_implicit_invocation: true
