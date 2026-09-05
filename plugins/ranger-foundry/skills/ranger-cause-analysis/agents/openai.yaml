@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Cause Analysis"
+  display_name: "Bounty Hunter · Cause Analysis"
   short_description: "Trace failures to a verified root cause"
   default_prompt: "Use $ranger-cause-analysis to diagnose this failure and identify the earliest evidence-backed cause."
 policy:

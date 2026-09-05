@@ -1,9 +1,9 @@
 ---
 name: ranger-plan-assurance
-description: Adversarially evaluate an existing implementation or migration plan for missing evidence, unsafe sequencing, authority gaps, and unverifiable outcomes. Use when a plan already exists, not to draft the initial plan or review finished code.
+description: "Deadeye handles plan assurance. Adversarially evaluate an existing implementation or migration plan for missing evidence, unsafe sequencing, authority gaps, and unverifiable outcomes. Use when a plan already exists, not to draft the initial plan or review finished code."
 ---
 
-# Ranger Plan Assurance
+# Deadeye — Ranger Plan Assurance
 
 Stress-test a plan before execution. Find concrete ways it could fail, then require
 the smallest plan change or gate that addresses each credible failure path.

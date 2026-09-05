@@ -7,6 +7,7 @@ if not sys.flags.isolated:
     raise SystemExit("Run the validator with isolated imports: python3 -I scripts/validate.py")
 
 import ast
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -30,6 +31,7 @@ EXPECTED_SKILLS = (
     "ranger-prototype",
     "ranger-questionnaire",
     "ranger-slice-plan",
+    "ranger-swarm-coordination",
 )
 
 EXPECTED_IMPLICIT_POLICY = {skill_name: True for skill_name in EXPECTED_SKILLS}
@@ -48,6 +50,7 @@ ROOT_FILES = {
     Path("LICENSE"),
     Path("README.md"),
     Path("SECURITY.md"),
+    Path("docs/artwork.md"),
     Path("docs/commissioning.md"),
     Path("docs/dispatch-policy.md"),
     Path("docs/platform-adapters.md"),
@@ -63,7 +66,12 @@ SKILL_FILES = {
     for relative in (Path("SKILL.md"), Path("agents/openai.yaml"))
 }
 
-ALLOWED_FILES = ROOT_FILES | SKILL_FILES
+# A changed image requires renewed visual and provenance review plus a new pin.
+REVIEWED_ASSETS = {
+    Path("assets/ranger-foundry-dark-west.png"):
+        "efc5f0e5f99a1337b7275e380c2be53f2b78a41d0a7c963db4ca78fa1d8bbe4a",
+}
+ALLOWED_FILES = ROOT_FILES | SKILL_FILES | set(REVIEWED_ASSETS)
 
 BLOCKED_COMPONENTS = {
     ".app.json",
@@ -89,6 +97,7 @@ NETWORK_MODULES = {
 
 ALLOWED_PYTHON_MODULES = {
     "ast",
+    "hashlib",
     "json",
     "os",
     "pathlib",
@@ -177,6 +186,11 @@ CASE_KINDS = {
 }
 
 FORBIDDEN_ACTIONS = {
+    'acknowledge-other-lane',
+    'retry-uncertain-send',
+    'execute-expired-message',
+    'invent-routing-identity',
+
     "commit-or-push",
     "contact-recipient",
     "create-local-commit",
@@ -255,6 +269,20 @@ REQUIRED_TRANSITION_CASES = {
 }
 
 
+# These cases pin protocol boundaries independently of aggregate routing counts.
+REQUIRED_COORDINATION_CASES = {
+    'authority-boundary-raven-draft': frozenset(['send-message', 'update-external-tracker']),
+    'authority-boundary-raven-ledger': frozenset(['update-external-tracker']),
+    'authority-boundary-raven-lane': frozenset(['acknowledge-other-lane', 'update-external-tracker']),
+    'authority-boundary-raven-uncertain': frozenset(['retry-uncertain-send']),
+    'authority-boundary-raven-receipt': frozenset(['deploy-or-promote', 'save-hosted-version', 'update-serving-ref']),
+    'authority-boundary-raven-identity': frozenset(['deploy-or-promote', 'self-attest-independent-review', 'update-serving-ref']),
+    'authority-boundary-raven-expired': frozenset(['execute-expired-message']),
+    'authority-boundary-raven-callsign': frozenset(['invent-routing-identity']),
+    'authority-boundary-raven-stale-verdict': frozenset(['deploy-or-promote', 'save-hosted-version', 'update-serving-ref']),
+}
+
+
 def add_error(errors: list[str], message: str) -> None:
     errors.append(message)
 
@@ -291,6 +319,24 @@ def repository_paths(errors: list[str]) -> list[Path]:
                 paths.append(path)
 
     return sorted(paths)
+
+
+def check_reviewed_asset(path: Path, errors: list[str]) -> None:
+    """Accept only inspected PNG bytes; normal path/mode/symlink checks still apply."""
+    expected = REVIEWED_ASSETS.get(path.relative_to(ROOT))
+    if expected is None:
+        add_error(errors, f"unreviewed binary asset: {relative(path)}")
+        return
+    try:
+        data = path.read_bytes()
+    except OSError as exc:
+        add_error(errors, f"cannot read {relative(path)}: {exc}")
+        return
+    if not data.startswith(b"\x89PNG\r\n\x1a\n"):
+        add_error(errors, f"reviewed asset is not PNG: {relative(path)}")
+    if hashlib.sha256(data).hexdigest() != expected:
+        add_error(errors, f"reviewed asset hash mismatch: {relative(path)}")
+
 
 
 def read_text(path: Path, errors: list[str]) -> Optional[str]:
@@ -607,6 +653,12 @@ def check_routing_cases(errors: list[str]) -> None:
             if not required_actions.issubset(forbidden_actions):
                 add_error(errors, f"{case_id} is missing required transition restrictions")
 
+        if isinstance(case_id, str) and case_id in REQUIRED_COORDINATION_CASES:
+            if kind != "authority-boundary" or expected_skill != "ranger-swarm-coordination":
+                add_error(errors, f"{case_id} must retain its coordination kind and skill")
+            if not REQUIRED_COORDINATION_CASES[case_id].issubset(forbidden_actions):
+                add_error(errors, f"{case_id} is missing required coordination restrictions")
+
         if kind == "negative":
             if expected_skill is not None:
                 add_error(errors, f"{label} negative case must expect null")
@@ -687,6 +739,14 @@ def check_routing_cases(errors: list[str]) -> None:
             errors,
             "routing corpus transition-scenario coverage is missing: "
             + ", ".join(sorted(missing_transition_cases)),
+        )
+
+    missing_coordination_cases = set(REQUIRED_COORDINATION_CASES) - seen_ids
+    if missing_coordination_cases:
+        add_error(
+            errors,
+            "routing corpus coordination-scenario coverage is missing: "
+            + ", ".join(sorted(missing_coordination_cases)),
         )
 
     if not REQUIRED_TRANSITION_ACTIONS.issubset(forbidden_action_coverage):
@@ -930,6 +990,9 @@ def main() -> int:
     check_file_allowlist(paths, errors)
 
     for path in paths:
+        if path.relative_to(ROOT) in REVIEWED_ASSETS:
+            check_reviewed_asset(path, errors)
+            continue
         text = read_text(path, errors)
         if text is not None:
             check_public_text(path, text, errors)

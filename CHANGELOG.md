@@ -2,6 +2,27 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.3.0 - 2026-09-05
+
+### Added
+
+- Raven, a portable swarm coordination skill for authorized direct messages,
+  broadcasts, review requests, receipt recovery, and uncertain-send reconciliation.
+- Declarative coordination regression cases that preserve lane ownership,
+  independent verdicts, expiry, and message-versus-ledger authorization.
+- The Dark West banner with reviewed generation provenance and an exact-file hash.
+
+### Changed
+
+- Introduced crew callsigns while retaining every existing stable skill ID:
+  Marshal, Bounty Hunter, Warden, Trailblazer, Deadeye, Courier, Prospector,
+  Sparks, and Kestrel; Raven joins as the tenth skill.
+- Reconciled the README and marketplace copy with the crew, the corrected policy,
+  and the matching installation version.
+- Kept local workflow commissioning and all review and release gates intact.
+  Raven supplies protocol guidance; it does not provision a bus or enforce
+  identity, lane isolation, or database permissions.
+
 ## 0.2.1 - 2026-09-04
 
 ### Fixed

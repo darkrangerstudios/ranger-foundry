@@ -1,9 +1,9 @@
 ---
 name: ranger-questionnaire
-description: Turn an ambiguous work request into a decision-ready brief through focused clarification. Use when requirements, priorities, constraints, or success criteria block progress; not to author a survey, form, interview script, or questionnaire deliverable.
+description: "Prospector handles questionnaire. Turn an ambiguous work request into a decision-ready brief through focused clarification. Use when requirements, priorities, constraints, or success criteria block progress; not to author a survey, form, interview script, or questionnaire deliverable."
 ---
 
-# Ranger Questionnaire
+# Prospector — Ranger Questionnaire
 
 Clarify only the decisions that materially change the result. Do not turn a well-scoped request into an interview.
 

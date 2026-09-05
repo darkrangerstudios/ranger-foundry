@@ -1,149 +1,166 @@
+![Dark Ranger Studios — Ranger Foundry. A shadowed ranger above a forged anvil, lit by embers.](assets/ranger-foundry-dark-west.png)
+
 # Ranger Foundry
 
-> **Put your software work through the forge.**
+## Build cool shit. Check your work.
 
-One workflow spine. Eight specialist stations. Built to make every meaningful
-handoff leave evidence.
+AI can write a lot of code in a hurry. Then you get to find out what it missed,
+why it changed six other things, and whether “all tests pass” means anyone
+actually tried using it.
 
-Ranger Foundry is a portable skill set for AI coding agents that turns “build
-this” into scoped, reviewable, verifiable work. **Ranger Assembly Line** keeps a
-nontrivial job moving from intake through proof and handoff; the focused Ranger
-skills step in when the work needs diagnosis, planning, adversarial review, a
-prototype, cleaner agent policy, or a durable transfer.
+Ranger Foundry is a toolbelt for that part of the job.
 
-The aim is less mystery meat automation and fewer victory laps after a type
-check. Foundry instructs the agent to keep authority explicit, use the host
-repository's real rules, and distinguish “the code changed” from “the outcome is
-proven.” Host permissions, branch protection, and deployment controls remain the
-hard enforcement layer.
+Ten skills for AI coding agents: **Marshal**, the foreman who keeps a bigger job moving, and
+nine specialists for figuring things out, planning the work, building a small
+experiment, finding trouble, and handing things over without losing the plot.
 
-```text
-REQUEST -> EVIDENCE -> PLAN -> BUILD -> INSPECT -> PROVE -> HANDOFF
-              |          |                  |                 |
-           specialist  assurance         Kestrel          exact state
-```
+The idea is pretty simple: understand the job, build it in pieces you can check,
+have someone challenge the work, and leave enough evidence that the next person
+doesn't have to take your word for it.
+
+**Built by Dark Ranger Studios. Open source. Bring your own agents.**
+
+[Meet the crew](#meet-the-crew) · [Put it to work](#put-it-to-work) · [Install](#install)
+
+---
 
 ## Meet the crew
 
-| Skill | In plain English | Reach for it when... |
-| --- | --- | --- |
-| `ranger-assembly-line` | The foreman that keeps a complex job moving through the right stations. | You want a nontrivial build or fix carried from request to verified handoff. |
-| `ranger-cause-analysis` | Finds what actually broke before anyone starts fixing symptoms. | A repeatable failure needs a falsifiable root cause. |
-| `ranger-agent-instructions` | Turns a pile of AI rule files into one clean chain of command. | Agent guidance is duplicated, vague, unsafe, or fighting itself. |
-| `ranger-slice-plan` | Breaks a big objective into small pieces that each prove something useful. | The outcome is approved, but the implementation path needs safe sequencing. |
-| `ranger-plan-assurance` | Red-teams the plan while mistakes are still cheap. | A plan already exists and needs its assumptions, gates, and rollback challenged. |
-| `ranger-handoff` | Leaves exact state for the next person instead of archaeological clues. | Work must pause, change owners, or survive a fresh context window. |
-| `ranger-questionnaire` | Asks only the questions that can materially change the build. | Ambiguity blocks progress and a decision-ready brief is more useful than an interview. |
-| `ranger-prototype` | Builds the cheapest honest experiment before committing to the full thing. | One bounded proof can retire a product or technical uncertainty. |
-| `ranger-kestrel-review` | Hunts bugs, security gaps, and unsupported confidence before shipping. | Code, architecture, or a security-sensitive change needs findings-first review. |
+You can call a specialist directly. You don't need a whole production line to
+fix a loose screw. Callsigns are the friendly names; the `ranger-*` invocation
+names stay stable.
 
-## How the Assembly Line works
+| Skill | What you call it in for |
+| --- | --- |
+| **Marshal** · Assembly Line · `ranger-assembly-line` | Keep a bigger job moving from the initial ask through review, testing, and handoff. Bring in the right specialist along the way. |
+| **Bounty Hunter** · Cause Analysis · `ranger-cause-analysis` | Find what actually broke. Follow the evidence back to the cause before changing things. |
+| **Warden** · Agent Instructions · `ranger-agent-instructions` | Sort out the rule files when your agents are getting mixed signals. |
+| **Trailblazer** · Slice Plan · `ranger-slice-plan` | Break a big idea into useful pieces you can build and verify one at a time. |
+| **Deadeye** · Plan Assurance · `ranger-plan-assurance` | Poke holes in the plan while changing it is still cheap. |
+| **Courier** · Handoff · `ranger-handoff` | Leave the next person the actual state of the work: what's done, what's stuck, and where to pick up. |
+| **Prospector** · Questionnaire · `ranger-questionnaire` | Ask the questions that change what gets built. Stop when there's enough to work with. |
+| **Sparks** · Prototype · `ranger-prototype` | Try the smallest useful version and see whether the idea holds up. |
+| **Raven** · Swarm Coordination · `ranger-swarm-coordination` | Keep agents informed, route direct review requests, and recover unfinished work without crossing task lanes. |
+| **Kestrel** · Review · `ranger-kestrel-review` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
 
-Assembly Line is an orchestrator, not a magic function caller. The agent loads and
-applies the narrowest available skill for each phase, then brings its evidence back
-to one job card. Repository-local implementation, design, database,
-infrastructure, and release skills remain the technical authorities for their
-domains.
+## Put it to work
 
-It scales the ceremony to the risk:
+Give the agent a real job and a clear boundary. For example:
 
-- **Express:** one bounded, reversible change with a named check.
-- **Standard:** cross-file or cross-layer work with slices, regression evidence,
-  and proportionate review.
-- **High risk:** auth, permissions, secrets, data, migrations, production, or
-  irreversible actions with mandatory assurance, rollback, exact evidence, and
-  independent review.
+> Use Bounty Hunter (Ranger Cause Analysis) to find out why saved settings disappear after a
+> restart. Show me the cause and how you proved it. Don't change the code yet.
 
-Assembly Line explicitly instructs agents not to turn a plan, passing test, broad
-authorization, or phase transition into permission to commit, push, merge,
-promote, save, deploy, publish, message, or mutate production. Every transition
-needs two green gates: authority for that exact operation and eligibility of the
-exact artifact for the exact destination. Acceptance never transfers to a changed
-revision. Git receipts name the remote, full ref, pushed revision, force status,
-and server-observed resulting tip; a source push never implies a later save or
-deployment. Back
-those instructions with host permissions and repository controls where the
-boundary must be enforced technically.
+Or, once you're ready to build:
 
-## Works where your agents work
+> Use Marshal (Ranger Assembly Line) to implement the approved fix. Follow this repo's
+> rules, test the failure we started with, and leave a handoff. No deployment.
 
-Keep shared repository policy in `AGENTS.md`, then use thin adapters rather than
-copying the rules into five competing files. The [platform adapter guide](docs/platform-adapters.md)
-includes native-discovery guidance and copy-and-adapt instruction patterns for:
+The agent reads the relevant skill instructions and applies them. There isn't a
+hidden crew of services running behind the scenes. Assembly Line keeps the job
+together; your repository's design, implementation, database, and release rules
+still govern the work.
 
-- Claude Code;
-- GitHub Copilot;
-- Visual Studio Code;
-- Cursor; and
-- Grok Build.
+Small, reversible jobs get a short path. Work across several files gets a plan
+and regression checks. Auth, secrets, data migrations, production changes, and
+other high-risk work need tighter checks, a recovery plan, and an independent
+reviewer in a separate agent context or a human.
 
-## Public core and private overlays
+Raven uses your existing authorized communication channel. It does not install a
+message service. Callsigns, transport addresses, and task lanes stay separate;
+broadcast receipts are not review acceptance.
 
-The public core is intentionally environment-neutral. It defines reusable
-reasoning and delivery contracts without embedding organization, product,
-infrastructure, identity, or credential details.
+### Who gets the keys?
 
-Teams can maintain private overlays for their own systems and policies. A private
-overlay may narrow a public skill, add required gates, or delegate a broad workflow
-to local specialists. Repository-local instructions and private overlays take
-precedence over this public core. See [Dispatch policy](docs/dispatch-policy.md).
+You do. Installing a skill doesn't give an agent permission to publish your
+code, spend money, change production, or send messages on your behalf.
+
+Before any commit, push, merge, promotion, platform save, deployment, or
+publication, check two things: is this exact action authorized, and is this exact
+version eligible for its destination? A plan, passing tests, broad authorization,
+or a phase change doesn't answer both questions. A review of yesterday's code
+doesn't cover today's changes.
+
+Record the remote, full ref, pushed revision, whether the push was forced, and the
+server-observed resulting tip. Pushing source, saving a platform version, and
+deploying it each need their own gates.
+
+These are instructions for the agent. **Keep the real locks in place:** host
+permissions, branch protection, and deployment controls.
+
+## Bring your own workshop
+
+Keep shared project rules in `AGENTS.md`. Use thin adapters for each agent instead
+of maintaining five slightly different copies of the same rules.
+
+The [platform adapter guide](docs/platform-adapters.md) covers discovery and
+setup patterns for Claude Code, GitHub Copilot, Visual Studio Code, Cursor, and
+Grok Build. The Codex plugin install is below.
+
+Keep your company's infrastructure details, credentials, and private workflows
+in your own overlays. The public skills are meant to travel. Your private
+context isn't. Repository rules and private overlays take precedence; see
+[Dispatch policy](docs/dispatch-policy.md).
 
 ## Install
 
-Add the repository marketplace, then add Ranger Foundry:
+Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.2.1
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.3.0
 codex plugin add ranger-foundry@ranger-foundry
 ```
 
-Pin a reviewed tag or immutable commit rather than a moving branch. Start a fresh
-Codex task after installation so the new skill metadata is loaded.
+Pin a reviewed tag or exact commit. Start a fresh Codex task after installation
+so it loads the new skills.
 
-## Validate
+### Make it earn its place
 
-Run the dependency-free validator from the repository root:
+Try Foundry alongside your current workflow before handing it the whole shop.
+The [commissioning guide](docs/commissioning.md) starts with three real jobs:
+compare independent runs, record what each one caught or missed, and get a
+Kestrel verdict from a separate reviewer context or human. Track regressions and how much babysitting each run needed.
+
+If the candidate misses something serious, fix it and do the required follow-up
+trials. Keep your established workflow until the evidence supports a deliberate
+switch. A clean install is just a clean install.
+
+## Check the package
+
+From the repository root:
 
 ```bash
 python3 -I scripts/validate.py
 ```
 
-The validator checks the plugin and marketplace contracts, the exact skill set,
-skill metadata, routing-case corpus structure and declared coverage,
-public-safety boundaries, unexpected files, executable content, and symbolic
-links. It does not run an agent or prove behavioral routing; commissioning records
-those observations on the target platform.
+No dependencies to install. The validator checks the plugin structure, exact
+skill list, metadata, declared routing cases, and public-content boundaries.
+It rejects unexpected files, executable content, and symbolic links; the one
+reviewed banner is allowed only at its exact path and byte hash. Its original
+generation provenance is retained; see the [artwork review](docs/artwork.md).
 
-## Commission before cutover
+It doesn't run an agent. Real-world behavior still has to be tested on the
+platform where you plan to use it.
 
-Foundry does not replace an established workflow simply because it installed
-cleanly. Follow [the commissioning policy](docs/commissioning.md): compare the old
-and candidate workflows on three material jobs, keep the passes independent,
-obtain a Kestrel verdict, and record routing quality, missed checks, regressions,
-and user burden.
-
-That is how Ranger Assembly Line earns the keys to the forge.
-
-## Repository layout
+## Under the hood
 
 ```text
 .agents/plugins/marketplace.json
 plugins/ranger-foundry/
   .codex-plugin/plugin.json
   skills/
+assets/ranger-foundry-dark-west.png
 docs/
 evals/routing-cases.json
 scripts/validate.py
 ```
 
-Each named skill directory contains `SKILL.md` and `agents/openai.yaml`.
+Each skill has a `SKILL.md` and an `agents/openai.yaml` file.
 
-## Contributing
+## Got a better way?
 
-Read [Contributing](CONTRIBUTING.md) and [Skill review](docs/skill-review.md) before
-proposing a change. Security reports belong in the private channel described in
+Bring a focused change and show what it improves. Start with
+[Contributing](CONTRIBUTING.md) and [Skill review](docs/skill-review.md).
+For security issues, use the private reporting channel in
 [Security](SECURITY.md).
 
-## License
-
-Ranger Foundry is available under the [MIT License](LICENSE).
+Ranger Foundry is released under the [MIT License](LICENSE).

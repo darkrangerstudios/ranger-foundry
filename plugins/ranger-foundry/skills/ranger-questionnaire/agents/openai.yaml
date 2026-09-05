@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Questionnaire"
+  display_name: "Prospector · Questionnaire"
   short_description: "Turn ambiguity into a decision-ready brief"
   default_prompt: "Use $ranger-questionnaire to clarify this request and produce a decision-ready brief."
 policy:

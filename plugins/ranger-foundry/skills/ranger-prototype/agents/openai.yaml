@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Prototype"
+  display_name: "Sparks · Prototype"
   short_description: "Build a small, testable proof of the idea"
   default_prompt: "Use $ranger-prototype to define and build the smallest testable prototype for this idea."
 policy:

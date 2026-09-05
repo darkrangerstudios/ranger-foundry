@@ -1,9 +1,9 @@
 ---
 name: ranger-assembly-line
-description: Orchestrate a nontrivial software change from intake through verified handoff by routing each phase to the narrowest Ranger Foundry specialist. Use for end-to-end build or fix requests when no other established workflow owns delivery, or when local instructions explicitly delegate coordination; not for a single diagnosis, plan, review, questionnaire, prototype, instruction edit, or handoff.
+description: "Marshal is the Foundry foreman. Orchestrate a nontrivial software change from intake through verified handoff by routing each phase to the narrowest Ranger Foundry specialist. Use for end-to-end build or fix requests when no other established workflow owns delivery, or when local instructions explicitly delegate coordination; not for a single diagnosis, plan, review, questionnaire, prototype, instruction edit, handoff, or coordination request."
 ---
 
-# Ranger Assembly Line
+# Marshal — Ranger Assembly Line
 
 Keep a software job moving from an approved outcome to a verified result without
 losing scope, evidence, authority, or the exact next action. This skill is the
@@ -116,6 +116,7 @@ do not require the user to type a `$` skill name.
 | An existing plan needs adversarial preflight | `ranger-plan-assurance` | Findings, required corrections, and readiness verdict |
 | Repository agent policy must change | `ranger-agent-instructions` | One clear authority chain and validation evidence |
 | A change needs findings-first review | `ranger-kestrel-review` | P0-P3 findings, evidence, and readiness verdict |
+| Agents need authorized messages, reviews assigned, or receipt recovery | `ranger-swarm-coordination` | Delivery evidence, open verdicts, owner, and next action |
 | Work must pause or change owners | `ranger-handoff` | Resumable state and exact next action |
 
 Repository-local implementation, design, database, infrastructure, and release

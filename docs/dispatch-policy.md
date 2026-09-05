@@ -25,6 +25,7 @@ outcome and treat the other as a supporting method.
 | Create or improve agent instructions | `ranger-agent-instructions` | Existing authority and loader relationships remain intact unless the user asks to change them. |
 | Plan the smallest executable path | `ranger-slice-plan` | Produces a plan, not an implementation. |
 | Assess a plan before implementation | `ranger-plan-assurance` | Reviews standards and stated requirements independently; it is not code review. |
+| Coordinate authorized agent messages and recover unfinished requests | `ranger-swarm-coordination` | Uses the existing transport and ledger; does not create messaging, tracker, identity, or release authority. |
 | Transfer work state | `ranger-handoff` | Produces a handoff but does not send or publish it. |
 | Collect missing decisions | `ranger-questionnaire` | Produces questions but does not contact recipients. |
 | Learn through a bounded implementation | `ranger-prototype` | Prototype output is not production-ready by default. |
@@ -62,7 +63,8 @@ Combine skills only when their outputs are independently useful. Common combinat
 - cause analysis feeding a Kestrel review;
 - slice planning followed by plan assurance;
 - a questionnaire resolving blockers before a slice plan;
-- a prototype producing evidence for a handoff.
+- a prototype producing evidence for a handoff;
+- a handoff prepared by Courier and delivered through Raven when sending is authorized.
 
 Do not run multiple skills merely because their trigger words overlap.
 

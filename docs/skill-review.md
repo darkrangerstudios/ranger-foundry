@@ -100,6 +100,6 @@ workspace. The review classified the available material as follows:
 | Employer templates and assets | Excluded completely. |
 | Platform- or vendor-installed skills | Excluded; installation does not imply redistribution rights. |
 
-Only the nine skills named in the repository validator are part of the public
+Only the skills named in the repository validator are part of the public
 Ranger Foundry core. Private overlays may continue to use other reviewed material,
 but they are not covered by this repository's MIT license.

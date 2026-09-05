@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Plan Assurance"
+  display_name: "Deadeye · Plan Assurance"
   short_description: "Stress-test plans before implementation begins"
   default_prompt: "Use $ranger-plan-assurance to review this plan for concrete gaps, unsafe sequencing, and missing gates."
 policy:

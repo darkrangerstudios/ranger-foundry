@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Slice Plan"
+  display_name: "Trailblazer · Slice Plan"
   short_description: "Plan work as verifiable vertical slices"
   default_prompt: "Use $ranger-slice-plan to turn this objective into small, dependency-aware implementation slices."
 policy:

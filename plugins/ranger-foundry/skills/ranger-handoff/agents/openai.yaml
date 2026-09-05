@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ranger Handoff"
+  display_name: "Courier · Handoff"
   short_description: "Create durable, evidence-backed task handoffs"
   default_prompt: "Use $ranger-handoff to prepare a concise, resumable handoff for this task."
 policy:

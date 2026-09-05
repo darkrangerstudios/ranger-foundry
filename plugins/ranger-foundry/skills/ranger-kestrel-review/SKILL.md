@@ -1,9 +1,9 @@
 ---
 name: ranger-kestrel-review
-description: Run an aggressive, evidence-first review of a plan, change set, codebase, workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for routine implementation or a self-review presented as independent.
+description: "Kestrel handles review. Run an aggressive, evidence-first review of a plan, change set, codebase, workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for routine implementation or a self-review presented as independent."
 ---
 
-# Ranger Kestrel Review
+# Kestrel — Ranger Review
 
 Find consequential failures, not stylistic preferences. Default to read-only investigation and make uncertainty visible.
 

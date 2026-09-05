@@ -1,9 +1,9 @@
 ---
 name: ranger-handoff
-description: Create a durable, self-contained handoff for ongoing technical or project work. Use when work must pause, change owners, survive context loss, or be resumed later.
+description: "Courier handles handoff. Create a durable, self-contained handoff for ongoing technical or project work. Use when work must pause, change owners, survive context loss, or be resumed later."
 ---
 
-# Ranger Handoff
+# Courier — Ranger Handoff
 
 Produce a compact handoff that lets a capable collaborator resume without reconstructing the session.
 

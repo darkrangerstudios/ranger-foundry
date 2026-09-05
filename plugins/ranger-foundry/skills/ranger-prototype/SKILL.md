@@ -1,9 +1,9 @@
 ---
 name: ranger-prototype
-description: Build or plan the smallest testable prototype that answers a concrete product or technical question. Use for proofs of concept, feasibility checks, and early interaction experiments.
+description: "Sparks handles prototype. Build or plan the smallest testable prototype that answers a concrete product or technical question. Use for proofs of concept, feasibility checks, and early interaction experiments."
 ---
 
-# Ranger Prototype
+# Sparks — Ranger Prototype
 
 Optimize for learning, not feature count. A prototype should answer a named question with observable evidence.
 

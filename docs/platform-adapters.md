@@ -190,7 +190,7 @@ chat; nested support is experimental and requires the corresponding setting. Use
 `applyTo`-scoped instruction files when subtree behavior must be dependable.
 
 If skills remain in the pinned source tree, add that exact skills directory to
-`chat.agentSkillsLocations`. Confirm all nine skills in the Agent Customizations
+`chat.agentSkillsLocations`. Confirm all ten skills in the Agent Customizations
 diagnostics before relying on routing. These instructions govern chat and agent
 work, not inline completion.
 
@@ -231,14 +231,14 @@ release transition, separately prove exact-operation authority and exact-artifac
 eligibility for the exact destination.
 ```
 
-Use `grok inspect` to confirm the resolved rules and all nine native skills. A
+Use `grok inspect` to confirm the resolved rules and all ten native skills. A
 user-level `[skills] paths` entry is machine-local; use a committed native skill
 root or enabled project plugin when remote agents must receive the same skills.
 
 ## Prove selection, not just file presence
 
 Start a fresh task on each supported surface. First use the host's diagnostics,
-skill list, or `grok inspect` to confirm all nine skill names are registered. Then
+skill list, or `grok inspect` to confirm all ten skill names are registered. Then
 run and record these synthetic dry cases:
 
 1. **Direct specialist:** invoke `ranger-cause-analysis` through the host's native

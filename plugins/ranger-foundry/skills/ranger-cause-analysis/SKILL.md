@@ -1,9 +1,9 @@
 ---
 name: ranger-cause-analysis
-description: Diagnose a failure or unexpected behavior by tracing evidence to the earliest verified cause and producing a falsifiable remediation brief. Use for root-cause analysis, not routine implementation or open-ended brainstorming.
+description: "Bounty Hunter handles cause analysis. Diagnose a failure or unexpected behavior by tracing evidence to the earliest verified cause and producing a falsifiable remediation brief. Use for root-cause analysis, not routine implementation or open-ended brainstorming."
 ---
 
-# Ranger Cause Analysis
+# Bounty Hunter — Ranger Cause Analysis
 
 Find the cause that best explains the observed failure, not merely the component
 where the failure became visible.

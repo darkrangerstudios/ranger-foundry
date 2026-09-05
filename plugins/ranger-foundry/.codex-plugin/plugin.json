@@ -1,7 +1,7 @@
 {
   "name": "ranger-foundry",
-  "version": "0.2.1",
-  "description": "A portable software workflow spine with focused skills for diagnosis, planning, review, prototyping, and handoff.",
+  "version": "0.3.0",
+  "description": "Ten skills for AI coding agents: Marshal runs the line, specialists challenge the work, and Raven keeps the crew coordinated.",
   "author": {
     "name": "Dark Ranger Studios",
     "url": "https://github.com/darkrangerstudios/ranger-foundry"
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Ranger Foundry",
-    "shortDescription": "Put complex software work through a verifiable forge.",
-    "longDescription": "Ranger Foundry pairs a portable end-to-end Assembly Line with focused skills for diagnosis, planning, review, prototyping, and durable handoff.",
+    "shortDescription": "Build cool things. Check your work. Keep the crew in sync.",
+    "longDescription": "Ranger Foundry brings ten named skills to your agents: Marshal coordinates delivery, focused specialists handle the work, and Raven manages authorized swarm communication.",
     "developerName": "Dark Ranger Studios",
     "category": "Productivity",
     "capabilities": [

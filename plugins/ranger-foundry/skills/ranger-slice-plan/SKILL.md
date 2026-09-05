@@ -1,9 +1,9 @@
 ---
 name: ranger-slice-plan
-description: Turn an approved objective into dependency-aware, independently verifiable vertical slices with acceptance and rollback criteria. Use for implementation planning, not diagnosis, code review, or executing the plan.
+description: "Trailblazer handles slice plan. Turn an approved objective into dependency-aware, independently verifiable vertical slices with acceptance and rollback criteria. Use for implementation planning, not diagnosis, code review, or executing the plan."
 ---
 
-# Ranger Slice Plan
+# Trailblazer — Ranger Slice Plan
 
 Produce a plan that can be executed and verified one useful increment at a time.
 A slice should cross the necessary layers to prove behavior; it should not merely

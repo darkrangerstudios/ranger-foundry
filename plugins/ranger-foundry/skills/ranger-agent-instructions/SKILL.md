@@ -1,9 +1,9 @@
 ---
 name: ranger-agent-instructions
-description: Create or refine repository-scoped agent guidance with clear scope, precedence, safety boundaries, and validation. Use for AGENTS.md, loaders, and instruction hierarchy; not for packaged skill creation or the product task those instructions describe.
+description: "Warden handles agent instructions. Create or refine repository-scoped agent guidance with clear scope, precedence, safety boundaries, and validation. Use for AGENTS.md, loaders, and instruction hierarchy; not for packaged skill creation or the product task those instructions describe."
 ---
 
-# Ranger Agent Instructions
+# Warden — Ranger Agent Instructions
 
 Write the smallest durable instruction set that reliably changes agent behavior
 without turning temporary project state into permanent policy.
