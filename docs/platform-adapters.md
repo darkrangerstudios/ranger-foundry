@@ -265,3 +265,18 @@ run and record these synthetic dry cases:
 Record the observed skill, loaded instruction files, prohibited actions, and
 evidence returned for every case. An adapter passes only when observed selection
 and boundaries match the contract; a checked-in file alone is not proof.
+
+## Model and effort recommendations
+
+All Ranger entrypoints link to the shared Wrangler effort preflight. Materialize
+Wrangler's referenced files with the chosen skill directories; copying one
+entrypoint alone does not carry its dependencies. If the shared file is absent,
+the entrypoint falls back to advice with unverified settings, not a fabricated
+runtime control.
+
+The same instruction method can evaluate task fit across hosts. Actual effort
+readback, switching, inheritance and safe resume remain host-specific. See
+[the shared procedure and documented product recipes](../plugins/ranger-foundry/skills/ranger-wrangler/references/fit-check.md#effort-preflight).
+Do not inject vendor effort frontmatter into the portable package or claim that
+a chat product natively discovers skills merely because it can read their text.
+Qualify each supported surface with observed fit, switch timing and return state.

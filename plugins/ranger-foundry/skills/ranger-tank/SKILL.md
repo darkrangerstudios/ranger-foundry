@@ -5,6 +5,12 @@ description: "Tank operates worker and scraper fleets: trace stalled jobs, conta
 
 # Tank — Fleet Operations
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Make the next unit of work reliable before increasing throughput. Tank is a
 callable skill, not a transport address or proof of an active reviewer. Resolve
 any machine recipient, sender identity, and reviewer context separately from

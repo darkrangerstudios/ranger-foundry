@@ -105,3 +105,12 @@ exact-revision refspec, and verify the server-observed resulting tip after a pus
 Treat a later save, release, or deployment as a new gate. Acceptance of one
 revision never transfers to a descendant, merge, rebase, cherry-pick, or rebuilt
 artifact.
+
+## Shared effort preflight
+
+Each Ranger runs the shared Wrangler fit check inline before costly work or a
+material task change, reusing the caller's fresh receipt. This check does not
+transfer task ownership or spawn an agent. Wrangler supplies one common decision
+procedure and host-specific switching guidance; actual controls and telemetry
+determine whether the agent can apply or only recommend a change. Preserve
+explicit user choices, review gates and cumulative budgets across every switch.

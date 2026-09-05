@@ -5,6 +5,12 @@ description: "Deadeye handles plan assurance. Adversarially evaluate an existing
 
 # Deadeye — Ranger Plan Assurance
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Stress-test a plan before execution. Find concrete ways it could fail, then require
 the smallest plan change or gate that addresses each credible failure path.
 

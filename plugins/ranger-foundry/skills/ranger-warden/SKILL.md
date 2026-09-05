@@ -5,6 +5,12 @@ description: "Warden handles agent instructions. Create or refine repository-sco
 
 # Warden — Ranger Agent Instructions
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Write the smallest durable instruction set that reliably changes agent behavior
 without turning temporary project state into permanent policy.
 

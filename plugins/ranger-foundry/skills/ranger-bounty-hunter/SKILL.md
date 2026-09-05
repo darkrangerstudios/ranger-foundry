@@ -5,6 +5,12 @@ description: "Bounty Hunter handles cause analysis. Diagnose a failure or unexpe
 
 # Bounty Hunter — Ranger Cause Analysis
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Find the cause that best explains the observed failure, not merely the component
 where the failure became visible.
 

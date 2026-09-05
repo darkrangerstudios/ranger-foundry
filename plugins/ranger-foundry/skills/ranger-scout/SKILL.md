@@ -5,6 +5,12 @@ description: "Scout maps web sources, verifies extraction coverage, and scans kn
 
 # Scout — Source Reconnaissance
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Find a source that answers the user's actual data question and prove what the
 extraction covers. Start with a small representative sample, then scale only as
 far as the requested scope and observed source behavior support.

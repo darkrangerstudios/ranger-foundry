@@ -5,6 +5,12 @@ description: "Prospector handles questionnaire. Turn an ambiguous work request i
 
 # Prospector — Ranger Questionnaire
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Clarify only the decisions that materially change the result. Do not turn a well-scoped request into an interview.
 
 Do not use this skill when the requested deliverable itself is a survey, form,

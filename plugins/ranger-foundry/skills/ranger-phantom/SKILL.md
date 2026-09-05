@@ -5,6 +5,12 @@ description: "Phantom diagnoses browser interactions and anti-bot challenges in 
 
 # Phantom
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Make browser-driven collection reproducible and precise. Keep extraction correctness, browser behavior and access outcomes separate: a smooth cursor is not evidence that a page is accessible or that its data is complete.
 
 ## Choose the smallest useful intervention

@@ -5,6 +5,12 @@ description: "Scribe handles durable memory. Retrieve, organize, condense, or su
 
 # Scribe — Keeper of the Record
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Make durable knowledge cheap to find without turning a summary into evidence or
 stored instructions into authority. Use the existing canonical memory store and
 its approved schema. Map the contract below to that format; do not create a

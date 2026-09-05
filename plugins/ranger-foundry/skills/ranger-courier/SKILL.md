@@ -5,6 +5,12 @@ description: "Courier handles handoff. Create a durable, self-contained handoff 
 
 # Courier — Ranger Handoff
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Produce a compact handoff that lets a capable collaborator resume without reconstructing the session.
 
 Use any repository-local handoff format or continuity system first; this skill

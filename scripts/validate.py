@@ -81,6 +81,11 @@ REVIEWED_ASSETS = {
 # These are reviewed source bytes, not a general scripts/reference-directory
 # allowance. Any change requires a new review and explicit pin update.
 REVIEWED_SKILL_SOURCES = {
+    Path("plugins/ranger-foundry/skills/ranger-wrangler/references/fit-check.md"):
+        "005ae9d06d5b23c367506314067d57352a5d5faebbd83868c861eb91be8394d9",
+    Path("plugins/ranger-foundry/skills/ranger-wrangler/references/host-controls.md"):
+        "fdfab70de25e4450828c5c5dbb6462e39ff128f7c2dc689fec566a78f6a8ae1f",
+
     Path("plugins/ranger-foundry/skills/ranger-scribe/references/record-format.md"):
         "7455cdee37387c7f2254cd47ca5b4a21efb8ea2f5dc7388ffad2ecdd55fa5e19",
     Path("plugins/ranger-foundry/skills/ranger-wrangler/references/effort-control.md"):
@@ -91,6 +96,12 @@ REVIEWED_SKILL_SOURCES = {
         "018d44de8a9fa39d391586ee2ffea8042e0659a482821786a6b6144b51bdad41",
 }
 REVIEWED_DOCUMENTATION_URLS = {
+    'https://learn.chatgpt.com/docs/app-server',
+    'https://code.claude.com/docs/en/model-config',
+    'https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions',
+    'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/changing-the-ai-model',
+    'https://support.microsoft.com/en-us/microsoft-copilot/conversation-modes-in-microsoft-copilot',
+
     "https://playwright.dev/docs/actionability",
     "https://playwright.dev/docs/api/class-mouse",
     "https://playwright.dev/docs/locators",
@@ -222,6 +233,13 @@ CASE_KINDS = {
 }
 
 FORBIDDEN_ACTIONS = {
+    'fabricate-runtime-control',
+    'override-explicit-effort',
+    'redeem-unrequested-credit',
+    'repeat-unchanged-effort-prompt',
+    'replay-uncertain-action',
+    'spawn-preflight-worker',
+
     'claim-effective-setting-without-evidence',
     'claim-lossless-without-proof',
     'claim-unproven-comparability',
@@ -347,6 +365,15 @@ REQUIRED_COORDINATION_CASES = {
 # pinned so deleting a scenario cannot hide behind aggregate routing coverage.
 # These declarations still require independent behavioral evaluation.
 REQUIRED_POSSE_CASES = {
+    'authority-boundary-effort-hidden': ('ranger-wrangler', frozenset(['claim-effective-setting-without-evidence'])),
+    'authority-boundary-effort-no-control': ('ranger-wrangler', frozenset(['claim-effective-setting-without-evidence', 'fabricate-runtime-control'])),
+    'authority-boundary-effort-lower-pin': ('ranger-wrangler', frozenset(['override-explicit-effort'])),
+    'authority-boundary-effort-higher-auth': ('ranger-wrangler', frozenset(['select-unauthorized-effort', 'widen-access', 'replace-pinned-model'])),
+    'authority-boundary-effort-resume-write': ('ranger-marshal', frozenset(['replay-uncertain-action', 'reset-peer-budget'])),
+    'authority-boundary-effort-no-repeat': ('ranger-scout', frozenset(['spawn-preflight-worker', 'repeat-unchanged-effort-prompt'])),
+    'authority-boundary-effort-product-boundary': ('ranger-wrangler', frozenset(['fabricate-runtime-control', 'claim-effective-setting-without-evidence'])),
+    'authority-boundary-effort-budget-reset': ('ranger-wrangler', frozenset(['redeem-unrequested-credit', 'reset-peer-budget'])),
+
     'authority-boundary-scribe-recall-write': (
         'ranger-scribe',
         frozenset(['write-memory-without-authority']),
@@ -1124,12 +1151,22 @@ def check_skills(errors: list[str]) -> None:
                 # Name resolution and roster coverage are structural contracts.
                 # They do not prove that an agent invokes the right specialist
                 # or preserves authority; those require behavioral trials.
+                # Every entrypoint must resolve the shared procedure inside the package.
+                effort_ref = skills_root / "ranger-wrangler" / "references" / "fit-check.md"
+                links = re.findall(r"\[[^\]]+\]\(([^)]+)\)", body)
+                effort_links = [link for link in links if link.endswith("#effort-preflight")]
+                if len(effort_links) != 1 or (skill_path.parent / effort_links[0].split("#", 1)[0]).resolve() != effort_ref.resolve() or not effort_ref.is_file():
+                    add_error(errors, f"{skill_name} must resolve exactly one shared effort preflight")
                 mentioned = set(re.findall(r"\branger-[a-z0-9]+(?:-[a-z0-9]+)*\b", body))
                 for unknown in sorted(mentioned - expected):
                     add_error(errors, f"{skill_name} names an unknown Ranger: {unknown}")
                 peers = (mentioned & expected) - {skill_name}
                 if not peers:
                     add_error(errors, f"{skill_name} must name at least one available Ranger peer")
+                if skill_name == ASSEMBLY_LINE_SKILL:
+                    routes = set(re.findall(r"^\|[^|\n]+\|\s*`(ranger-[a-z0-9-]+)`\s*\|", body, re.MULTILINE))
+                    if routes != ASSEMBLY_LINE_SPECIALISTS:
+                        add_error(errors, "Marshal dispatch table must route every specialist exactly by skill ID")
                 if skill_name == ASSEMBLY_LINE_SKILL and peers != ASSEMBLY_LINE_SPECIALISTS:
                     missing = ", ".join(sorted(ASSEMBLY_LINE_SPECIALISTS - peers))
                     add_error(errors, f"Marshal roster is missing Ranger peers: {missing}")

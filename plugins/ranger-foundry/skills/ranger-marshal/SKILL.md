@@ -5,6 +5,12 @@ description: "Marshal coordinates the posse through a nontrivial build or fix, s
 
 # Marshal — Ranger Assembly Line
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Keep a software job moving from an approved outcome to a verified result without
 losing scope, evidence, authority, or the exact next action. This skill is the
 workflow spine. It routes work to specialist skills; it does not replace their

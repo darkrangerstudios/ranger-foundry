@@ -5,6 +5,12 @@ description: "Wrangler selects approved model/provider routes and shared budgets
 
 # Wrangler — Models, Effort and Budgets
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Fit bounded work to an authorized route while keeping one job owner. Wrangler is
 an instruction layer, not a scheduler, configuration installer, benchmark, or
 runtime cost limiter. Loading it does not change a running model or its effort.

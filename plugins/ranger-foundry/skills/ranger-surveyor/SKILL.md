@@ -5,6 +5,12 @@ description: "Surveyor resolves metric definitions, entity identity, aliases and
 
 # Surveyor — Meaning and Grounding
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Establish what a term or record means before using it in an answer, join or
 decision. Return a grounded interpretation, an explicit ambiguity, or a bounded
 proposal to change a definition. A plausible match is not an identified entity.

@@ -1,6 +1,6 @@
 {
   "name": "ranger-foundry",
-  "version": "0.4.0-rc.2",
+  "version": "0.4.0-rc.3",
   "description": "Sixteen skills for AI agents: Marshal coordinates the posse, specialists call peers, and every handoff preserves scope and evidence.",
   "author": {
     "name": "Dark Ranger Studios",

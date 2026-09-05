@@ -5,6 +5,12 @@ description: "Sparks handles prototype. Build or plan the smallest testable prot
 
 # Sparks — Ranger Prototype
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Optimize for learning, not feature count. A prototype should answer a named question with observable evidence.
 
 Apply repository-local design, security, data, and testing rules before this

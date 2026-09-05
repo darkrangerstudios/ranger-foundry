@@ -5,6 +5,12 @@ description: "Raven handles swarm coordination. Coordinate agent messages, broad
 
 # Raven — Ranger Swarm Coordination
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Keep the right agents informed and the right owner accountable. Use the existing
 task ledger and approved communication channel; do not create a competing bus.
 

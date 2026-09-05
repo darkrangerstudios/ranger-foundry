@@ -2,6 +2,18 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.4.0-rc.3 - Unreleased
+
+### Added
+
+- Shared model/effort preflight in every Ranger, centralized in Wrangler. It can
+  recommend lower or higher supported settings, or an approved model/mode, while
+  remaining advisory when the host lacks native controls or setting telemetry.
+- Documented product-specific change/resume recipes, fresh-receipt reuse and
+  interruption safeguards. No vendor configuration overrides are shipped.
+- Shared-reference resolution and pinned authority cases for absent controls,
+  explicit choices, safe resume, repeated prompting and unrequested reset credits.
+
 ## 0.4.0-rc.2 - Unreleased
 
 ### Added

@@ -51,6 +51,20 @@ in the skill menu.
 | **Surveyor** · Meaning and Grounding · `ranger-surveyor` | Settle definitions, aliases, and entity matches before they change an answer or a join. |
 | **Wrangler** · Models, Effort and Budgets · `ranger-wrangler` | Match work to approved model routes and effort settings while keeping the whole job within budget. |
 
+## Match the effort to the job
+
+Every Ranger performs a small effort-fit check before costly work or a material
+change. Wrangler centralizes the decision: keep the current setup, suggest a
+lower or higher supported effort, or propose an approved model/mode. If the host
+cannot expose or change settings, the agent provides an honest recommendation
+and product-specific steps. It stays quiet when the current fit is adequate.
+
+The procedure distinguishes requested settings from observed execution, preserves
+user choices and shared budgets, and checkpoints before any interruption.
+Controls differ between Codex, Claude Code, GitHub Copilot and Microsoft Copilot;
+“stop and continue” is not a universal switching command. This is portable
+instruction-level routing, not proof of runtime integration on every product.
+
 ## Put it to work
 
 Give the agent a real job and a clear boundary. For example:
@@ -124,14 +138,14 @@ context isn't. Repository rules and private overlays take precedence; see
 
 ## Install
 
-This checkout is the **unreleased 0.4.0-rc.2 candidate**. The current published
+This checkout is the **unreleased 0.4.0-rc.3 candidate**. The current published
 release is v0.3.0. The commands below apply once the matching candidate tag has
 been reviewed and published; do not treat this branch as a released install.
 
 Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0-rc.2
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0-rc.3
 codex plugin add ranger-foundry@ranger-foundry
 ```
 

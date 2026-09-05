@@ -5,6 +5,12 @@ description: "Trailblazer handles slice plan. Turn an approved objective into de
 
 # Trailblazer — Ranger Slice Plan
 
+Before a costly phase or material task change, apply the shared
+[effort preflight](../ranger-wrangler/references/fit-check.md#effort-preflight).
+Reuse a fresh caller receipt; do not spawn a worker for this check. If the shared
+reference is unavailable, give advisory recommendations only and keep unknown
+settings unverified within existing authority.
+
 Produce a plan that can be executed and verified one useful increment at a time.
 A slice should cross the necessary layers to prove behavior; it should not merely
 finish one technical layer while leaving the outcome untestable.
