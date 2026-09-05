@@ -45,7 +45,7 @@ one-step change, or implementation. Writing a plan does not authorize its steps.
    - acceptance criteria;
    - proportionate automated and manual verification;
    - rollback or safe-stop behavior;
-   - risk and required authority.
+   - risk, required authority, and artifact eligibility for every transition.
 5. Keep refactors, cleanup, and optional polish separate unless they are required
    for that slice's acceptance criteria.
 6. Use an explicit expand-migrate-contract sequence for interface or data changes:
@@ -54,7 +54,11 @@ one-step change, or implementation. Writing a plan does not authorize its steps.
    then remove the legacy shape. For other work, order slices so every intermediate
    state remains usable and reversible.
 7. Add gates only where evidence changes the decision to continue. Name the proof
-   needed to pass each gate.
+   needed to pass each gate. For commit, push, merge, promotion, save, release,
+   publication, or deployment, separate authorization for the exact operation
+   from eligibility of the exact artifact for the exact destination. Name the
+   remote and full ref for Git transitions, and never bundle source transfer with
+   a later save or deployment gate.
 8. End with open decisions and the exact first executable slice. Stop if a missing
    user choice would materially change the architecture or risk.
 

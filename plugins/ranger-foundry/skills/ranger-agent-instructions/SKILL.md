@@ -44,14 +44,24 @@ persona when operational guidance is not requested.
 3. Give each skill or rule a discriminating positive trigger and a useful negative
    trigger. Avoid catch-all wording.
 4. State authority boundaries at the point of action: read versus write, review
-   versus implementation, approval requirements, and stopping conditions.
-5. Describe desired outcomes and verification evidence. Prescribe exact commands
+   versus implementation, approval requirements, and stopping conditions. For
+   commit, push, merge, promotion, save, release, or deployment rules, separate
+   permission to perform the operation from eligibility of the exact artifact for
+   the exact destination. Require both gates; one never implies the other.
+5. When guidance governs a Git or release transition, require an exact artifact
+   revision and exact destination. Git destinations include the remote and full
+   ref; deployment destinations include the environment or serving target. Make
+   later saves, releases, and deployments separate gates. Require push receipts
+   to identify the pushed revision, observed resulting tip, and force status; do
+   not let acceptance of one revision transfer to a descendant, merge, rebase,
+   cherry-pick, or rebuild.
+6. Describe desired outcomes and verification evidence. Prescribe exact commands
    only when a fragile invariant genuinely requires them.
-6. Keep one canonical rule and make loaders or overlays thin. Remove duplication
+7. Keep one canonical rule and make loaders or overlays thin. Remove duplication
    only after confirming that no narrower behavior would be lost.
-7. Keep user-facing instructions concise. Move substantial conditional detail to a
+8. Keep user-facing instructions concise. Move substantial conditional detail to a
    referenced file and explain when it should be read.
-8. Validate syntax, paths, references, trigger clarity, and conflicts with parent
+9. Validate syntax, paths, references, trigger clarity, and conflicts with parent
    instructions. Inspect the final diff for accidental secrets or private context.
 
 ## Output Contract

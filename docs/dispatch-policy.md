@@ -44,10 +44,14 @@ determines which workflow is primary.
 
 A user request to run Assembly Line authorizes the agent to apply the read-only or
 already-authorized methods of its specialist stations. It does not authorize a
-specialist's external or mutating actions. A station that requires a separate
-review context must be dispatched to another agent session or human; the Assembly
-Line operator cannot satisfy that independence gate by re-reading the review skill
-inside its own context.
+specialist's external or mutating actions. Every commit, push, merge, promotion,
+save, publication, or deployment also has a separate artifact-eligibility gate:
+the exact revision must be accepted for the exact destination under local rules.
+Permission to perform an operation does not waive review, acceptance, branch, or
+release eligibility, and permission for one transition does not authorize the
+next. A station that requires a separate review context must be dispatched to
+another agent session or human; the Assembly Line operator cannot satisfy that
+independence gate by re-reading the review skill inside its own context.
 
 Likewise, a repository-local design, security, release, or infrastructure skill overrides generic advice in its domain. The public skill should narrow itself to the remaining work and state the delegation clearly.
 
@@ -64,4 +68,13 @@ Do not run multiple skills merely because their trigger words overlap.
 
 ## Mutation boundary
 
-Planning, diagnosis, assurance, review, handoff, and questionnaire requests are read-only unless the user also authorizes a change. A prototype may create bounded artifacts when explicitly requested, but it must not deploy, publish, merge, or replace production behavior without separate authorization.
+Planning, diagnosis, assurance, review, handoff, and questionnaire requests are
+read-only unless the user also authorizes a change. A prototype may create bounded
+artifacts when explicitly requested, but it must not commit, push, merge, promote,
+save, deploy, publish, or replace production behavior without authorization for
+that exact operation and eligibility of the exact artifact for the exact
+destination. For Git, resolve the remote and full ref, use an explicit
+exact-revision refspec, and verify the server-observed resulting tip after a push.
+Treat a later save, release, or deployment as a new gate. Acceptance of one
+revision never transfers to a descendant, merge, rebase, cherry-pick, or rebuilt
+artifact.

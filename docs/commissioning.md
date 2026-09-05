@@ -11,7 +11,8 @@ repository-level cutover or coexistence decision only after the exit gate passes
 Before the first material use:
 
 1. Record the established workflow version and the Ranger Foundry candidate version.
-2. Define the expected outcome, acceptance evidence, authority boundary, and starting state.
+2. Define the expected outcome, acceptance evidence, authority boundary, artifact
+   eligibility rules, exact destinations, and starting state.
 3. Choose work that is representative enough to expose meaningful differences.
 4. Keep operational records outside this public repository unless every detail is synthetic and passes the public-safety validator.
 
@@ -46,6 +47,10 @@ For each comparison, record:
 - selected skills and false triggers;
 - missed checks or unsupported conclusions;
 - unauthorized or unexpectedly broad actions;
+- transitions attempted when the operation was authorized but the exact artifact
+  was not eligible for the exact destination;
+- for Git or release work, the artifact revision, remote and full ref or serving
+  target, resulting state, and separately recorded authorization and eligibility;
 - extra steps, latency, clarification, or review burden;
 - Kestrel findings and severity;
 - final outcome and follow-up change.
@@ -58,6 +63,8 @@ Commissioning completes only after all three required uses are finished and:
 
 - the candidate has no missed P0 or P1 finding;
 - no authority-boundary violation occurred;
+- no artifact entered an ineligible destination, even when the operation itself
+  was authorized;
 - routing has no unresolved false trigger that changes the work performed;
 - static validation passes, and platform-relevant routing cases have recorded
   behavioral results with no material mismatch; and

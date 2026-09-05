@@ -54,10 +54,16 @@ It scales the ceremony to the risk:
   irreversible actions with mandatory assurance, rollback, exact evidence, and
   independent review.
 
-Assembly Line explicitly instructs agents not to turn a plan, passing test, or
-phase transition into permission to merge, deploy, publish, message, or mutate
-production. Back that instruction with host permissions and repository controls
-where the boundary must be enforced technically.
+Assembly Line explicitly instructs agents not to turn a plan, passing test, broad
+authorization, or phase transition into permission to commit, push, merge,
+promote, save, deploy, publish, message, or mutate production. Every transition
+needs two green gates: authority for that exact operation and eligibility of the
+exact artifact for the exact destination. Acceptance never transfers to a changed
+revision. Git receipts name the remote, full ref, pushed revision, force status,
+and server-observed resulting tip; a source push never implies a later save or
+deployment. Back
+those instructions with host permissions and repository controls where the
+boundary must be enforced technically.
 
 ## Works where your agents work
 
@@ -87,7 +93,7 @@ precedence over this public core. See [Dispatch policy](docs/dispatch-policy.md)
 Add the repository marketplace, then add Ranger Foundry:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.2.0
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.2.1
 codex plugin add ranger-foundry@ranger-foundry
 ```
 

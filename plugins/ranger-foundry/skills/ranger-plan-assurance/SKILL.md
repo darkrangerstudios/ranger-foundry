@@ -59,9 +59,18 @@ reconciling them.
 8. **Blast radius:** Identify affected users, data, integrations, cost, and runtime.
    Require staged proof when a full rollout is not safely reversible.
 9. **Operations:** Confirm observability, ownership, stop conditions, rollback,
-   recovery, and evidence required before promotion.
-10. **Authority:** Mark every step that needs a user decision or separate operational
-   permission. A complete plan must not silently assume either.
+   recovery, and evidence required before promotion. For each commit, push, merge,
+   promotion, save, release, or deployment, require the exact artifact and exact
+   destination; Git destinations name the remote and full ref. Keep source
+   transfer separate from save, release, publication, and deployment.
+10. **Authority and eligibility:** For every external or mutating transition, mark
+   separate gates for authorization of the exact operation and eligibility of the
+   exact artifact for the exact destination under local review, acceptance,
+   branch, and release rules. A complete plan must not infer either gate from the
+   other. Unreviewed or rejected work cannot enter a default, protected, serving,
+   release, or deployment-adjacent destination merely because the operation was
+   approved. Acceptance of one revision cannot be reused for a descendant, merge,
+   rebase, cherry-pick, or rebuilt artifact.
 
 For each suspected issue, attempt to disprove it using the plan and available
 evidence. Remove findings that do not survive that check.

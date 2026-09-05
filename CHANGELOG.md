@@ -2,6 +2,25 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.2.1 - 2026-09-04
+
+### Fixed
+
+- Split transition control into two mandatory gates: authorization for the exact
+  operation and eligibility of the exact artifact for the exact destination.
+- Added explicit commit and push boundaries, exact remote/full-ref evidence,
+  resulting-tip receipts, and separate source, save, release, and deployment
+  gates across Assembly Line, planning, review, agent-instruction, and handoff
+  guidance.
+- Added behavioral review and commissioning coverage for an authorized operation
+  that targets an ineligible protected or serving destination.
+- Added explicit behavioral cases for local-only commits, non-serving review refs,
+  accepted-ancestor drift, source-only updates, saved-but-not-deployed versions,
+  and unresolved or stale destinations.
+- Removed answer hints from transition challenges and pinned each regression
+  scenario, expected skill, and restrictions so deleting or weakening a case
+  fails validation; added wrong-remote, stale-tip, and force-push challenges.
+
 ## 0.2.0 - 2026-09-04
 
 ### Added

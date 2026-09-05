@@ -9,7 +9,12 @@ Find consequential failures, not stylistic preferences. Default to read-only inv
 
 ## Scope And Authority
 
-Before deep review, identify the target, baseline or diff, expected behavior, relevant environment, and requested review lanes. State assumptions when evidence is missing.
+Before deep review, identify the target, baseline or diff, expected behavior,
+relevant environment, and requested review lanes. State assumptions when evidence
+is missing. When source-control or release state is in scope, also identify the
+exact candidate revision, remote and full ref or serving target, observed current
+tip or version, required review verdict, operation authorization, and artifact
+eligibility. Keep those last two states separate.
 
 Apply repository-local domain, security, privacy, and release rules as the concrete
 review invariants. This skill supplies the adversarial method, not replacement policy.
@@ -77,6 +82,31 @@ Do not accept “the identifier is hard to guess” as the authorization boundar
 Reduce severity only when a separate verified control prevents the write or the
 resulting access.
 
+### Source control and release state
+
+Reconstruct each relevant transition rather than treating "ship" as one action:
+local candidate, commit, non-protected review ref, accepted revision, protected or
+serving source ref, save or promotion, and deployment or publication. Use only the
+steps that exist in the host repository, but never collapse distinct gates.
+
+- For every attempted or completed transition, verify separate authorization for
+  the exact operation and eligibility of the exact artifact for the exact
+  destination under local review, acceptance, branch, and release rules.
+- Inspect actual refs, versions, receipts, or platform state when safely available.
+  A stated branch nickname, prior approval, or successful command is not proof of
+  the remote, full ref, resulting tip, or serving state.
+- Flag an unreviewed, rejected, or superseded artifact entering a default,
+  protected, serving, release, or deployment-adjacent destination even if the
+  operation was authorized. Broad payload or history authorization does not waive
+  eligibility. Acceptance of an ancestor does not transfer to a descendant,
+  merge, rebase, cherry-pick, rebuilt artifact, or other revision.
+- Challenge implicit upstreams, short refs, wrong remotes, stale tracking refs,
+  unknown serving classification, unexpected force requirements, and receipts
+  that omit the server-observed resulting tip.
+- Treat source transfer, save or promotion, and deployment or publication as
+  separate actions. Evidence that one occurred or was authorized proves nothing
+  about the next.
+
 ## Severity
 
 - **P0 Critical:** active exploit, authorization bypass, raw secret exposure, data loss, or production outage.
@@ -99,5 +129,7 @@ Every finding needs a precise evidence reference, impact, reproduction or abuse 
 
 Lead with findings ordered by severity. Then give review-independence status, open
 questions, verification performed and omitted, residual risk, and one verdict from
-the definitions above. If no actionable findings survive review, say so plainly
-and name the remaining evidence gaps.
+the definitions above. When source-control or release state was reviewed, include
+the exact artifact, remote and full ref or serving target, observed resulting
+state, and separate authorization and eligibility findings. If no actionable
+findings survive review, say so plainly and name the remaining evidence gaps.
