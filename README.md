@@ -105,7 +105,7 @@ Codex task after installation so the new skill metadata is loaded.
 Run the dependency-free validator from the repository root:
 
 ```bash
-python3 scripts/validate.py
+python3 -I scripts/validate.py
 ```
 
 The validator checks the plugin and marketplace contracts, the exact skill set,

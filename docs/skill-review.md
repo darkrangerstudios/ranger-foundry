@@ -71,11 +71,16 @@ A reviewer records one of three outcomes:
 - **Reject:** the capability is unsafe, redundant, environment-specific, or too broad for the public core.
 
 Prepare the changelog and semantic version before requesting final acceptance.
-After acceptance, run `python3 scripts/validate.py` on a clean export of that exact
+After acceptance, run `python3 -I scripts/validate.py` on a clean export of that exact
 accepted release commit, then release the same commit. Any content change needs
 fresh acceptance. The validator intentionally rejects local cache files too;
 exporting the commit ensures the check covers exactly the distributed files. Run importing test
-harnesses with bytecode generation disabled so they do not add cache payloads.
+harnesses under `python3 -I` with bytecode generation disabled so they do not add
+cache payloads. The validator rejects a normal invocation before importing other
+modules; isolated mode excludes repository files and environment import paths.
+This protects imports in the reviewed validator, not arbitrary unreviewed Python
+code. Verify that the release tag resolves to the accepted commit before reporting
+the README installation command as available.
 Installation testing should use a fresh task so cached skill metadata cannot hide
 packaging errors.
 

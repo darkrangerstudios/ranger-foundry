@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Validate the public Ranger Foundry repository with the Python standard library."""
 
-from __future__ import annotations
+import sys
+
+if not sys.flags.isolated:
+    raise SystemExit("Run the validator with isolated imports: python3 -I scripts/validate.py")
 
 import ast
 import json
@@ -9,8 +12,7 @@ import os
 from pathlib import Path
 import re
 import stat
-import sys
-from typing import Any
+from typing import Any, Optional
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -86,7 +88,6 @@ NETWORK_MODULES = {
 }
 
 ALLOWED_PYTHON_MODULES = {
-    "__future__",
     "ast",
     "json",
     "os",
@@ -292,7 +293,7 @@ def repository_paths(errors: list[str]) -> list[Path]:
     return sorted(paths)
 
 
-def read_text(path: Path, errors: list[str]) -> str | None:
+def read_text(path: Path, errors: list[str]) -> Optional[str]:
     try:
         data = path.read_bytes()
     except OSError as exc:
@@ -347,7 +348,7 @@ def check_public_text(path: Path, text: str, errors: list[str]) -> None:
             add_error(errors, f"{rel}:{line}: URL is outside the repository allowlist: {url}")
 
 
-def load_json(path: Path, errors: list[str]) -> dict[str, Any] | None:
+def load_json(path: Path, errors: list[str]) -> Optional[dict[str, Any]]:
     text = read_text(path, errors)
     if text is None:
         return None
@@ -405,6 +406,14 @@ def check_plugin_manifest(errors: list[str]) -> None:
     version = manifest.get("version")
     if not isinstance(version, str) or SEMVER_PATTERN.fullmatch(version) is None:
         add_error(errors, f"plugin version must be strict semantic versioning; found {version!r}")
+    else:
+        readme = read_text(ROOT / "README.md", errors)
+        if readme is not None:
+            install_refs = re.findall(
+                r"codex plugin marketplace add darkrangerstudios/ranger-foundry --ref ([^\s`]+)",
+                readme,
+            )
+            require_equal(install_refs, [f"v{version}"], "README installation ref", errors)
 
     description = manifest.get("description")
     if not isinstance(description, str) or not 20 <= len(description) <= 160:
@@ -701,7 +710,7 @@ def parse_skill_frontmatter(
     path: Path,
     text: str,
     errors: list[str],
-) -> tuple[str, str] | None:
+) -> Optional[tuple[str, str]]:
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
         add_error(errors, f"{relative(path)} must begin with YAML frontmatter")
@@ -775,7 +784,7 @@ def parse_simple_openai_yaml(
         add_error(errors, f"{relative(path)} has an unsupported top-level key")
 
     sections: dict[str, dict[str, str]] = {"interface": {}, "policy": {}}
-    current: str | None = None
+    current: Optional[str] = None
     for line in text.splitlines():
         top_match = re.fullmatch(r"([A-Za-z_][A-Za-z0-9_-]*):\s*", line)
         if top_match:

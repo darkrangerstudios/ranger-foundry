@@ -6,6 +6,11 @@ This file records user-visible changes to Ranger Foundry.
 
 ### Fixed
 
+- Require isolated Python imports before validation so neighboring modules cannot
+  execute and conceal unexpected files or forge asset checks.
+- Require the README installation ref to match the manifest version; release
+  verification separately confirms the immutable tag exists at the accepted commit.
+
 - Closed ignored-name bypasses in package validation: only real root Git metadata
   is exempt; cache-named content and symlinks are checked like every other file.
 - Reject quoted invocation-policy booleans instead of treating strings as booleans.

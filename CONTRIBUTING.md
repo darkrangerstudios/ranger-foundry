@@ -29,7 +29,7 @@ Keep detailed reference material out of the initial bundle. Add supporting files
 Run:
 
 ```bash
-python3 scripts/validate.py
+   python3 -I scripts/validate.py
 ```
 
 The same command runs in continuous integration. A change is not ready while validation reports an error.
