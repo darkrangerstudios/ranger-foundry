@@ -14,10 +14,12 @@ This file records user-visible changes to Ranger Foundry.
 
 ### Changed
 
-- Introduced crew callsigns while retaining every existing stable skill ID:
-  Marshal, Bounty Hunter, Warden, Trailblazer, Deadeye, Courier, Prospector,
-  Sparks, and Kestrel; Raven joins as the tenth skill.
-- Reconciled the README and marketplace copy with the crew, the corrected policy,
+- Renamed actual skill directories, invocation IDs, and menu labels to the Ranger
+  callsigns, retaining the shared `ranger-` prefix. Existing v0.2.x command names
+  change in this release; the migration guide maps each old name to its replacement.
+- Marshal, Bounty Hunter, Warden, Trailblazer, Deadeye, Courier, Prospector, Sparks,
+  Kestrel, and Raven now form the ten-skill posse.
+- Reconciled the README and marketplace copy with the posse, the corrected policy,
   and the matching installation version.
 - Kept local workflow commissioning and all review and release gates intact.
   Raven supplies protocol guidance; it does not provision a bus or enforce

@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-warden"
+  short_description: "Write safe, scoped repository agent guidance"
+  default_prompt: "Use $ranger-warden to create or refine the agent guidance for this repository."
+policy:
+  allow_implicit_invocation: true

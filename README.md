@@ -20,39 +20,40 @@ doesn't have to take your word for it.
 
 **Built by Dark Ranger Studios. Open source. Bring your own agents.**
 
-[Meet the crew](#meet-the-crew) · [Put it to work](#put-it-to-work) · [Install](#install)
+[Meet the posse](#meet-the-posse) · [Put it to work](#put-it-to-work) · [Install](#install)
 
 ---
 
-## Meet the crew
+## Meet the posse
 
 You can call a specialist directly. You don't need a whole production line to
-fix a loose screw. Callsigns are the friendly names; the `ranger-*` invocation
-names stay stable.
+fix a loose screw. Each Ranger uses its callsign as its skill name: `ranger-marshal`,
+`ranger-bounty-hunter`, and so on. The shared `ranger-` prefix keeps the posse together
+in the skill menu.
 
 | Skill | What you call it in for |
 | --- | --- |
-| **Marshal** · Assembly Line · `ranger-assembly-line` | Keep a bigger job moving from the initial ask through review, testing, and handoff. Bring in the right specialist along the way. |
-| **Bounty Hunter** · Cause Analysis · `ranger-cause-analysis` | Find what actually broke. Follow the evidence back to the cause before changing things. |
-| **Warden** · Agent Instructions · `ranger-agent-instructions` | Sort out the rule files when your agents are getting mixed signals. |
-| **Trailblazer** · Slice Plan · `ranger-slice-plan` | Break a big idea into useful pieces you can build and verify one at a time. |
-| **Deadeye** · Plan Assurance · `ranger-plan-assurance` | Poke holes in the plan while changing it is still cheap. |
-| **Courier** · Handoff · `ranger-handoff` | Leave the next person the actual state of the work: what's done, what's stuck, and where to pick up. |
-| **Prospector** · Questionnaire · `ranger-questionnaire` | Ask the questions that change what gets built. Stop when there's enough to work with. |
-| **Sparks** · Prototype · `ranger-prototype` | Try the smallest useful version and see whether the idea holds up. |
-| **Raven** · Swarm Coordination · `ranger-swarm-coordination` | Keep agents informed, route direct review requests, and recover unfinished work without crossing task lanes. |
-| **Kestrel** · Review · `ranger-kestrel-review` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
+| **Marshal** · Assembly Line · `ranger-marshal` | Keep a bigger job moving from the initial ask through review, testing, and handoff. Bring in the right specialist along the way. |
+| **Bounty Hunter** · Cause Analysis · `ranger-bounty-hunter` | Find what actually broke. Follow the evidence back to the cause before changing things. |
+| **Warden** · Agent Instructions · `ranger-warden` | Sort out the rule files when your agents are getting mixed signals. |
+| **Trailblazer** · Slice Plan · `ranger-trailblazer` | Break a big idea into useful pieces you can build and verify one at a time. |
+| **Deadeye** · Plan Assurance · `ranger-deadeye` | Poke holes in the plan while changing it is still cheap. |
+| **Courier** · Handoff · `ranger-courier` | Leave the next person the actual state of the work: what's done, what's stuck, and where to pick up. |
+| **Prospector** · Questionnaire · `ranger-prospector` | Ask the questions that change what gets built. Stop when there's enough to work with. |
+| **Sparks** · Prototype · `ranger-sparks` | Try the smallest useful version and see whether the idea holds up. |
+| **Raven** · Swarm Coordination · `ranger-raven` | Keep agents informed, route direct review requests, and recover unfinished work without crossing task lanes. |
+| **Kestrel** · Review · `ranger-kestrel` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
 
 ## Put it to work
 
 Give the agent a real job and a clear boundary. For example:
 
-> Use Bounty Hunter (Ranger Cause Analysis) to find out why saved settings disappear after a
+> Use $ranger-bounty-hunter to find out why saved settings disappear after a
 > restart. Show me the cause and how you proved it. Don't change the code yet.
 
 Or, once you're ready to build:
 
-> Use Marshal (Ranger Assembly Line) to implement the approved fix. Follow this repo's
+> Use $ranger-marshal to implement the approved fix. Follow this repo's
 > rules, test the failure we started with, and leave a handoff. No deployment.
 
 The agent reads the relevant skill instructions and applies them. There isn't a
@@ -111,7 +112,9 @@ codex plugin add ranger-foundry@ranger-foundry
 ```
 
 Pin a reviewed tag or exact commit. Start a fresh Codex task after installation
-so it loads the new skills.
+so it loads the new skills. Upgrading from v0.2.x? Follow the
+[skill-name migration](docs/skill-name-migration.md) to replace the old role-based
+commands and avoid duplicate menu entries.
 
 ### Make it earn its place
 

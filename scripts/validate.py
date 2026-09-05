@@ -22,23 +22,23 @@ PLUGIN_DIR = ROOT / "plugins" / PLUGIN_NAME
 REPOSITORY_URL = "https://github.com/darkrangerstudios/ranger-foundry"
 
 EXPECTED_SKILLS = (
-    "ranger-agent-instructions",
-    "ranger-assembly-line",
-    "ranger-cause-analysis",
-    "ranger-handoff",
-    "ranger-kestrel-review",
-    "ranger-plan-assurance",
-    "ranger-prototype",
-    "ranger-questionnaire",
-    "ranger-slice-plan",
-    "ranger-swarm-coordination",
+    "ranger-warden",
+    "ranger-marshal",
+    "ranger-bounty-hunter",
+    "ranger-courier",
+    "ranger-kestrel",
+    "ranger-deadeye",
+    "ranger-sparks",
+    "ranger-prospector",
+    "ranger-trailblazer",
+    "ranger-raven",
 )
 
 EXPECTED_IMPLICIT_POLICY = {skill_name: True for skill_name in EXPECTED_SKILLS}
 EXPLICIT_ONLY_SKILLS = {
     skill_name for skill_name, allowed in EXPECTED_IMPLICIT_POLICY.items() if not allowed
 }
-ASSEMBLY_LINE_SKILL = "ranger-assembly-line"
+ASSEMBLY_LINE_SKILL = "ranger-marshal"
 ASSEMBLY_LINE_SPECIALISTS = set(EXPECTED_SKILLS) - {ASSEMBLY_LINE_SKILL}
 
 ROOT_FILES = {
@@ -55,6 +55,7 @@ ROOT_FILES = {
     Path("docs/dispatch-policy.md"),
     Path("docs/platform-adapters.md"),
     Path("docs/skill-review.md"),
+    Path("docs/skill-name-migration.md"),
     Path("evals/routing-cases.json"),
     Path("plugins/ranger-foundry/.codex-plugin/plugin.json"),
     Path("scripts/validate.py"),
@@ -223,47 +224,47 @@ REQUIRED_TRANSITION_ACTIONS = {
 # must still be collected separately from these declarative contracts.
 REQUIRED_TRANSITION_CASES = {
     'authority-boundary-assembly-authorized-ineligible-push': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-local-commit-only': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['push-review-ref', 'update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-review-ref-only': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-accepted-ancestor': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-source-only': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-save-without-deploy': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['deploy-or-promote']),
     ),
     'authority-boundary-assembly-unknown-destination': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['push-review-ref', 'update-serving-ref']),
     ),
     'authority-boundary-kestrel-authorized-ineligible-push': (
-        'ranger-kestrel-review',
+        'ranger-kestrel',
         frozenset(['commit-or-push', 'update-serving-ref', 'save-hosted-version', 'deploy-or-promote', 'edit-files', 'deploy-or-publish']),
     ),
     'authority-boundary-assembly-wrong-remote': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-stale-tip': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
     'authority-boundary-assembly-force-push': (
-        'ranger-assembly-line',
+        'ranger-marshal',
         frozenset(['update-serving-ref', 'save-hosted-version', 'deploy-or-promote']),
     ),
 }
@@ -654,7 +655,7 @@ def check_routing_cases(errors: list[str]) -> None:
                 add_error(errors, f"{case_id} is missing required transition restrictions")
 
         if isinstance(case_id, str) and case_id in REQUIRED_COORDINATION_CASES:
-            if kind != "authority-boundary" or expected_skill != "ranger-swarm-coordination":
+            if kind != "authority-boundary" or expected_skill != "ranger-raven":
                 add_error(errors, f"{case_id} must retain its coordination kind and skill")
             if not REQUIRED_COORDINATION_CASES[case_id].issubset(forbidden_actions):
                 add_error(errors, f"{case_id} is missing required coordination restrictions")

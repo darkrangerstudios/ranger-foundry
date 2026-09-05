@@ -20,16 +20,16 @@ outcome and treat the other as a supporting method.
 
 | Requested outcome | Primary skill | Boundary |
 | --- | --- | --- |
-| Carry a nontrivial change from intake through verified handoff | `ranger-assembly-line` | Coordinates specialist stations but does not create implementation, release, or production authority. |
-| Explain the proven cause of a failure | `ranger-cause-analysis` | Diagnosis does not authorize a code change. |
-| Create or improve agent instructions | `ranger-agent-instructions` | Existing authority and loader relationships remain intact unless the user asks to change them. |
-| Plan the smallest executable path | `ranger-slice-plan` | Produces a plan, not an implementation. |
-| Assess a plan before implementation | `ranger-plan-assurance` | Reviews standards and stated requirements independently; it is not code review. |
-| Coordinate authorized agent messages and recover unfinished requests | `ranger-swarm-coordination` | Uses the existing transport and ledger; does not create messaging, tracker, identity, or release authority. |
-| Transfer work state | `ranger-handoff` | Produces a handoff but does not send or publish it. |
-| Collect missing decisions | `ranger-questionnaire` | Produces questions but does not contact recipients. |
-| Learn through a bounded implementation | `ranger-prototype` | Prototype output is not production-ready by default. |
-| Review code, architecture, or security | `ranger-kestrel-review` | Findings come before fixes; implementation requires separate authorization. |
+| Carry a nontrivial change from intake through verified handoff | `ranger-marshal` | Coordinates specialist stations but does not create implementation, release, or production authority. |
+| Explain the proven cause of a failure | `ranger-bounty-hunter` | Diagnosis does not authorize a code change. |
+| Create or improve agent instructions | `ranger-warden` | Existing authority and loader relationships remain intact unless the user asks to change them. |
+| Plan the smallest executable path | `ranger-trailblazer` | Produces a plan, not an implementation. |
+| Assess a plan before implementation | `ranger-deadeye` | Reviews standards and stated requirements independently; it is not code review. |
+| Coordinate authorized agent messages and recover unfinished requests | `ranger-raven` | Uses the existing transport and ledger; does not create messaging, tracker, identity, or release authority. |
+| Transfer work state | `ranger-courier` | Produces a handoff but does not send or publish it. |
+| Collect missing decisions | `ranger-prospector` | Produces questions but does not contact recipients. |
+| Learn through a bounded implementation | `ranger-sparks` | Prototype output is not production-ready by default. |
+| Review code, architecture, or security | `ranger-kestrel` | Findings come before fixes; implementation requires separate authorization. |
 
 ## Broad workflows
 

@@ -36,6 +36,10 @@ should fail clearly when the submodule is absent or at an unexpected commit.
 
 ## Register the skills natively
 
+Version 0.3.0 uses Ranger callsigns as invocation IDs. Before refreshing existing
+vendored roots, follow the [skill-name migration](skill-name-migration.md) so old
+role-based directories do not remain registered beside the renamed skills.
+
 Foundry skill sources are under
 `tools/ranger-foundry/plugins/ranger-foundry/skills/`. Materialize each reviewed
 skill directory in a native project skill root, or configure the host to scan the
@@ -241,7 +245,7 @@ Start a fresh task on each supported surface. First use the host's diagnostics,
 skill list, or `grok inspect` to confirm all ten skill names are registered. Then
 run and record these synthetic dry cases:
 
-1. **Direct specialist:** invoke `ranger-cause-analysis` through the host's native
+1. **Direct specialist:** invoke `ranger-bounty-hunter` through the host's native
    skill command and confirm its output contract is used without edits.
 2. **Indirect specialist:** ask only for the earliest verified cause of a repeatable
    parser failure; expect Cause Analysis, not Assembly Line or Kestrel.

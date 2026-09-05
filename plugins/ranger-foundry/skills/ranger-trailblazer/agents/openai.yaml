@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-trailblazer"
+  short_description: "Plan work as verifiable vertical slices"
+  default_prompt: "Use $ranger-trailblazer to turn this objective into small, dependency-aware implementation slices."
+policy:
+  allow_implicit_invocation: true

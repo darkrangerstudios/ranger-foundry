@@ -1,6 +1,0 @@
-interface:
-  display_name: "Kestrel · Review"
-  short_description: "Run an adversarial evidence-first review"
-  default_prompt: "Use $ranger-kestrel-review to perform an adversarial, evidence-first review of this work."
-policy:
-  allow_implicit_invocation: true

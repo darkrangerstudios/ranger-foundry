@@ -1,6 +1,0 @@
-interface:
-  display_name: "Raven · Swarm Coordination"
-  short_description: "Coordinate agent messages and recover unfinished work"
-  default_prompt: "Use $ranger-swarm-coordination to coordinate this task through the existing authorized agent transport."
-policy:
-  allow_implicit_invocation: true

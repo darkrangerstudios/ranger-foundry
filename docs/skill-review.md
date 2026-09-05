@@ -91,7 +91,7 @@ workspace. The review classified the available material as follows:
 
 | Existing capability | Public disposition |
 | --- | --- |
-| General code, plan, and security review | Consolidated into `ranger-kestrel-review` after removing environment-specific policy. |
+| General code, plan, and security review | Consolidated into `ranger-kestrel` after removing environment-specific policy. |
 | Product design systems | Kept repository-local until product strategy, personal context, and research-source rights are reviewed independently. |
 | Infrastructure and operations runbooks | Kept private because useful operational detail would also expose system topology. |
 | Scraper operations | Kept private because the workflow includes live service coordinates and credential-adjacent configuration. |

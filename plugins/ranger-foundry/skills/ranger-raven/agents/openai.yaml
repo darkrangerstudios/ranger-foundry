@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-raven"
+  short_description: "Coordinate agent messages and recover unfinished work"
+  default_prompt: "Use $ranger-raven to coordinate this task through the existing authorized agent transport."
+policy:
+  allow_implicit_invocation: true

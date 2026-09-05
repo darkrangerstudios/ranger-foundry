@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-bounty-hunter"
+  short_description: "Trace failures to a verified root cause"
+  default_prompt: "Use $ranger-bounty-hunter to diagnose this failure and identify the earliest evidence-backed cause."
+policy:
+  allow_implicit_invocation: true

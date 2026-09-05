@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-deadeye"
+  short_description: "Stress-test plans before implementation begins"
+  default_prompt: "Use $ranger-deadeye to review this plan for concrete gaps, unsafe sequencing, and missing gates."
+policy:
+  allow_implicit_invocation: true

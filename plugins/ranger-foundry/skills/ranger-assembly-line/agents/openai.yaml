@@ -1,6 +1,0 @@
-interface:
-  display_name: "Marshal · Assembly Line"
-  short_description: "Drive complex work from request to verified handoff"
-  default_prompt: "Use $ranger-assembly-line to carry this software task through the right specialist stations and return verified evidence."
-policy:
-  allow_implicit_invocation: true
