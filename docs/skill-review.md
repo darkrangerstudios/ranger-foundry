@@ -70,7 +70,14 @@ A reviewer records one of three outcomes:
 - **Revise:** the idea is sound but a specific ambiguity or failing case remains.
 - **Reject:** the capability is unsafe, redundant, environment-specific, or too broad for the public core.
 
-After acceptance, run `python3 scripts/validate.py`, update the changelog, and release with a semantic version. Installation testing should use a fresh task so cached skill metadata cannot hide packaging errors.
+Prepare the changelog and semantic version before requesting final acceptance.
+After acceptance, run `python3 scripts/validate.py` on a clean export of that exact
+accepted release commit, then release the same commit. Any content change needs
+fresh acceptance. The validator intentionally rejects local cache files too;
+exporting the commit ensures the check covers exactly the distributed files. Run importing test
+harnesses with bytecode generation disabled so they do not add cache payloads.
+Installation testing should use a fresh task so cached skill metadata cannot hide
+packaging errors.
 
 ## Initial library disposition
 

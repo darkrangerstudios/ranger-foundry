@@ -62,7 +62,6 @@ SKILL_FILES = {
 }
 
 ALLOWED_FILES = ROOT_FILES | SKILL_FILES
-IGNORED_NAMES = {".git", ".DS_Store", "__pycache__", ".pytest_cache"}
 
 BLOCKED_COMPONENTS = {
     ".app.json",
@@ -270,31 +269,25 @@ def repository_paths(errors: list[str]) -> list[Path]:
     paths: list[Path] = []
     for current, directories, files in os.walk(ROOT, followlinks=False):
         current_path = Path(current)
-        rel_current = current_path.relative_to(ROOT)
-
-        if rel_current.parts and rel_current.parts[0] == ".git":
-            directories[:] = []
-            continue
-
         retained_directories: list[str] = []
         for name in sorted(directories):
             path = current_path / name
-            if name in IGNORED_NAMES:
-                continue
             if path.is_symlink():
                 add_error(errors, f"symbolic link is not allowed: {relative(path)}")
                 continue
-            retained_directories.append(name)
+            # Root Git metadata is never part of an exported release. Nothing
+            # else is skipped: cache names can conceal tracked public payloads.
+            if path != ROOT / ".git":
+                retained_directories.append(name)
         directories[:] = retained_directories
 
         for name in sorted(files):
-            if name in IGNORED_NAMES:
-                continue
             path = current_path / name
             if path.is_symlink():
                 add_error(errors, f"symbolic link is not allowed: {relative(path)}")
                 continue
-            paths.append(path)
+            if path != ROOT / ".git":
+                paths.append(path)
 
     return sorted(paths)
 
@@ -791,7 +784,11 @@ def parse_simple_openai_yaml(
         item_match = re.fullmatch(r"  ([A-Za-z_][A-Za-z0-9_-]*):\s*(.+)", line)
         if item_match and current in sections:
             key, raw_value = item_match.groups()
-            sections[current][key] = unquote(raw_value)
+            # Invocation policy is a boolean, not a quoted YAML string.
+            # Keep its raw spelling so the existing literal check rejects it.
+            sections[current][key] = (
+                raw_value if current == "policy" else unquote(raw_value)
+            )
         elif line.strip() and not line.lstrip().startswith("#"):
             add_error(errors, f"{relative(path)} contains unsupported YAML structure: {line!r}")
 

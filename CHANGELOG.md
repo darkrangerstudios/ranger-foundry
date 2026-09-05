@@ -6,6 +6,9 @@ This file records user-visible changes to Ranger Foundry.
 
 ### Fixed
 
+- Closed ignored-name bypasses in package validation: only real root Git metadata
+  is exempt; cache-named content and symlinks are checked like every other file.
+- Reject quoted invocation-policy booleans instead of treating strings as booleans.
 - Split transition control into two mandatory gates: authorization for the exact
   operation and eligibility of the exact artifact for the exact destination.
 - Added explicit commit and push boundaries, exact remote/full-ref evidence,
