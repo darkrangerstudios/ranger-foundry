@@ -19,9 +19,11 @@ the smallest plan change or gate that addresses each credible failure path.
 - An implementation, migration, rollout, or remediation plan already exists.
 - A high-impact plan needs an independent readiness check.
 - The user asks for adversarial plan review, assurance, or preflight validation.
+- A migration, rollout script, runbook, or other executable artifact carries risk
+  mainly in sequencing, reversibility, or verifiability rather than code correctness.
 
 Do not use it to write the first plan, diagnose an observed failure, review finished
-code, or execute remediation. Review alone is read-only.
+code for correctness, or execute remediation. Review alone is read-only.
 
 ## Review Boundaries
 
@@ -32,6 +34,8 @@ code, or execute remediation. Review alone is read-only.
 - Do not infer approval for destructive, production, billing, credential, or
   externally visible actions merely because the plan contains them.
 - Protect credentials, personal data, and sensitive system details in findings.
+- When dispatched as a separate reviewer context, first apply
+  [dispatched review](../ranger-kestrel/references/dispatched-review.md).
 - Report only actionable findings with a credible failure path. Do not disguise
   style preferences or generic best practices as blockers.
 
@@ -56,9 +60,11 @@ Return the verdict first, followed by:
    each with its own evidence
 3. **Findings** ordered by impact, each with affected slice, failure path, evidence,
    required plan change, and confidence
-4. **Coverage gaps** and missing decisions
-5. **Required gates** for implementation, migration, or rollout
-6. **Optional improvements** clearly separated from blockers
+4. **Disproved suspicions** — issues considered and eliminated, each with the
+   evidence that eliminated it, so they are not re-raised
+5. **Coverage gaps** and missing decisions
+6. **Required gates** for implementation, migration, or rollout
+7. **Optional improvements** clearly separated from blockers
 
 Do not rewrite the entire plan unless requested. Provide precise amendments that
 the plan author can apply and verify.

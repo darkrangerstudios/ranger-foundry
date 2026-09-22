@@ -12,7 +12,9 @@ reconciling them.
    and acceptance criteria on their own terms. Does every outcome map to observable
    evidence, without silently dropping or rewriting a requirement?
 3. **Traceability:** Does every stated outcome map to an acceptance criterion and a
-   verification method? Are non-goals explicit?
+   verification method? Are non-goals explicit? For each test the plan relies on,
+   show that it would fail against the pre-change state, by a run or by reading
+   the code, not by inference.
 4. **Current-state evidence:** Does the plan verify the actual schema, interface,
    dependency, environment, or artifact it assumes?
 5. **Sequencing:** Can any step break current callers, strand partial state, or make
@@ -40,6 +42,13 @@ reconciling them.
    release, or deployment-adjacent destination merely because the operation was
    approved. Acceptance of one revision cannot be reused for a descendant, merge,
    rebase, cherry-pick, or rebuilt artifact.
+11. **Verifiability in available environments:** For each acceptance criterion,
+   name the environment where it will be checked and confirm that environment can
+   actually produce the evidence. Flag any criterion whose verification is blocked
+   by the plan's own mechanics (for example, idempotency guards that skip every
+   step in an already-patched environment), by environment state, or by an
+   authority the executor does not hold.
 
 For each suspected issue, attempt to disprove it using the plan and available
-evidence. Remove findings that do not survive that check.
+evidence. Findings that do not survive move to Disproved suspicions with the evidence that
+eliminated them.

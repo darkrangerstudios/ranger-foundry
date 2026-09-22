@@ -2,6 +2,29 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.4.1 - 2026-09-22
+
+### Added
+
+- A shared dispatched-review reference for Kestrel and Deadeye when a parent agent
+  runs them as a separate reviewer context: verify the exact artifact first, treat
+  the author's claims as unverified, keep to read-only commands, a delta re-review
+  contract (CLOSED, KEPT, DOWNGRADED), security review as a separate-context Kestrel
+  lane, one verdict table across both skills, a default report budget and a
+  provenance statement.
+- Deadeye reports disproved suspicions instead of discarding them, checks that each
+  acceptance criterion can be verified in an available environment, and requires
+  relied-on tests to fail against the pre-change state.
+- Kestrel's Security lane treats a model prompt as a contract, and its output
+  names disproved suspicions.
+
+### Changed
+
+- Deadeye explicitly covers executable artifacts, such as migrations and runbooks,
+  whose main risk is sequencing, reversibility or verifiability.
+
+These changes come from the first field use of both skills as dispatched reviewers.
+
 ## 0.4.0 - 2026-09-21
 
 ### Changed

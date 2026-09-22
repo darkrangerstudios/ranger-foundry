@@ -30,6 +30,13 @@ For every authorization decision, trace both sides of the trust relationship:
 - Verify that checks cover caller binding and denial behavior, not only the
   presence, name, grants, or wiring of an authorization helper.
 
+Treat a model prompt as a contract. Check that the prompt or output schema is
+versioned and the version changes when behavior does; that no required field
+depends on a model heuristic that can silently omit or invent it; that model
+output cannot carry personal or sensitive data into shared or cross-user
+storage; and that retrieved or user-supplied content cannot redirect the
+model's instructions.
+
 Do not accept “the identifier is hard to guess” as the authorization boundary.
 Reduce severity only when a separate verified control prevents the write or the
 resulting access.

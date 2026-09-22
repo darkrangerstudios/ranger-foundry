@@ -143,7 +143,7 @@ context isn't. Repository rules and private overlays take precedence; see
 Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.1
 codex plugin add ranger-foundry@ranger-foundry
 ```
 

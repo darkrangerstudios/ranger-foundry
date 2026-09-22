@@ -90,6 +90,13 @@ authorized delivery. Callsigns are not transport identities. A request to messag
 Scout or Tank belongs to Raven and the configured mapping, not to a skill alias.
 
 
+## Review verdicts
+
+Kestrel and Deadeye use different verdict words for different targets. When
+combining them, or dispatching either as a separate reviewer context, use the
+[dispatched review](../plugins/ranger-foundry/skills/ranger-kestrel/references/dispatched-review.md)
+rules and its verdict table. Do not invent other verdict words.
+
 ## Mutation boundary
 
 Planning, diagnosis, assurance, review, handoff, and questionnaire requests are

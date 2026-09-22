@@ -38,6 +38,10 @@ author the change or participate in its implementation reasoning. A same-context
 self-review may still find defects, but label it `not independent`; never use it to
 satisfy an independent gate.
 
+When dispatched as a separate reviewer context, first apply
+[dispatched review](references/dispatched-review.md): verify the exact artifact,
+treat the author's claims as unverified and keep to read-only commands.
+
 ## Evidence Discipline
 
 - Map the target before reading deeply; follow changed code into relevant callers, consumers, schemas, tests, and configuration.
@@ -76,8 +80,8 @@ Every finding needs a precise evidence reference, impact, reproduction or abuse 
 
 ## Output
 
-Lead with findings ordered by severity. Then give review-independence status, open
-questions, verification performed and omitted, residual risk, and one verdict from
+Lead with findings ordered by severity. Then give review-independence status, disproved
+suspicions with the evidence that eliminated them, open questions, verification performed and omitted, residual risk, and one verdict from
 the definitions above. When source-control or release state was reviewed, include
 the exact artifact, remote and full ref or serving target, observed resulting
 state, and separate authorization and eligibility findings. If no actionable
@@ -89,7 +93,7 @@ This skill works on its own. When another specialty materially helps, resolve
 the actual available skill through the host's catalog and load and apply its
 `SKILL.md`. Use the host's supported agent mechanism when delegating; naming a
 skill does not start an agent. `ranger-rooster` can investigate a
-failure, `ranger-big-iron` can verify source behavior, and `ranger-big-iron` can
+failure, `ranger-big-iron` can verify source behavior or
 inspect operational evidence. Keep any delegated finding independently grounded
 and disclose the contributing contexts. These are examples, not an exclusive
 list; any available relevant specialist may help.
