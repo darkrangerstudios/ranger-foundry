@@ -36,7 +36,8 @@ should fail clearly when the submodule is absent or at an unexpected commit.
 
 ## Register the skills natively
 
-Version 0.3.0 uses Ranger callsigns as invocation IDs. Before refreshing existing
+Since 0.3.0, Ranger callsigns are the invocation IDs; 0.4.0 renames and consolidates
+several of them. Before refreshing existing
 vendored roots, follow the [skill-name migration](skill-name-migration.md) so old
 role-based directories do not remain registered beside the renamed skills.
 

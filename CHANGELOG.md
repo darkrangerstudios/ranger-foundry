@@ -2,7 +2,7 @@
 
 This file records user-visible changes to Ranger Foundry.
 
-## 0.4.0-rc.4 - Unreleased
+## 0.4.0 - 2026-09-21
 
 ### Changed
 
@@ -14,7 +14,7 @@ This file records user-visible changes to Ranger Foundry.
 - Labelled eleven neighboring boundaries in discovery descriptions and skill bodies,
   with required routing cases. Call reaches all twelve specialists without a fleet.
 - Kept authority scenarios, shared effort preflight and the pure motion planner;
-  resource hashes and entrypoint size limits fail closed. Installation remains held.
+  resource hashes and entrypoint size limits fail closed.
 
 ### Added
 

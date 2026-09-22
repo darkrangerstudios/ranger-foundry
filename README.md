@@ -140,15 +140,18 @@ context isn't. Repository rules and private overlays take precedence; see
 
 ## Install
 
-This checkout is the **unreleased 0.4.0-rc.4 candidate**. Installation is held.
-The candidate has no advertised installation tag or command. Use the published
-release's own instructions until an exact artifact is accepted and its matching
-tag exists. Do not install this branch or replace a native mirror as a review step.
+Add the marketplace, then the plugin:
 
-Before an approved upgrade, follow the [skill-name migration](docs/skill-name-migration.md)
-for renamed and consolidated callsigns, including Courier's move into Clara.
-The installation ref must match the accepted manifest version; verifying that tag,
-its exact SHA, and release authority remains a release gate.
+```bash
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.0
+codex plugin add ranger-foundry@ranger-foundry
+```
+
+Pin a reviewed tag or exact commit. Start a fresh Codex task after installation
+so it loads the new skills. Upgrading from v0.3.x? v0.4.0 renames Marshal, Warden
+and Bounty Hunter and folds Courier into Clara. Follow the
+[skill-name migration](docs/skill-name-migration.md) to replace the old commands
+and avoid duplicate menu entries.
 
 ### Make it earn its place
 

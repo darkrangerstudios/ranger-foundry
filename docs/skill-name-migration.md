@@ -1,9 +1,8 @@
 # Skill-name migration
 
-## Unreleased v0.4 successor
+## v0.4.0
 
-Apply this migration only after the exact successor is accepted, published and
-separately authorized for installation. The candidate changes no installed skill.
+Apply this migration when upgrading an installation to v0.4.0.
 Folder, frontmatter name and default prompt use the same `ranger-` callsign;
 display names use that same callsign. Replace saved invocations and routing links
 together. Remove old installed entries only through the host's supported upgrade
@@ -82,7 +81,8 @@ For vendored skills or configured source directories:
    version rather than rewriting old verdicts.
 5. Confirm all ten new skills are registered and the superseded role-based core
    directories are no longer registered in the discovery roots being upgraded.
-   Start a fresh task and try `ranger-marshal` and `ranger-bounty-hunter` using the
+   Start a fresh task and try `ranger-marshal` and `ranger-bounty-hunter` (on v0.4.0
+   and later, `ranger-call` and `ranger-rooster`) using the
    host's invocation mechanism. Record any host that has not been verified.
 
 Keep the previous release pin and archived tree for rollback. Restore that exact
