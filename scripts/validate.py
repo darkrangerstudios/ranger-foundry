@@ -32,6 +32,7 @@ EXPECTED_SKILLS = ('ranger-big-iron',
  'ranger-rooster',
  'ranger-roy-bean',
  'ranger-sparks',
+ 'ranger-stanley',
  'ranger-trailblazer',
  'ranger-wrangler')
 
@@ -76,6 +77,11 @@ REVIEWED_ASSETS = {
 # These are reviewed source bytes, not a general scripts/reference-directory
 # allowance. Any change requires a new review and explicit pin update.
 REVIEWED_SKILL_SOURCES = {
+    Path('plugins/ranger-foundry/skills/ranger-stanley/references/cost-and-burn.md'): '610836cbeb4cf1e6a9b7abf3be01e0b441e02f0d095b046c78a3293627d3d689',
+    Path('plugins/ranger-foundry/skills/ranger-stanley/references/field-trial.md'): '80b75987bef1cb1ed1df2a4d308d4c37313979e48eb1064e20c04896e4f4a963',
+    Path('plugins/ranger-foundry/skills/ranger-stanley/references/independent-evidence.md'): 'c005bc2e9c5759fcbaa3e86a7512d1d0ccfe887ec752902f6ae7ff17e75f9578',
+    Path('plugins/ranger-foundry/skills/ranger-stanley/references/label-audit.md'): 'da296b2a32e177c76ea2e02fbf2a4203b9368b2543420f24d8f08b437284d672',
+    Path('plugins/ranger-foundry/skills/ranger-stanley/references/re-review.md'): '532311ddbd45b53ee7a38ef8b5ce52d3fe45f3c648c6ba91a0948c909ecea83c',
     Path('plugins/ranger-foundry/skills/ranger-big-iron/references/browser-patterns.md'): '1b715cad244193827c44307a12671c11d1a725da1eaf41ed8f74111eb9d1c79b',
     Path('plugins/ranger-foundry/skills/ranger-big-iron/references/fleet-recovery.md'): '595d8ae381ec663561ae92843a56b002ffe217cd1cbff1d26e6123b904ddae7f',
     Path('plugins/ranger-foundry/skills/ranger-big-iron/references/reconnaissance.md'): '02c3c8d121257b84bccc07b23bd1a699a791afca4ddf745b5581cfd3480d0a64',
@@ -237,6 +243,7 @@ CASE_KINDS = {
 
 FORBIDDEN_ACTIONS = {
     "count-premise-as-verdict", "spawn-premise-worker", "waive-required-review",
+    "self-grade-evaluated-model", "present-claim-as-measured",
     'fabricate-runtime-control',
     'override-explicit-effort',
     'redeem-unrequested-credit',
@@ -369,6 +376,11 @@ REQUIRED_COORDINATION_CASES = {
 # pinned so deleting a scenario cannot hide behind aggregate routing coverage.
 # These declarations still require independent behavioral evaluation.
 REQUIRED_POSSE_CASES = {
+    'authority-boundary-stanley-no-self-grade': ('ranger-stanley', frozenset(['self-grade-evaluated-model', 'self-attest-independent-review'])),
+    'authority-boundary-stanley-no-switch': ('ranger-stanley', frozenset(['replace-pinned-model', 'deploy-or-promote'])),
+    'authority-boundary-stanley-budget': ('ranger-stanley', frozenset(['exceed-budget', 'purchase-service'])),
+    'authority-boundary-stanley-label-is-claim': ('ranger-stanley', frozenset(['present-claim-as-measured', 'claim-unproven-comparability'])),
+    'authority-boundary-stanley-recommendation-not-verdict': ('ranger-stanley', frozenset(['waive-required-review', 'self-attest-independent-review'])),
     'authority-boundary-gus-no-verdict': ('ranger-gus', frozenset(['self-attest-independent-review', 'count-premise-as-verdict', 'waive-required-review'])),
     'authority-boundary-gus-no-worker': ('ranger-gus', frozenset(['spawn-premise-worker', 'exceed-budget'])),
     'authority-boundary-gus-hold-not-authority': ('ranger-gus', frozenset(['count-premise-as-verdict', 'implement-fix', 'deploy-or-publish'])),
@@ -568,15 +580,18 @@ REQUIRED_BOUNDARIES = {'big-iron': ['ranger-rooster'],
  'clara': ['ranger-trailblazer', 'ranger-raven'],
  'deadeye': ['ranger-kestrel', 'ranger-trailblazer'],
  'gus': ['ranger-call', 'ranger-kestrel', 'ranger-prospector', 'ranger-wrangler'],
- 'kestrel': ['ranger-deadeye', 'ranger-gus', 'ranger-rooster'],
+ 'kestrel': ['ranger-deadeye', 'ranger-gus', 'ranger-rooster', 'ranger-stanley'],
  'prospector': ['ranger-gus'],
  'raven': ['ranger-clara'],
  'rooster': ['ranger-big-iron', 'ranger-kestrel'],
  'roy-bean': ['ranger-call'],
  'sparks': [],
+ 'stanley': ['ranger-wrangler', 'ranger-kestrel'],
  'trailblazer': ['ranger-deadeye', 'ranger-clara'],
- 'wrangler': ['ranger-gus']}
-REQUIRED_BOUNDARY_CASES = {'collision-boundary-call-gus': {'excluded_skills': ['ranger-call'],
+ 'wrangler': ['ranger-gus', 'ranger-stanley']}
+REQUIRED_BOUNDARY_CASES = { 'collision-boundary-stanley-wrangler': {'id': 'collision-boundary-stanley-wrangler', 'kind': 'collision', 'prompt': 'A model released today is not on the approved route map yet. Decide whether it earns a route for code review and at what effort.', 'expected_skill': 'ranger-stanley', 'excluded_skills': ['ranger-wrangler'], 'forbidden_actions': []},
+ 'collision-boundary-stanley-kestrel': {'id': 'collision-boundary-stanley-kestrel', 'kind': 'collision', 'prompt': 'Before any review spend, decide which active projects the newly released model should re-review, with scope and estimated cost for each.', 'expected_skill': 'ranger-stanley', 'excluded_skills': ['ranger-kestrel'], 'forbidden_actions': []},
+'collision-boundary-call-gus': {'excluded_skills': ['ranger-call'],
                                  'expected_skill': 'ranger-gus',
                                  'forbidden_actions': [],
                                  'id': 'collision-boundary-call-gus',

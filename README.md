@@ -10,10 +10,10 @@ actually tried using it.
 
 Ranger Foundry is a toolbelt for that part of the job.
 
-Thirteen skills for AI coding agents: **Call**, the foreman who keeps a bigger job moving, and
-twelve specialists for figuring things out, planning the work, collecting data,
+Fourteen skills for AI coding agents: **Call**, the foreman who keeps a bigger job moving, and
+thirteen specialists for figuring things out, planning the work, collecting data,
 running workers, preserving memory, settling meaning, managing agent budgets,
-finding trouble, and handing things over without losing the plot.
+testing new models, finding trouble, and handing things over without losing the plot.
 
 The idea is pretty simple: understand the job, build it in pieces you can check,
 have someone challenge the work, and leave enough evidence that the next person
@@ -47,11 +47,13 @@ in the skill menu.
 | **Big Iron** · Web Collection and Recovery · `ranger-big-iron` | Map sources, prove extraction coverage, diagnose browser actions and recover collection workers. Load only the mode needed. |
 | **Wrangler** · Models, Effort and Budgets · `ranger-wrangler` | Match work to approved model routes and effort settings while keeping the whole job within budget. |
 
+| **Stanley** · New Model Day · `ranger-stanley` | When a new model rolls into town with a medicine show, read the label and test what's in the bottle: independent benchmarks, real cost per task, effort curves, and whether it should re-review your active work. |
 | **Gus** · Premise Check · `ranger-gus` | Before consequential decisions, ask whether the work is worth doing. Runs briefly in Call's context; never an independent review. |
 
 The seams matter: Call drives delivery; Gus checks the premise. Kestrel reviews
 built work; Deadeye reviews a plan another context wrote. Clara keeps the record;
-Raven delivers it. Every neighboring specialty has an explicit boundary and a
+Raven delivers it. Stanley tests a new model; Wrangler routes the approved
+ones. Every neighboring specialty has an explicit boundary and a
 pinned routing case; see [dispatch policy](docs/dispatch-policy.md#boundaries).
 
 ## Match the effort to the job
@@ -143,7 +145,7 @@ context isn't. Repository rules and private overlays take precedence; see
 Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.4.1
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.5.0
 codex plugin add ranger-foundry@ranger-foundry
 ```
 

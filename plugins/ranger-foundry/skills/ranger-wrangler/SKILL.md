@@ -1,6 +1,6 @@
 ---
 name: ranger-wrangler
-description: "Wrangler selects approved model/provider routes and shared budgets for agent work, or verifies reasoning effort on an already selected model; not for Gus's decision on whether work is worthwhile."
+description: "Wrangler selects approved model/provider routes and shared budgets for agent work, or verifies reasoning effort on an already selected model; not for Gus's decision on whether work is worthwhile or Stanley's assay of a newly released model."
 ---
 
 # Wrangler — Models, Effort and Budgets
@@ -122,3 +122,4 @@ do not create another ledger or send messages without existing authority.
 ## Boundaries
 
 - `ranger-gus`: Wrangler chooses how much to spend within existing authority; Gus asks whether to spend at all.
+- `ranger-stanley`: Stanley decides whether a new model earns a route; Wrangler chooses among routes the owner already approved.

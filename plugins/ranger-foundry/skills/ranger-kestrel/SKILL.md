@@ -1,6 +1,6 @@
 ---
 name: ranger-kestrel
-description: "Kestrel handles review. Run an aggressive, evidence-first review of a built artifact, change set, codebase, implemented workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for Deadeye's unexecuted plans, Gus's premise checks or Rooster's incident diagnosis."
+description: "Kestrel handles review. Run an aggressive, evidence-first review of a built artifact, change set, codebase, implemented workflow, or security boundary. Use when the user asks for adversarial review, bug hunting, risk assessment, or a merge-readiness verdict, or when an authorized workflow delegates that review; not for Deadeye's unexecuted plans, Gus's premise checks, Rooster's incident diagnosis or Stanley's new-model assay."
 ---
 
 # Kestrel — Ranger Review
@@ -120,3 +120,4 @@ it.
 - `ranger-deadeye`: Kestrel reviews a built artifact; Deadeye challenges an unexecuted plan.
 - `ranger-gus`: Kestrel checks correctness; Gus checks whether the work is worth doing.
 - `ranger-rooster`: Rooster explains an observed failure; Kestrel reviews a change before it ships.
+- `ranger-stanley`: Stanley decides whether the new model should re-review active work; Kestrel performs the review.

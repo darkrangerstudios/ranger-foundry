@@ -1,0 +1,6 @@
+interface:
+  display_name: "ranger-stanley"
+  short_description: "Test a new model's claims, cost and fit"
+  default_prompt: "Use $ranger-stanley to assay the newly released model: test its launch claims, price it per task, and recommend routes and re-reviews."
+policy:
+  allow_implicit_invocation: true

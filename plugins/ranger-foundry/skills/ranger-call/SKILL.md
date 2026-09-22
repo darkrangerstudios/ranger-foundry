@@ -107,6 +107,7 @@ changes neither transport identity nor permissions, scope, or release eligibilit
 | Source collection, browser interaction or extraction-worker recovery | `ranger-big-iron` | Verified coverage, access outcome, bounded recovery and resume point |
 | Agents need authorized messages, reviews assigned, or receipt recovery | `ranger-raven` | Delivery evidence, open verdicts, owner, and next action |
 | Durable memory, semantic grounding or task handoff | `ranger-clara` | Source-grounded state, definitions, uncertainty and exact next action |
+| A newly released model needs its claims tested | `ranger-stanley` | Assay, route proposal and re-review calls |
 | Model routes, effort or shared limits need a decision | `ranger-wrangler` | Authorized route, verified or explicitly unverified settings, and remaining budget |
 
 Repository-local implementation, design, database, infrastructure, and release

@@ -31,6 +31,7 @@ outcome and treat the other as a supporting method.
 | Learn through a bounded implementation | `ranger-sparks` | Prototype output is not production-ready by default. |
 | Review code, architecture, or security | `ranger-kestrel` | Findings come before fixes; implementation requires separate authorization. |
 | Collect web evidence and restore extraction workers | `ranger-big-iron` | Select source, browser or recovery mode; preserve coverage, access, ownership and rollout gates. |
+| Test a newly released model and decide where it fits | `ranger-stanley` | Produces an assay and proposals; changes no route, pinned model or billing, and a re-review recommendation is not a verdict. |
 | Select authorized model routes or verify effort | `ranger-wrangler` | Preserve explicit choices and shared limits; requested settings are not verified effective settings. |
 
 | Check whether a consequential action is worth doing | `ranger-gus` | Inline premise checklist for Call, never work execution or an independent verdict. |
@@ -132,6 +133,8 @@ explicit user choices, review gates and cumulative budgets across every switch.
 - **Clara / Raven:** Clara stores the record; Raven delivers the message. Storing is not sending.
 - **Wrangler / Gus:** Wrangler chooses how much to spend within existing authority; Gus asks whether to spend at all.
 - **Roy Bean / Call:** Roy Bean writes agent rules; Call follows them to deliver the job.
+- **Stanley / Wrangler:** Stanley decides whether a new model earns a route and at what effort; Wrangler chooses among routes the owner already approved.
+- **Stanley / Kestrel:** Stanley decides whether the new model should re-review active work; Kestrel performs the review.
 
 Call invokes Gus only before fan-out, irreversible transitions, opening a lane,
 or a conflict with a recent user constraint. Gus uses the existing context and

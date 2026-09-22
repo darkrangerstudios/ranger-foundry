@@ -1,7 +1,7 @@
 {
   "name": "ranger-foundry",
-  "version": "0.4.1",
-  "description": "Thirteen composable Ranger skills: Call leads delivery; Gus checks the premise; specialists preserve scope, evidence and review gates.",
+  "version": "0.5.0",
+  "description": "Fourteen composable Ranger skills: Call leads delivery; Gus checks the premise; Stanley tests new models; specialists preserve scope, evidence and review gates.",
   "author": {
     "name": "Dark Ranger Studios",
     "url": "https://github.com/darkrangerstudios/ranger-foundry"
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Ranger Foundry",
     "shortDescription": "Build cool things. Check your work. Call in the posse.",
-    "longDescription": "Call coordinates thirteen Ranger skills for delivery, review, web collection, durable memory, meaning, messaging and proportionate model budgets.",
+    "longDescription": "Call coordinates fourteen Ranger skills for delivery, review, web collection, durable memory, meaning, messaging, new-model assays and proportionate model budgets.",
     "developerName": "Dark Ranger Studios",
     "category": "Productivity",
     "capabilities": [

@@ -2,6 +2,23 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.5.0 - 2026-09-22
+
+### Added
+
+- Stanley (`ranger-stanley`), for new-model day. Named for Clark Stanley, whose
+  Snake Oil Liniment federal investigators tested in 1917. Stanley reads a new model's
+  launch claims, tests them against independent benchmarks, dated pricing,
+  token burn per completed task, effort-level curves and an optional field trial
+  on your own replayed work, then recommends ADOPT, TRIAL or NO SALE per task class
+  and RE-REVIEW, SPOT-CHECK or SKIP for active projects. The model under
+  evaluation never grades itself, every number carries its source class, and
+  Stanley changes no route, pinned model or billing.
+- Boundaries: Stanley and Wrangler (earning a route versus choosing among
+  approved routes); Stanley and Kestrel (recommending a re-review versus
+  performing it). Both pinned by routing cases, with five fail-closed authority
+  cases for Stanley.
+
 ## 0.4.1 - 2026-09-22
 
 ### Added
