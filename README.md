@@ -46,7 +46,6 @@ in the skill menu.
 | **Kestrel** · Review · `ranger-kestrel` | Hunt for bugs, security gaps, and claims the evidence doesn't support. |
 | **Big Iron** · Web Collection and Recovery · `ranger-big-iron` | Map sources, prove extraction coverage, diagnose browser actions and recover collection workers. Load only the mode needed. |
 | **Wrangler** · Models, Effort and Budgets · `ranger-wrangler` | Match work to approved model routes and effort settings while keeping the whole job within budget. |
-
 | **Stanley** · New Model Day · `ranger-stanley` | When a new model rolls into town with a medicine show, read the label and test what's in the bottle: independent benchmarks, real cost per task, effort curves, and whether it should re-review your active work. |
 | **Gus** · Premise Check · `ranger-gus` | Before consequential decisions, ask whether the work is worth doing. Runs briefly in Call's context; never an independent review. |
 
@@ -145,7 +144,7 @@ context isn't. Repository rules and private overlays take precedence; see
 Add the marketplace, then the plugin:
 
 ```bash
-codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.5.0
+codex plugin marketplace add darkrangerstudios/ranger-foundry --ref v0.5.1
 codex plugin add ranger-foundry@ranger-foundry
 ```
 

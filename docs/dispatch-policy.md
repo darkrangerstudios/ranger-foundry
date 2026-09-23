@@ -33,7 +33,6 @@ outcome and treat the other as a supporting method.
 | Collect web evidence and restore extraction workers | `ranger-big-iron` | Select source, browser or recovery mode; preserve coverage, access, ownership and rollout gates. |
 | Test a newly released model and decide where it fits | `ranger-stanley` | Produces an assay and proposals; changes no route, pinned model or billing, and a re-review recommendation is not a verdict. |
 | Select authorized model routes or verify effort | `ranger-wrangler` | Preserve explicit choices and shared limits; requested settings are not verified effective settings. |
-
 | Check whether a consequential action is worth doing | `ranger-gus` | Inline premise checklist for Call, never work execution or an independent verdict. |
 
 ## Broad workflows

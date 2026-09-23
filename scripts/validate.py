@@ -799,6 +799,15 @@ def check_file_allowlist(paths: list[Path], errors: list[str]) -> None:
 
 def check_public_text(path: Path, text: str, errors: list[str]) -> None:
     rel = relative(path)
+    if rel.endswith(".md"):
+        # A blank line inside a Markdown table ends it; later rows render as prose.
+        lines = text.split("\n")
+        for i in range(1, len(lines) - 1):
+            nxt = lines[i + 2].strip() if i + 2 < len(lines) else ""
+            starts_new_table = re.match(r"^\|?\s*:?-{3,}", nxt) is not None
+            if (lines[i].strip() == "" and lines[i - 1].lstrip().startswith("|")
+                    and lines[i + 1].lstrip().startswith("|") and not starts_new_table):
+                add_error(errors, f"{rel}:{i + 1}: blank line splits a Markdown table")
     for label, pattern in FORBIDDEN_PATTERNS:
         match = pattern.search(text)
         if match:

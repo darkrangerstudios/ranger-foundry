@@ -2,6 +2,15 @@
 
 This file records user-visible changes to Ranger Foundry.
 
+## 0.5.1 - 2026-09-23
+
+### Fixed
+
+- The Stanley and Gus rows rendered as a paragraph below the README roster
+  table, and the Gus row likewise below the dispatch-policy ownership table,
+  because a blank line split each table. Gus had been affected since 0.4.0.
+- The validator now fails when a blank line splits a Markdown table.
+
 ## 0.5.0 - 2026-09-22
 
 ### Added
